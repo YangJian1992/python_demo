@@ -3,6 +3,7 @@ import xlrd, xlwt
 # import os
 import shutil
 import sys
+import re
 
 #定义文件路径和文件名，并用unicode转码，支持中文名。
 workDir = 'D:\\work\\'
@@ -117,6 +118,12 @@ def writeSheet():
 #------执行以下程序----------
 
 month = raw_input('输入年份和月份，如：2017-09，不能输入其他格式的数据。请输入：')
+#判断用户输入的数据是否符合要求
+while re.match('^20[0-9]{2}-[0-9]{2}$',month) == None:
+    print '输入有误，请重新输入：'
+    month = raw_input('输入年份和月份，如：2017-09，不能输入其他格式的数据。请输入：')
+print '输入的数据正确，请稍候。'
+
 #增加一个功能判断每个月的天数（考虑闰年），最好用正则，以后再看看。
 if month[-2:] in ['01', '03', '05', '07', '08', '10', '12']:
     days = 31
