@@ -59,10 +59,13 @@ def userLookup(user_id, keyContact):
     for item in userBook:
         if item[0] == user_id:
             if len(keyContact)!=0:
-                print(type(item[1]))
                 for word in keyContact:
-                    item[1] = item[1][item[1]['name'].find(word)>(-1)]
+                    #注意str.contains函数，判断是否包含word
+                    但是不能直接返回，明天改一下，把不同word的返回结果加在一起
+                    item[1] = item[1][item[1]['name'].str.contains(word)]
+                    # item[1] = item[1][item[1]['name']==(word)]
 
-            return item[1]
+                return item[1]
 
-print(userLookup('1020965', ["朱亚琴"]))
+print(userLookup('1020965', ["张", '妈']))
+
