@@ -5,6 +5,12 @@ import pandas as pd
 import time
 #原始数据dataOld
 dataOld = pd.read_pickle('D:\\work\\database\\df_out.pkl')
+# for index in range(len(dataOld)):
+#     if len(dataOld.ix[[index]]['user_id'].tolist()[0]) > 10:
+#         print(dataOld.ix[[index]].values.tolist())
+
+
+
 # #去掉归属地为NULL的值
 # dataValid = dataOld[dataOld['home_location']!='NULL']
 # dataValid.to_pickle('D:\\work\\database\\dataValid.pkl')
@@ -117,26 +123,23 @@ def user_condition():
     user_id = 'user_id'
     s = 0
     # user_id_list = dataOld.drop_duplicates([user_id])[user_id]
-    for item in dataOld[user_id]:
-        if item != '':
-            if len(item) > 10 or len(item) < 3:
-                s = s+1
-                print(item)
-                print('共%d个异常数据' % s)
-        else:
-            print('该项数据为空')
-    return (user_id_list)
+    # for item in dataOld[user_id]:
+    for index in dataOld.index:
+        print(index)
+    #     if item != '':
+    #         if len(item) > 10 or len(item) < 3:
+    #             s = s+1
+    #             print(item)
+    #             print('共%d个异常数据' %s)
+    #     else:
+    #         print('该项数据为空')
 
-    print(user_id_list)
+
 #计算不同客户的通讯录数量
-
-# print(user_condition())
-# print(len(user_info()))
-
-# print(len(user_lookup('1020965', ['妈','舅'], 0)))
-start = time.time()
-num_con = NumConditions(['爸', '妈'])
-print(num_con.contact_num())
-print('-------------------------------------------程序运行结束！-------------------------------------------')
-end = time.time()
-print('运行时间为:%ds'%(end-start))
+user_condition()
+# start = time.time()
+# num_con = NumConditions(['爸', '妈'])
+# print(num_con.contact_num())
+# print('-------------------------------------------程序运行结束！-------------------------------------------')
+# end = time.time()
+# print('运行时间为:%ds'%(end-start))
