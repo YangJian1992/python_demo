@@ -156,6 +156,8 @@ def add_locations(data):
 
         print('\n正在处理数据，请稍候......')
         for index_data in data.index:
+            # data.index是一个序列，所以index_data是一个整数int
+            # print('正在查找第%d条数据'%index_data)
             target_1 = (data.ix[index_data, [column_tem1]].values[0])
             target_2 = (data.ix[index_data, [column_tem2]].values[0])
 
@@ -214,13 +216,13 @@ def add_locations(data):
 lookup_count =1
 def lookup_location(target_number_0):
     #如果手机号码符合规则，则执行查找程序。否则返回的列表中，的省和市都为'0'
-    if re.findall(r"1\d{10}",target_number_0):
+    if re.findall(r"1[3-8]\d{9}",target_number_0):
         target_number = int(target_number_0[:7])
         mobile_series = data_home_location['mobile']
         global lookup_count
         low = 0
         high = len(mobile_series) - 1
-        print('------正在进行第%d次查找，  手机号：%s  ，请稍候......------' % (lookup_count, target_number_0))
+        # print('------正在进行第%d次查找，  手机号：%s  ，请稍候......------' % (lookup_count, target_number_0))
         lookup_count += 1
         while (low <= high):
             # 用//取整数
@@ -235,15 +237,14 @@ def lookup_location(target_number_0):
                 # print('已找到 手机号:%s， \n归属地为：%s,%s' % (
                 # target_number_0, data_home_location.ix[mid, ['province', 'city']].values[0],
                 # data_home_location.ix[mid, ['province', 'city']].values[1]))
-                print('------手机号在data_home_location中的索引为%d------\n' %mid)
-                find_data = data_home_location.ix[mid, ['province', 'city']].values[0]
+                # print('------手机号在data_home_location中的索引为%d------\n' %mid)
                 return [data_home_location.ix[mid, ['province', 'city']].values[0],
                           data_home_location.ix[mid, ['province', 'city']].values[1]]
-            else:
-                print('找不到手机号%s'%target_number_0)
-                return ['0','0']
+        # print('找不到手机号%s'%target_number_0)
+        return ['0','0']
 
     else:
+        # print('手机号不符合规则%s' % target_number_0)
         return ['-1', '-1']
 
     # print('不好意思，没有找到 手机号：%d。\n'%target_number)
@@ -294,7 +295,7 @@ def program_time(fun_1, a,fun_2=None, fun_3=None):
     end = time.time()
     print('\n运行时间为:%d秒'%(end-start))
 
-program_time(add_locations, data_call_history[0:9])
+program_time(add_locations, data_call_history)
 
 #将全局变量重置
 lookup_count =1
