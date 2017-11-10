@@ -281,6 +281,7 @@ def program_time(fun_1, a,fun_2=None, fun_3=None):
         else:
             break
     data = fun_1(a)
+    #index为False，则生成的文本中不显示index。to_csv可以生成txt的文本
     data.to_csv(file_path, index=False, sep='\t')
     # file_data = open(file_path, 'w')
     # file_data.close()
