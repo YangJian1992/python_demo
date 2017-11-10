@@ -240,6 +240,7 @@ def lookup_location(target_number_0):
                 # print('------手机号在data_home_location中的索引为%d------\n' %mid)
                 return [data_home_location.ix[mid, ['province', 'city']].values[0],
                           data_home_location.ix[mid, ['province', 'city']].values[1]]
+
         # print('找不到手机号%s'%target_number_0)
         return ['0','0']
 
