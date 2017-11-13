@@ -22,7 +22,7 @@ def add_locations(data):
         print('\n正在处理数据，请稍候......')
         for index_data in data.index:
             # data.index是一个序列，所以index_data是一个整数int
-            # print('正在查找第%d条数据'%index_data)
+            print('正在查找第%d条数据'%index_data)
             target_1 = (data.ix[index_data, [column_tem1]].values[0])
             target_2 = (data.ix[index_data, [column_tem2]].values[0])
             #lookup_location函数的返回结果为一个列表
@@ -60,9 +60,8 @@ def lookup_location(target_number_0):
         target_number = int(target_number_0[:7])
         #先用sort_values对手机号排序，才能用二分法查找。但是，按mobile排序后的索引值不是按序排列的，需要建立新的索引。
         #先把数据按"mobile"排序，但需要重新设置索引值。所以把排序后结果转换成数组，再转换成DataFrame，这样就把排序后的索引的值改变了。
-        data_home_location_order = DataFrame(np.array(data_home_location.sort_values(by='mobile')))
         #DataFrame的index和columns都是从0开始的数字序列，没有mobile这样的字段名
-        mobile_series = data_home_location_order[1]
+        mobile_series = data_home_location_order['mobile']
         global lookup_count
         low = 0
         high = len(mobile_series) - 1
@@ -98,7 +97,7 @@ def program_time(fun_1, a,fun_2=None, fun_3=None):
     #文件存在时会一直报错
     while True:
         #生成的目标文件名
-        file_path = 'D:\\work\\database\\home_location_test.txt'
+        file_path = 'D:\\work\\database\\home_location_new2.txt'
         if os.path.exists(file_path):
             print('错误：%s文件已经存在了'%file_path)
         else:
@@ -118,7 +117,7 @@ def program_time(fun_1, a,fun_2=None, fun_3=None):
     end = time.time()
     print('\n运行时间为:%d秒'%(end-start))
 
-
+#注意这些都是全局变量
 lookup_count =1
 #data_home_location 总数量为:343150
 data_home_location = pd.read_pickle('D:\\work\\database\\home_location.pkl')
@@ -128,6 +127,9 @@ data_call_history = pd.read_pickle('D:\\work\\database\\call_history.pkl')
 # print('data_home_location 总数量为:%d'%len(data_home_location))
 # print(len(data_call_history.ix[20,['mobile']][0]))
 # print('data_call_history 总数量为:%d'%len(data_call_history))
+
+#对data_home_location排序，并改变索引值，让索引从0开始。放在函数外面，提高效率。
+data_home_location_order = DataFrame(np.array(data_home_location.sort_values(by='mobile')),columns=data_home_location.columns)
 
 program_time(add_locations, data_call_history)
 
