@@ -70,7 +70,8 @@ def data_time_select(month_num, month_num_2, data):
             target_date_2 = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(time_stamp_pre_2))
             #把不在时间范围内的数据的索引找到，并用drop删除，inplace为true,可以改变原data
 
-            #不但要在date之前的一个月和三个月，也不超过date。注意用&符号，&两侧用（）分开，这个bug找了好长时间。
+            #不但要在date之前的一个月和三个月，也不超过date。注意用&符号，不能用and,&两侧用（）分开，这个bug找了好长时间，然而，找出来的索引是我要删除的，
+            #所以不能用and，应该把我不想要的索引找出来，再删掉，所以用或运算 。
             # &  group['call_time'] <date
             index_tem = group[(group['call_time'] < target_date) | (group['call_time'] > date)].index
             index_tem_2 = group[(group['call_time'] < target_date_2) | (group['call_time'] > date)].index
