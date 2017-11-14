@@ -28,7 +28,6 @@ address_book_test = file_open_1.parse('Table1')
 file_open_2 = pd.ExcelFile(path + file_name_2)
 call_history_test = file_open_2.parse('Table1')
 
-print(call_history_test)
 
 #有问题，read_csv和read_table读取，会报错。
 # file_open_3 = pd.read_table(path + file_name_3)
@@ -36,20 +35,28 @@ print(call_history_test)
 file_open_3 = pd.ExcelFile(path + file_name_3)
 operator_info = file_open_3.parse('Table1')
 
-#定义dat_time()函数，输入数字，如3，得到最近3个月的通话记录。
-def data_time_select(month_num, data):
+
+#定义dat_time()函数，输入数字，如1，3，得到最近1和3个月的通话记录如：[data, data_2]。
+def data_time_select(month_num, month_num_2, data):
     #调用sort_data()函数，对operator_info数据表进行排序
     sort_operator_info = sort_data(operator_info, 'mobile')
-    print(sort_operator_info)
     #根据手机号去重，得到新的表
     # data_mobile = data.drop_duplicates['mobile']
     #按照mobile分组，并迭代
+    data_2 = data.copy()
+    # month_2 = 3
+    # data_3 = data.copy()
     for name, group in data.groupby('mobile'):
         # print("手机号%s的类型为%s" % (name, type(name)))
-        #不知道为什么call_history_test中name的类型为numpy.int64，但对于data_call_history,name的类型为str。
+        #
+        #
+        #不知道groupyby()分组后，为什么call_history_test中name的类型为numpy.int64，但对于data_call_history,name的类型为str。
+        #
+        #所以加了个str，但对于其他数据，不一定要加
+        #
         target_mobile = str(name)
+        #date为create_time，调用函数查询得到
         date = lookup_date(target_mobile, sort_operator_info)
-        print('\n')
         print(date)
         if len(date) == 19:
             # 先把日期转换成时间数组，再转换成时间戳。
@@ -57,11 +64,19 @@ def data_time_select(month_num, data):
             time_stamp = time.mktime(time_array)
             # 把函数的输入参数，由月转换成秒，得到新的时间戳。
             time_stamp_pre = time_stamp - month_num * 30 * 24 * 3600
+            time_stamp_pre_2 = time_stamp - month_num_2 * 30 * 24 * 3600
             #再把计算最近几个月后的时间戳转换成普通的日期格式
             target_date = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(time_stamp_pre))
+            target_date_2 = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(time_stamp_pre_2))
             #把不在时间范围内的数据的索引找到，并用drop删除，inplace为true,可以改变原data
-            index_tem = group[group['call_time'] < target_date].index
+
+            #不但要在date之前的一个月和三个月，也不超过date。注意用&符号，&两侧用（）分开，这个bug找了好长时间。
+            # &  group['call_time'] <date
+            index_tem = group[(group['call_time'] < target_date) | (group['call_time'] > date)].index
+            index_tem_2 = group[(group['call_time'] < target_date_2) | (group['call_time'] > date)].index
+
             data.drop(index_tem, axis=0, inplace=True)
+            data_2.drop(index_tem_2, axis=0, inplace=True)
 
 
 
@@ -85,14 +100,14 @@ def data_time_select(month_num, data):
     #             # data.drop(index, axis=0, inplace=True)
     #             #去掉不符合日期条件的数据，把返回结果赋值给data
     #             data = data[data['mobile'] != target_mobile]
-        elif date == "0":
-            #表示找不到这个手机号对应的create_time
-            print("找不到手机号%s对应的日期\n"%target_mobile)
-            continue
-        else:
-            print("手机号%s的格式不正确\n"%target_mobile)
-            continue
-    return data
+    #     elif date == "0":
+    #         #表示找不到这个手机号对应的create_time
+    #          print("找不到手机号%s对应的日期\n"%target_mobile)
+    #          continue
+    #     else:
+    #         print("手机号%s的格式不正确\n"%target_mobile)
+    #         continue
+    return [data, data_2]
 
 
 
@@ -143,4 +158,5 @@ def lookup_date(target_number_0, data):
 
 
 # print(call_history_test)
-print(data_time_select(1, call_history_test))
+print(data_time_select(1, 3, call_history_test))
+# print(type((data_time_select(1, 3, call_history_test))))

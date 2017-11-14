@@ -17,11 +17,14 @@ data_home_location = pd.read_pickle('D:\\work\\database\\home_location.pkl')
 data_call_history = pd.read_pickle('D:\\work\\database\\call_history.pkl')
 
 # print('data_home_location 总数量为:%d'%len(data_home_location))
+b = data_call_history.copy()
+
 # print(data_call_history)
-for name, group in data_call_history.groupby('mobile'):
-    # index_tem = group[group['call_time']<"2017-12-30 02:09:34"].index
-    # data_call_history.drop(index_tem, axis=0, inplace=True)
-    print(type(name))
+print(data_call_history[(data_call_history['call_time']<'2017-07-01 18:41:47' )& (data_call_history['call_time']>'2017-07-01 07:40:48')])
+# for name, group in data_call_history.groupby('mobile'):
+#     # index_tem = group[group['call_time']<"2017-12-30 02:09:34"].index
+#     # data_call_history.drop(index_tem, axis=0, inplace=True)
+#     print(type(name))
 #
 # print(data_call_history)
 # print('data_call_history 总数量为:%d'%len(data_call_history))
