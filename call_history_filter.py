@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding:utf-8
 import re
 import os
 import sys
@@ -7,7 +7,14 @@ import numpy as np
 from pandas import DataFrame, Series
 import pandas as pd
 from datetime import datetime
+'''
+功能：对通话记录进行筛选
+函数：
+data_time_select(month_num, month_num_2, data)：根据时间筛选，如：进件日期近一个月和进件日期最近三个月
+sort_data(data, column_0, index_flag  = None)：排序，便与用二分法查找
+lookup_date(target_number_0, data)：查找进件日期Create_time
 
+'''
 
 
 
@@ -17,7 +24,9 @@ def data_time_select(month_num, month_num_2, data):
     sort_operator_info = sort_data(operator_info, 'mobile')
     #根据手机号去重，得到新的表
     # data_mobile = data.drop_duplicates['mobile']
-    #按照mobile分组，并迭代
+    #按照mobile分组，并迭代、
+    #把data_1和data_2中不符合条件的去掉
+    data_1 = data.copy()
     data_2 = data.copy()
     # month_2 = 3
     # data_3 = data.copy()
@@ -51,9 +60,10 @@ def data_time_select(month_num, month_num_2, data):
             index_tem = group[(group['call_time'] < target_date) | (group['call_time'] > date)].index
             index_tem_2 = group[(group['call_time'] < target_date_2) | (group['call_time'] > date)].index
 
-            data.drop(index_tem, axis=0, inplace=True)
+            data_1.drop(index_tem, axis=0, inplace=True)
             data_2.drop(index_tem_2, axis=0, inplace=True)
-    return [data, data_2]
+
+    return [data_1, data_2]
 
 
 
@@ -101,6 +111,9 @@ def lookup_date(target_number_0, data):
     else:
         # print('手机号不符合规则%s' % target_number_0)
         return '-1'
+
+
+#d
 
 path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
 file_name_1 = 'addressBookTest.xlsx'

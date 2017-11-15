@@ -6,7 +6,7 @@ import pandas as pd
 import time
 import numpy as np
 #本模块含有三个函数:
-# add_locations(data):data数据表中必须包含主叫"mobile"和被叫"receiver"字段,将归属地作为新的字段添加到表中。
+# add_locations(data):data数据表中必须包含"mobile"和联系人"receiver"字段,将归属地作为新的字段添加到表中。
 # lookup_location(target_number_0),输入字符串格式的手机号，得到一个列表，表示号码的所属的省名和市名。
 # program_time(fun_1, a,fun_2=None, fun_3=None)：计算函数fun_的运行时间，a为fun_的参数。
 
