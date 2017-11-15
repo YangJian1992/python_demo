@@ -8,32 +8,7 @@ from pandas import DataFrame, Series
 import pandas as pd
 from datetime import datetime
 
-path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
-file_name_1 = 'addressBookTest.xlsx'
-file_name_2 = 'callHistroyTest.xlsx'
-file_name_3 = 'operator_info_demo.xlsx'
-# file_name_3 = 'operator_info_demo.csv'
 
-# #本地数据是csv格式的，是用\t分隔operator_info_demo，每行后面有\n，空值为"NULL'。
-# file_open = open(path + file_name,'r').readlines()
-# #为什么 re.findall(r'^[^\t]+\t$', row[:-1]+'\t'))就不行啊？
-# data_temp = [[temp[:-1] for temp in (re.findall(r'[^\t]+\t', row[:-1]+'\t'))] for row in file_open]
-# data = DataFrame(data_temp[1:],columns=data_temp[0])
-# print(data)
-
-#读取xls或者xlsx的文件
-file_open_1 = pd.ExcelFile(path + file_name_1)
-address_book_test = file_open_1.parse('Table1')
-
-file_open_2 = pd.ExcelFile(path + file_name_2)
-call_history_test = file_open_2.parse('Table1')
-
-
-#有问题，read_csv和read_table读取，会报错。
-# file_open_3 = pd.read_table(path + file_name_3)
-# operator_info_demo = file_name_3
-file_open_3 = pd.ExcelFile(path + file_name_3)
-operator_info = file_open_3.parse('Table1')
 
 
 #定义dat_time()函数，输入数字，如1，3，得到最近1和3个月的通话记录如：[data, data_2]。
@@ -78,36 +53,6 @@ def data_time_select(month_num, month_num_2, data):
 
             data.drop(index_tem, axis=0, inplace=True)
             data_2.drop(index_tem_2, axis=0, inplace=True)
-
-
-
-    # # for index in data_mobile.index:
-    #     # ，选择索引对应的手机号，而lookup_date()返回日期
-    #     target_mobile = data_mobile.ix[index, ['mobile']][0]
-    #
-    #     #将排序后的opreator_info作为参数传入，在表里找到相应的日期。
-    #     date = lookup_date(target_mobile, sort_operator_info)
-    #     if len(date) == 19:
-    #         # 先把日期转换成时间数组，再转换成时间戳。
-    #         time_array = time.strptime(date, '%Y-%m-%d %H:%M:%S')
-    #         time_stamp = time.mktime(time_array)
-    #         # 把函数的输入参数，由月转换成秒，得到新的时间戳。
-    #         time_stamp_pre = time_stamp - month_num * 30 * 24 * 3600
-    #         # time.strftime("%b %d %Y %H:%M:%S", time.gmtime(time_stamp_pre))
-    #     #将call_time的数据转换成秒，再减掉要求的时间间隔，和表中的时间戳。
-    #         data_stamp = time.mktime(time.strptime(call_date, '%Y-%m-%d %H:%M:%S'))
-    #         if data_stamp <= time_stamp_pre:
-    #             #不在日期范围内的删除。
-    #             # data.drop(index, axis=0, inplace=True)
-    #             #去掉不符合日期条件的数据，把返回结果赋值给data
-    #             data = data[data['mobile'] != target_mobile]
-    #     elif date == "0":
-    #         #表示找不到这个手机号对应的create_time
-    #          print("找不到手机号%s对应的日期\n"%target_mobile)
-    #          continue
-    #     else:
-    #         print("手机号%s的格式不正确\n"%target_mobile)
-    #         continue
     return [data, data_2]
 
 
@@ -157,7 +102,38 @@ def lookup_date(target_number_0, data):
         # print('手机号不符合规则%s' % target_number_0)
         return '-1'
 
+path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
+file_name_1 = 'addressBookTest.xlsx'
+file_name_2 = 'callHistroyTest.xlsx'
+file_name_3 = 'operator_info_demo.xlsx'
+# file_name_3 = 'operator_info_demo.csv'
 
-# print(call_history_test)
-print(data_time_select(1, 3, call_history_test))
-# print(type((data_time_select(1, 3, call_history_test))))
+# #本地数据是csv格式的，是用\t分隔operator_info_demo，每行后面有\n，空值为"NULL'。
+# file_open = open(path + file_name,'r').readlines()
+# #为什么 re.findall(r'^[^\t]+\t$', row[:-1]+'\t'))就不行啊？
+# data_temp = [[temp[:-1] for temp in (re.findall(r'[^\t]+\t', row[:-1]+'\t'))] for row in file_open]
+# data = DataFrame(data_temp[1:],columns=data_temp[0])
+# print(data)
+
+# 读取xls或者xlsx的文件
+file_open_1 = pd.ExcelFile(path + file_name_1)
+address_book_test = file_open_1.parse('Table1')
+
+file_open_2 = pd.ExcelFile(path + file_name_2)
+call_history_test = file_open_2.parse('Table1')
+
+# 有问题，read_csv和read_table读取，会报错。
+# file_open_3 = pd.read_table(path + file_name_3)
+# operator_info_demo = file_name_3
+file_open_3 = pd.ExcelFile(path + file_name_3)
+operator_info = file_open_3.parse('Table1')
+
+
+# print(data_time_select(1, 3, call_history_test))
+call_history_list = data_time_select(1, 3, call_history_test)
+one_month = call_history_list[0]
+three_month =call_history_list[1]
+
+#保存一个月和三个月的通话记录
+one_month.to_csv(path+'one_month_call.csv', na_rep = 'NULL')
+three_month.to_csv(path+'three_month_call.csv', na_rep = 'NULL')
