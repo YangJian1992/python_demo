@@ -7,6 +7,7 @@ import numpy as np
 from pandas import DataFrame, Series
 import pandas as pd
 from datetime import datetime
+import pymysql
 '''
 功能：对通话记录进行筛选
 函数：
@@ -16,7 +17,28 @@ lookup_date(target_number_0, data)：查找进件日期Create_time
 
 '''
 
+#从数据库中读取通话记录
+def fun_readdata_mysql(select_string):
+    columns_add = ['user_id', 'auth_time', 'id', 'mobile', 'receiver', 'call_time', 'call_addr', 'call_type']
+    """
+        创建连接读取mysql数据：
+        select_string:用以筛选数据库数据的语句
+    """
+    conn = pymysql.connect(host='rr-bp1jnr76z49y5k9mno.mysql.rds.aliyuncs.com', port=3306, user='qiandaodao', passwd='qdddba@2017*', db='qiandaodao', charset='utf8')
+    print('已经连接到数据库，请稍候...')
+    cur = conn.cursor()
+    print('正在对数据库进行查询，请稍候...')
+    cur.execute(select_string)
 
+    temp = DataFrame(list(cur.fetchall()), columns=columns_add)
+    print('已经查询到数据，正在处理，请稍候...累计花费时间为%ds。' % (time.time() - start))
+    # 提交
+    conn.commit()
+    # 关闭指针对象
+    cur.close()
+    # 关闭连接对象
+    conn.close()
+    return(temp)
 
 #定义dat_time()函数，输入数字，如1，3，得到最近1和3个月的通话记录如：[data, data_2]。
 def data_time_select(month_num, month_num_2, data):
@@ -113,12 +135,46 @@ def lookup_date(target_number_0, data):
         return '-1'
 
 
-#d
+def count_user(data):
+    print('即将对数据的用户数量进行统计，累计花费%ds'%(time.time() - start))
+    print('数量：%d'%len(data.drop_duplicates('user_id')))
+    print('已完成对数据的用户数量进行统计，累计花费%ds' % (time.time() - start))
 
+
+start = time.time()
+# call_history = fun_readdata_mysql(
+#     '''select u.id as user_id,ao.auth_time ,c.* from call_history c
+# left join users u on u.mobile=c.mobile
+# left join (select * from credit_apply_orders where auth_status=2 ) ao on ao.user_id=u.id
+# where u.id in (select ao.user_id
+# from
+# credit_apply_orders ao
+# left join (select * from user_loan_orders where first_loan=1 and loan_status=2 and loan_time>='2017-06-01' and loan_time <'2017-09-01' group by user_id ) lo on lo.user_id=ao.user_id
+# left join users u on u.id=ao.user_id
+# left join (select user_id,count(id) num , sum(if(overdue_days>0,1,0)) yqbs,max(overdue_days) overdue from user_loan_orders where first_loan=0 and loan_time>='2017-06-01'  and loan_status=2 group by user_id ) lo1 on lo1.user_id=ao.user_id
+# where ao.create_time>='2017-06-01' and ao.create_time<'2017-09-01' and ao.auth_status='2'  and ao.auth_time<'2017-09-01' and lo.user_id is not null ) ;
+#     ''')
 path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
-file_name_1 = 'addressBookTest.xlsx'
-file_name_2 = 'callHistroyTest.xlsx'
-file_name_3 = 'operator_info_demo.xlsx'
+file_name_1 = 'call_history_old.csv'
+file_name_2 = ''
+file_name_3 = ''
+
+# call_history.to_csv(path + file_name_1, sep='\t')
+
+
+#注意encoding='gbk'，不是utf-8
+call_history_old = pd.read_table(path+file_name_1, encoding='gbk')
+print('读取数据花费%ds'%(time.time()-start))
+count_user(call_history_old)
+print(call_history_old[:1000])
+
+
+# count_user(data)
+end = time.time()
+print('总花费时间：%ds'%(end-start))
+
+
+
 # file_name_3 = 'operator_info_demo.csv'
 
 # #本地数据是csv格式的，是用\t分隔operator_info_demo，每行后面有\n，空值为"NULL'。
@@ -129,24 +185,24 @@ file_name_3 = 'operator_info_demo.xlsx'
 # print(data)
 
 # 读取xls或者xlsx的文件
-file_open_1 = pd.ExcelFile(path + file_name_1)
-address_book_test = file_open_1.parse('Table1')
-
-file_open_2 = pd.ExcelFile(path + file_name_2)
-call_history_test = file_open_2.parse('Table1')
+# file_open_1 = pd.ExcelFile(path + file_name_1)
+# address_book_test = file_open_1.parse('Table1')
+#
+# file_open_2 = pd.ExcelFile(path + file_name_2)
+# call_history_test = file_open_2.parse('Table1')
 
 # 有问题，read_csv和read_table读取，会报错。
 # file_open_3 = pd.read_table(path + file_name_3)
 # operator_info_demo = file_name_3
-file_open_3 = pd.ExcelFile(path + file_name_3)
-operator_info = file_open_3.parse('Table1')
+# file_open_3 = pd.ExcelFile(path + file_name_3)
+# operator_info = file_open_3.parse('Table1')
 
 
 # print(data_time_select(1, 3, call_history_test))
-call_history_list = data_time_select(1, 3, call_history_test)
-one_month = call_history_list[0]
-three_month =call_history_list[1]
+# call_history_list = data_time_select(1, 3, call_history_test)
+# one_month = call_history_list[0]
+# three_month =call_history_list[1]
 
 #保存一个月和三个月的通话记录
-one_month.to_csv(path+'one_month_call.csv', na_rep = 'NULL')
-three_month.to_csv(path+'three_month_call.csv', na_rep = 'NULL')
+# one_month.to_csv(path+'one_month_call.csv', na_rep = 'NULL')
+# three_month.to_csv(path+'three_month_call.csv', na_rep = 'NULL')
