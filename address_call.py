@@ -17,19 +17,19 @@ from pandas import Series, DataFrame
 
 
 
-#输入参数为一个月或三个月的通话记录数据，返回一个字典，字典的键为用户id，字典值为一个列表，列表依次表示用户id、通讯录联系人的通话次数、
+#输入参数为一个月或三个月的通话记录数据，返回列表，列表依次表示用户id、通讯录联系人的通话次数、
 # 通话记录中top10联系人在通讯录联系人中的数量、通话记录中通讯录联系人中数量, 通话次数超过3次的通讯录联系人数量。
 def user_call_info(data):
     # print(one_month)
     #这是通讯录联系人数据
-    data_address = pd.read_table(path + file_name_2, encoding='utf-8')
+    data_address = pd.read_table(path + file_name_2, sep='\t', encoding='utf-8')
     # 往空字典中添加键值对，键为用户id，值为一个列表，依次表示用户id、通话次数、top10联系人数量。
-    user_dict = {}
+    user_list = []
     for user_id, group in data.groupby('user_id'):
         #mobile_count变量统计每个用户的通话记录中，top10联系人在通讯录中的数量
         mobile_count = 0
         user_id = str(user_id)
-        #得检查mobile_list是列表，通讯录联系人的号码表
+        #得mobile_list列表，通讯录联系人的号码表
         mobile_list = data_address[data_address['user_id']==user_id]['mobile'].drop_duplicates(['mobile'])['mobile'].values
         #通讯录联系人的通话记录
         call_book = group[group['receiver'].isin(mobile_list)]
@@ -51,8 +51,8 @@ def user_call_info(data):
             if mobile in mobile_list:
                 mobile_count = mobile_count + 1
 
-        #往字典中添加键值对，值列表依次表示用户id、通讯录联系人的通话次数、通话记录中top10联系人数量在通讯录中的数量，通话记录中通讯录联系人中数量, 通话次数超过3次的通讯录联系人数量
-        user_dict[user_id] = [user_id, call_num, mobile_count, address_book_num, three_times]
+        #往列表中添加用户id、通讯录联系人的通话次数、通话记录中top10联系人数量在通讯录中的数量，通话记录中通讯录联系人中数量, 通话次数超过3次的通讯录联系人数量
+        user_list = user_list.append([user_id, call_num, mobile_count, address_book_num, three_times])
 
 
 
@@ -66,6 +66,6 @@ path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
 file_name_11 = 'call_history_old_1.csv'
 file_name_2 = 'address_book.csv'
 file_name_3 = ''
-add
+
 user_call_1 = one_month_data()
 
