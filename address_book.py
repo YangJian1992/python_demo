@@ -43,13 +43,14 @@ def address_book_remove(data):
     print('输入的数据共%d行'%len(data))
     print('正在对数据进行筛选，请稍候...')
     #给数据增加一列.默认为'0'
-    data['mobile_9'] = '0'
-    print(data[:5])
+    data['mobile_9'] = 'NULL'
     #手机号前9位重复超过20次的user_id和相应的9位手机号。
     mobile_remove_list = []
-    # word_list = ['易信', '微会', 'poo', 'mimicall', 'Skype', '来电', 'KC', '阿里通', '有信', '触宝', '微话',
+    # word_list = ['易信', '微会', 'poo', 'mimicall', 'Skype', '来电', '专线', '阿里通', '有信', '触宝', '微话',
     #              '钉钉', '酷宝', '微信', 'Skype']
-    word_list = ['专线']
+    # word_list = ['专线']
+    word_list = ['专线', '易信', '微会', 'poo', 'mimicall', 'Skype', '来电', '阿里通', '有信', '触宝', '微话',
+                 '钉钉', '酷宝', '微信', 'Skype']
     risky_mobile = []
     # risky_num变量计算通讯录中高危号码数量是否达到15个
     risky_num = 0
@@ -57,17 +58,42 @@ def address_book_remove(data):
     user_mobile = {}
 
     #step1:
-    start2 = time.time()
-    #c对data_filter数据进行后续的删除的操作，并把这个数据返回。使用isin方法，不用str.来调用，用Series来调用。
-    data_filter = data[(data['mobile'].str.len() == 11) & (data['mobile'] < '18999999999') & (data['mobile'] > '13000000000') &
-                       (data['name'].isin(word_list))]
-    print('通讯录11位筛选step1，正在生成数据，请稍候...累计花费时间为%ds。' % (time.time() - start2))
+    # start2 = time.time()
+    # #c对data_filter数据进行后续的删除的操作，并把这个数据返回。使用isin方法，不用str.来调用，用Series来调用。
+    # #注意~运算符的使用，表示取反，非的意思，~和isin搭配使用。
+    # # data_filter = data[(data['mobile'].str.len() == 11) & (data['mobile'] < '18999999999') & (data['mobile'] > '13000000000') &
+    # #                    ~(data['name'].str.contains('专线'))]
+    # # print('通讯录11位筛选step1，正在生成数据，请稍候...累计花费时间为%ds。' % (time.time() - start2))
+    # # print('数量:%d'%len(data_filter))
+    # #step2:
+    # start3 = time.time()
+    # print('已经完成初步筛选，正在对前9位手机号进行判断，请稍候...')
 
-    #step2:
-    start3 = time.time()
-    print('已经完成初步筛选，正在对前9位手机号进行判断，请稍候...')
-    for user_id, group in data_filter.groupby('user_id'):
-        print('执行for')
+    # print('通讯录前九位进行筛选，正在生成数据，请稍候...累计花费时间为%ds。' % (time.time() - start3))
+    # print('两步筛选后的数据中，总行数为%d'%len(data))
+    start4 = time.time()
+    #第二种方法，比较哪种快
+    for index in data.index:
+        mobile = str(data.ix[index,['mobile']].values[0])
+        flag = 0
+        #name也有数字格式的，需考虑str
+        name = str(data.ix[index,['name']].values[0])
+        if re.findall(r"^1[3-8]\d{9}$", mobile):
+            for word in word_list:
+                # data.drop(data[data['name'].str.contains(word)].index, axis=0, inplace=True)
+                if word in name:
+                    data.drop(index, axis=0, inplace=True)
+                    #删除该索引后，就不用对word_list遍历,并把flag改为1
+                    flag = 1
+                    break
+            # 符合手机号规则，且不在word_list中时，此时的索引值不会被删除，所以把手机号的前九位作为mobile_9的值
+            if flag==0:
+                data.ix[index, ['mobile_9']] = mobile[:9]
+        else:
+            data.drop(index, axis=0, inplace=True)
+    print('通讯录筛选step3，正在生成数据，请稍候...累计花费时间为%ds。' % (time.time() - start4))
+
+    for user_id, group in data.groupby('user_id'):
         user_id = str(user_id)
         # for item in risky_mobile:
         #     # 如果含有号码item，则计数变量risky_num加一
@@ -84,46 +110,17 @@ def address_book_remove(data):
         mobile_need = mobile_data[mobile_data['mobile'] <= 20].index.values
 
         group_1 = group[group['mobile_9'].isin(mobile_need)]
-        mobile_only = group_1.drop_duplicates('mobile')
+        mobile_only = group_1.drop_duplicates(['mobile'])
         #每个用户的user_id, 有效手机号的数量。
         user_mobile[user_id] = [user_id, len(mobile_only)]
-        print('data_filter:', data_filter)
         if len(mobile_remove)> 0:
+            print(mobile_remove)
             # mobile_remove_list.append([user_id, mobile_remove])
             # print(mobile_remove_list)
 
             # 再看看group表中，把'mobile_9'字段中，在mobile_remove列表中的数据全删掉。注意group是独立的数据，一定要用data去调用drop()去删除。
-            data_filter.drop(group[group['mobile_9'].isin(mobile_remove)].index, axis=0, inplace=True)
+            data.drop(group[group['mobile_9'].isin(mobile_remove)].index, axis=0, inplace=True)
         risky_num = 0
-    print('通讯录前九位进行筛选，正在生成数据，请稍候...累计花费时间为%ds。' % (time.time() - start3))
-    print('两步筛选后的数据中，总行数为%d'%len(data_filter))
-    start4 = time.time()
-    #第二种方法，比较哪种快
-    # for index in data.index:
-    #     mobile = str(data.ix[index,['mobile']].values[0])
-    #     flag = 0
-    #     #name也有数字格式的，需考虑str
-    #     name = str(data.ix[index,['name']].values[0])
-    #     if re.findall(r"^1[3-8]\d{9}$", mobile):
-    #         for word in word_list:
-    #             # data.drop(data[data['name'].str.contains(word)].index, axis=0, inplace=True)
-    #             if word in name:
-    #                 data.drop(index, axis=0, inplace=True)
-    #                 #删除该索引后，就不用对word_list遍历,并把flag改为1
-    #                 flag = 1
-    #                 break
-    #         # 符合手机号规则，且不在word_list中时，此时的索引值不会被删除，所以把手机号的前九位作为mobile_9的值
-    #         if flag==0:
-    #             data.ix[index, ['mobile_9']] = mobile[:9]
-    #     else:
-    #         data.drop(index, axis=0, inplace=True)
-    # print('通讯录筛选step3，正在生成数据，请稍候...累计花费时间为%ds。' % (time.time() - start4))
-
-    #     dat_filter = data
-    #     for user_id, group in data_filter:
-    #         user_mobile.append([user_id, len(group)])
-
-
 
     # #在上述筛选过程的基础上，进一步筛选。删掉手机号前九位数字重复次数超过10次的数据，并删掉
     # for user_id, group in data.groupby('user_id'):
@@ -138,7 +135,7 @@ def address_book_remove(data):
     #     #再看看group表中，把'mobile_9'字段中，在mobile_remove列表中的数据全删掉。注意group是独立的数据，一定要用data去调用drop()去删除。
     #     data.drop(group[group['mobile_9'].isin(mobile_remove)].index, axis=0, inplace=True)
 
-    return [user_mobile, data_filter]
+    return [user_mobile, data]
 
 
 
@@ -220,10 +217,10 @@ file_name_2 = 'address_book_1.csv'
 #address_book为数据库中读取的数据
 # address_book.to_csv(path + file_name_1, sep='\t')
 #注意encoding='gbk'，不是utf-8
-address_book_old = pd.read_table(path+file_name_1, encoding='gbk')
+address_book_old = pd.read_table(path+file_name_1, encoding='gbk', na_values='NULL')
 # count_user(address_book_old)
 #address_book_2为筛选后的数据
-user_mobile = address_book_remove(address_book_old[:80000])
+user_mobile = address_book_remove(address_book_old[:8000])
 print(user_mobile[0])
 print(user_mobile[1])
 # address_book_2.to_csv(path + file_name_2, sep='\t')
