@@ -5,6 +5,8 @@
     近3个月通话记录中通讯录联系人通话次数小于等于8次
     近3个月通话记录中通讯录联系人有通话的联系人数量小于等于2个
     近1个月top10联系人无通讯录联系人
+    近1个月发生过3次及以上通话行为的去重手机号码且为通讯录联系人的数量等于0个
+
 
 write by yang_jian
 '''
@@ -16,7 +18,7 @@ from pandas import Series, DataFrame
 
 
 #输入参数为一个月或三个月的通话记录数据，返回一个字典，字典的键为用户id，字典值为一个列表，列表依次表示用户id、通讯录联系人的通话次数、
-# 通话记录中top10联系人在通讯录联系人中的数量、通话记录中通讯录联系人中数量。
+# 通话记录中top10联系人在通讯录联系人中的数量、通话记录中通讯录联系人中数量, 通话次数超过3次的通讯录联系人数量。
 def user_call_info(data):
     # print(one_month)
     #这是通讯录联系人数据
@@ -36,6 +38,10 @@ def user_call_info(data):
         #通讯录联系人的数量：
         address_book_num = len(call_book.drop_duplicates('receiver'))
 
+        #通话次数超过3次的通讯录联系人数量为three_times
+        temp_count = group.groupby('receiver').count()
+        three_times = len(temp_count[temp_count['mobile']>3])
+
         #通话记录top10联系人
         #groupby().count()返回一个DataFrame，但索引值已不再是data中的索引，而是‘receiver’的值,数据为对应的统计数量，但字段中去除了'receiver',所以排序用'mobile'字段
         #ascending=False表示降序排列，取前十位，如果数量不到10，会自动取最大行数，还是得到一个DataFrame.
@@ -44,8 +50,9 @@ def user_call_info(data):
         for mobile in top_10_list:
             if mobile in mobile_list:
                 mobile_count = mobile_count + 1
-        #往字典中添加键值对，值列表依次表示用户id、通讯录联系人的通话次数、通话记录中top10联系人数量在通讯录中的数量，通话记录中通讯录联系人中数量
-        user_dict[user_id] = [user_id, call_num, mobile_count, address_book_num]
+
+        #往字典中添加键值对，值列表依次表示用户id、通讯录联系人的通话次数、通话记录中top10联系人数量在通讯录中的数量，通话记录中通讯录联系人中数量, 通话次数超过3次的通讯录联系人数量
+        user_dict[user_id] = [user_id, call_num, mobile_count, address_book_num, three_times]
 
 
 
