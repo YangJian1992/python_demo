@@ -255,8 +255,8 @@ def get_result(file_flag):
         data_list = ac.user_call_info(item)
         #对于每一部分结果，生成本地文件
         item_data = DataFrame(data_list,columns=['user_id', 'address_call_times', 'top10_address_num','address_call_person', 'contacts_three_times'])
-        print('\n正在生成本地文件，请稍候...')
-        item_data.to_csv(path + 'test\\item_data'+ str(i)+'.csv', index=False, encoding='utf-8', sep='\t')
+        # print('\n正在生成本地文件，请稍候...')
+        # item_data.to_csv(path + 'test\\item_data'+ str(i)+'.csv', index=False, encoding='utf-8', sep='\t')
         #注意用extend扩展列表，不能用append
         address_book_list_1.extend(data_list)
         # print(address_book_list_1)
