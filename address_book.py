@@ -9,6 +9,8 @@ import numpy as np
 from pandas import DataFrame, Series
 import pandas as pd
 import call_history_filter as chf
+import address_call as ac
+import unique_user_id as uui
 
 '''
 功能：
@@ -222,36 +224,66 @@ def address_book_remove_3(data):
     return data_1
 '''
 #用来生成数据
-def get_result():
-    path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
-    file_name_1 = 'call_history_new_1.csv'
-    file_name_2 = 'call_history_one_month.csv'
-    file_name_3 = 'call_history_three_months.csv'
+def get_result(file_flag):
+    if file_flag == 1:
+        path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
+        file_name_1 = 'call_history_one_month.csv'
+        file_name_2 = 'one_month_analysis.csv'
+    elif file_flag == 3:
+        path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
+        file_name_1 = 'call_history_three_months.csv'
+        file_name_2 = 'three_months_analysis.csv'
+    else:
+        print('****************************get_result()的函数参数有问题，请重新输入。*********************************************************')
+
+    # path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
+    # file_name_1 = 'call_history_one_month.csv'
+    # file_name_2 = 'one_month_analysis.csv'
+
+
+    # file_name_3 = 'call_history_three_months.csv'
     # 注意有时候encoding='gbk'得看生成文件时用的是什么编码格式。
-    address_book_chunker = pd.read_table(path + file_name_1, sep='\t', encoding='utf-8', chunksize=500000)
+    address_book_chunker = pd.read_table(path + file_name_1, sep='\t', encoding='utf-8', chunksize=200000)
     address_book_list_1 = []
-    address_book_list_2 = []
+    # address_book_list_2 = []
+    last_user_id = []
+    re_count_user = []
     i = 1
     for item in address_book_chunker:
-        print('\n\n-----------------------------第%d次处理数据至第%d行--------------------------------' % (i,i * 50000))
+        print('\n\n-----------------------------第%d次处理数据至第%d行--------------------------------' % (i,i * 400000))
         t1 = time.time()
-        data_list = chf.data_time_select(1, 3, item)
-        address_book_list_1.append(data_list[0])
-        address_book_list_2.append(data_list[1])
-        print(address_book_list_1)
-        print(address_book_list_2)
-        i += 1
+        data_list = ac.user_call_info(item)
+        #对于每一部分结果，生成本地文件
+        item_data = DataFrame(data_list,columns=['user_id', 'address_call_times', 'top10_address_num','address_call_person', 'contacts_three_times'])
+        print('\n正在生成本地文件，请稍候...')
+        item_data.to_csv(path + 'test\\item_data'+ str(i)+'.csv', index=False, encoding='utf-8', sep='\t')
+        #注意用extend扩展列表，不能用append
+        address_book_list_1.extend(data_list)
+        # print(address_book_list_1)
+        # print(address_book_list_2)
+        #取每一块最后一个id
+        user_id = item['user_id'].values[0]
+        #把前后两块user_id相等的找到，便于重新计算
+        if (i>1) and (last_user_id[-1] == user_id):
+            re_count_user.append(user_id)
+            print(re_count_user)
+        last_user_id.append(user_id)
         t2 = time.time()
         print('-----------------------------第%d次处理结束，本次处理花费%ds。--------------------------------\n\n'%(i,(t2-t1)))
+        i += 1
 
     # user_mobile = address_book_remove_2(address_book_old)
-    address_book_new_1 = pd.concat(address_book_list_1, ignore_index=True)
-    address_book_new_2 = pd.concat(address_book_list_2, ignore_index=True)
+    #添加用户id、通讯录联系人的通话次数、通话记录中top10联系人数量在通讯录中的数量，通话记录中通讯录联系人中数量, 通话次数超过3次的通讯录联系人数量
+
+    address_book_new_1 = DataFrame(address_book_list_1,columns=['user_id', 'address_call_times', 'top10_address_num', 'address_call_person', 'contacts_three_times'])
+    # address_book_new_1 = pd.concat(address_book_list_1, ignore_index=True)
+    # address_book_new_2 = pd.concat(address_book_list_2, ignore_index=True)
     print('\n拼接后的数据一共%d行' % len(address_book_new_1))
-    print('\n拼接后的数据一共%d行' % len(address_book_new_2))
+    # print('\n拼接后的数据一共%d行' % len(address_book_new_2))
     # 注意一定要设置index=False，sep，encoding
+    print('\n正在生成本地文件，请稍候...')
     address_book_new_1.to_csv(path + file_name_2, index=False, encoding='utf-8', sep='\t')
-    address_book_new_2.to_csv(path + file_name_3, index=False, encoding='utf-8', sep='\t')
+    # address_book_new_2.to_csv(path + file_name_3, index=False, encoding='utf-8', sep='\t')
 
 
 start = time.time()
@@ -291,7 +323,12 @@ start = time.time()
 # writer = pd.ExcelWriter(path + 'mobile_valid_2.xlsx')
 # mobile_valid.to_excel(writer, 'sheet1_yangjian')
 # writer.save()
-get_result()
+# get_result(1)
+uui.unique_user_id(1)
+print('一个月的通话记录处理完了，花费%ds'%(time.time()-start))
+# get_result(3)
+# uui.unique_user_id(3)
+print('三个月的通话记录处理完了，花费%ds'%(time.time()-start))
 end = time.time()
-print('\n花费时间：%ds\n***************** end *******************'%(end-start))
+print('\n累积花费时间：%ds\n***************** end *******************'%(end-start))
 

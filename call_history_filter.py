@@ -81,6 +81,7 @@ def data_time_select(month_num, month_num_2, data):
 
             data.drop(index_tem, axis=0, inplace=True)
             data_2.drop(index_tem_2, axis=0, inplace=True)
+    print('函数data_select结束执行，请稍候...')
     return [data, data_2]
 
 
