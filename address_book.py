@@ -8,6 +8,7 @@ import pymysql
 import numpy as np
 from pandas import DataFrame, Series
 import pandas as pd
+import call_history_filter as chf
 
 '''
 功能：
@@ -63,7 +64,10 @@ def address_book_remove(data):
     # #注意~运算符的使用，表示取反，非的意思，~和isin搭配使用。
     # data_filter = data[(data['mobile'].str.len() == 11) & (data['mobile'] < '18999999999') & (data['mobile'] > '13000000000') &
     #                    ~(data['name'].str.contains('专线'))]
-    data_filter = data[(data[mobile].str.len()==11) & (data[mobile]>='13000000000') & (data[mobile]<='18999999999')]
+    #把手机强制转制成字符‘object'，找了好久才找到oz。虽然pandas的字符串的dtypes是object,但astype可以转换成'str'
+    data[mobile] = data[mobile].astype('str', errors='raise')
+    pattern = re.compile(r'^1[3-8][0-9]{9}$')
+    data_filter = data[data[mobile].str.match(pattern)]
     print('通讯录11位筛选，正在生成数据，请稍候...累计花费时间为%ds。' % (time.time() - start2))
     #step2:
     # start3 = time.time()
@@ -134,11 +138,13 @@ def address_book_remove_2(data):
 #该函数返回一个列表[data, mobile_valid]，保存着去重后的数据和一个子列表，子列表为用户名和有效手机号的数量。
 # 输入的数据需要有表示前九位手机号的字段"mobile_9'，若某用户的该字段重复20次以上，对应的号码为无效号码。
 def address_book_remove_3(data):
+    data['mobile_9'] = data['mobile_9'].astype('str', errors='raise')
     #用来存放用户名和有效的手机号
     mobile_valid = []
     print('数据一共%d行。\naddress_book_remove_3()函数正在执行，请稍候...' % len(data))
     for user_id, group in data.groupby('user_id'):
         user_id = str(user_id)
+
         # for item in risky_mobile:
         #     # 如果含有号码item，则计数变量risky_num加一
         #     risky_item = mobile_only[mobile_only['mobile'] == item]
@@ -156,10 +162,10 @@ def address_book_remove_3(data):
         #每个用户的user_id, 有效手机号的数量。
         mobile_valid.append([user_id, len(mobile_only)])
         if len(mobile_remove)> 0:
-            print(mobile_remove)
+            print('删除的九位手机号：--------------------------------------------------------------------', mobile_remove)
             # 再看看group表中，把'mobile_9'字段中，在mobile_remove列表中的数据全删掉。注意group是独立的数据，一定要用data去调用drop()去删除。
             data.drop(group[group['mobile_9'].isin(mobile_remove)].index, axis=0, inplace=True)
-    print('address_book_remove_3()函数执行结束，请稍候...' )
+    print('-------------------address_book_remove_3()函数执行结束,共花费%s，请稍候...------------------'%(time.time()-start))
     return [data, mobile_valid]
 
 
@@ -218,23 +224,34 @@ def address_book_remove_3(data):
 #用来生成数据
 def get_result():
     path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
-    file_name_1 = 'call_history_old.csv'
-    file_name_2 = 'call_history_new_1.csv'
-
+    file_name_1 = 'call_history_new_1.csv'
+    file_name_2 = 'call_history_one_month.csv'
+    file_name_3 = 'call_history_three_months.csv'
     # 注意有时候encoding='gbk'得看生成文件时用的是什么编码格式。
-    address_book_chunker = pd.read_table(path + file_name_1, sep='\t', encoding='gbk', chunksize=5000)
-    address_book_list = []
+    address_book_chunker = pd.read_table(path + file_name_1, sep='\t', encoding='utf-8', chunksize=500000)
+    address_book_list_1 = []
+    address_book_list_2 = []
     i = 1
     for item in address_book_chunker:
-        print('\n-----------------------------处理数据至第%d行--------------------------------' % (i * 5000))
-        address_book_list.append(address_book_remove_2(item))
+        print('\n\n-----------------------------第%d次处理数据至第%d行--------------------------------' % (i,i * 50000))
+        t1 = time.time()
+        data_list = chf.data_time_select(1, 3, item)
+        address_book_list_1.append(data_list[0])
+        address_book_list_2.append(data_list[1])
+        print(address_book_list_1)
+        print(address_book_list_2)
         i += 1
+        t2 = time.time()
+        print('-----------------------------第%d次处理结束，本次处理花费%ds。--------------------------------\n\n'%(i,(t2-t1)))
 
     # user_mobile = address_book_remove_2(address_book_old)
-    address_book_new_2 = pd.concat(address_book_list, ignore_index=True)
-    print('拼接后的数据一共%d行' % len(address_book_new_2))
+    address_book_new_1 = pd.concat(address_book_list_1, ignore_index=True)
+    address_book_new_2 = pd.concat(address_book_list_2, ignore_index=True)
+    print('\n拼接后的数据一共%d行' % len(address_book_new_1))
+    print('\n拼接后的数据一共%d行' % len(address_book_new_2))
     # 注意一定要设置index=False，sep，encoding
-    address_book_new_2.to_csv(path + file_name_2, index=False, encoding='utf-8', sep='\t')
+    address_book_new_1.to_csv(path + file_name_2, index=False, encoding='utf-8', sep='\t')
+    address_book_new_2.to_csv(path + file_name_3, index=False, encoding='utf-8', sep='\t')
 
 
 start = time.time()
@@ -257,7 +274,24 @@ start = time.time()
 # where ao.create_time>='2017-06-01' and ao.create_time<'2017-09-01' and ao.auth_status='2'  and ao.auth_time<'2017-09-01' and lo.user_id is not null) and  (to_seconds(ao.create_time)-to_seconds(dr.login_time))<=0 ) a group by a.user_id having a.s=max(a.s)) tt
 # on ab.device=tt.device ;
 # ''')
+# path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
+# file_name_1 = 'address_book_new_31.csv'
+# file_name_11 = 'address_book_new_32.csv'
+# file_name_2 = 'address_book_new_3.csv'
+#
+# # 注意有时候encoding='gbk'得看生成文件时用的是什么编码格式。
+# address_book_chunker = pd.read_table(path + file_name_1, sep='\t', encoding='utf-8')
+# address_book_chunker_2 = pd.read_table(path + file_name_11, sep='\t', encoding='utf-8')
+# data = pd.concat([address_book_chunker,address_book_chunker_2], ignore_index=True)
+#
+# data.to_csv(path + file_name_2, index=False, encoding='utf-8', sep='\t')
+
+
+#1,建立一个ExcelWriter;2.写入;3,save
+# writer = pd.ExcelWriter(path + 'mobile_valid_2.xlsx')
+# mobile_valid.to_excel(writer, 'sheet1_yangjian')
+# writer.save()
 get_result()
 end = time.time()
-print('\n程序全部运行完毕,花费时间：%ds'%(end-start))
+print('\n花费时间：%ds\n***************** end *******************'%(end-start))
 

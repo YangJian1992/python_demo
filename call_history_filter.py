@@ -138,48 +138,50 @@ def count_user(data):
     print('已完成对数据的用户数量进行统计，累计花费%ds' % (time.time() - start))
 
 
-start = time.time()
-call_history = fun_readdata_mysql(
-    '''select u.id as user_id,ao.auth_time ,c.* from call_history c
-left join users u on u.mobile=c.mobile
-left join (select * from credit_apply_orders where auth_status=2 ) ao on ao.user_id=u.id
-where u.id in (select ao.user_id
-from
-credit_apply_orders ao
-left join (select * from user_loan_orders where first_loan=1 and loan_status=2 and loan_time>='2017-06-01' and loan_time <'2017-09-01' group by user_id ) lo on lo.user_id=ao.user_id
-left join users u on u.id=ao.user_id
-left join (select user_id,count(id) num , sum(if(overdue_days>0,1,0)) yqbs,max(overdue_days) overdue from user_loan_orders where first_loan=0 and loan_time>='2017-06-01'  and loan_status=2 group by user_id ) lo1 on lo1.user_id=ao.user_id
-where ao.create_time>='2017-06-01' and ao.create_time<'2017-09-01' and ao.auth_status='2'  and ao.auth_time<'2017-09-01' and lo.user_id is not null and lo.user_id>=910000 and lo.user_id<950000) ;
-    ''')
+def others():
 
-path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
-file_name_1 = 'call_history_old_3.csv'
-file_name_2 = 'call_history_one.csv'
-file_name_3 = 'call_history_three.csv'
-call_history.to_csv(path + file_name_1, sep='\t',encoding='utf-8')
-#注意encoding='gbk'，不是utf-8
-# call_history_old = pd.read_table(path+file_name_1, encoding='gbk')
-#取前多少行，设iterator为true，用get_chunk()来调用
-call_history_old = pd.read_table(path+file_name_1, encoding='utf-8')
-start_2 = time.time()
-print('读取数据花费%ds'%(start_2 -start))
-count_user(call_history_old)
-# print(call_history_old[:1000])
+    start = time.time()
+    # call_history = fun_readdata_mysql(
+    #     '''select u.id as user_id,ao.auth_time ,c.* from call_history c
+    # left join users u on u.mobile=c.mobile
+    # left join (select * from credit_apply_orders where auth_status=2 ) ao on ao.user_id=u.id
+    # where u.id in (select ao.user_id
+    # from
+    # credit_apply_orders ao
+    # left join (select * from user_loan_orders where first_loan=1 and loan_status=2 and loan_time>='2017-06-01' and loan_time <'2017-09-01' group by user_id ) lo on lo.user_id=ao.user_id
+    # left join users u on u.id=ao.user_id
+    # left join (select user_id,count(id) num , sum(if(overdue_days>0,1,0)) yqbs,max(overdue_days) overdue from user_loan_orders where first_loan=0 and loan_time>='2017-06-01'  and loan_status=2 group by user_id ) lo1 on lo1.user_id=ao.user_id
+    # where ao.create_time>='2017-06-01' and ao.create_time<'2017-09-01' and ao.auth_status='2'  and ao.auth_time<'2017-09-01' and lo.user_id is not null and lo.user_id>=910000 and lo.user_id<950000) ;
+    #     ''')
 
-# call_list_month = data_time_select(1, 3, call_history_old)
-# call_history_one = call_list_month[0]
-# call_history_three = call_list_month[1]
+    path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
+    file_name_1 = 'call_history_old_3.csv'
+    file_name_2 = 'call_history_one.csv'
+    file_name_3 = 'call_history_three.csv'
+    call_history.to_csv(path + file_name_1, sep='\t',encoding='utf-8')
+    #注意encoding='gbk'，不是utf-8
+    # call_history_old = pd.read_table(path+file_name_1, encoding='gbk')
+    #取前多少行，设iterator为true，用get_chunk()来调用
+    call_history_old = pd.read_table(path+file_name_1, encoding='utf-8')
+    start_2 = time.time()
+    print('读取数据花费%ds'%(start_2 -start))
+    count_user(call_history_old)
+    # print(call_history_old[:1000])
+
+    # call_list_month = data_time_select(1, 3, call_history_old)
+    # call_history_one = call_list_month[0]
+    # call_history_three = call_list_month[1]
 
 
-#需要encoding='utf-8'
-# call_history_one.to_csv(path + file_name_2, sep = '\t', encoding='utf-8')
-# call_history_three.to_csv(path + file_name_3, sep = '\t', encoding='utf-8')
-#
-# print('data_time_select数据花费%ds'%(time.time()-start_2))
-# count_user(call_history_one)
-# count_user(call_history_three)
-end = time.time()
-print('总花费时间：%ds'%(end-start))
+    #需要encoding='utf-8'
+    # call_history_one.to_csv(path + file_name_2, sep = '\t', encoding='utf-8')
+    # call_history_three.to_csv(path + file_name_3, sep = '\t', encoding='utf-8')
+    #
+    # print('data_time_select数据花费%ds'%(time.time()-start_2))
+    # count_user(call_history_one)
+    # count_user(call_history_three)
+    end = time.time()
+    print('总花费时间：%ds'%(end-start))
 
 
 
