@@ -69,7 +69,6 @@ def user_call_info(data):
         # print('只是通话记录的top10：', top_10_list)
         for mobile in top_10_list:
             if mobile in mobile_list:
-                print(mobile)
                 mobile_count = mobile_count + 1
                 # print('在通讯录中的top10:%s'%mobile)
         # print('最终top10值：%d'%mobile_count)

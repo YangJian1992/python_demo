@@ -21,6 +21,7 @@ def unique_user_id(data_flag):
         #读取一个月通话记录的分析结果，找到重复的user_id。
         filen_name = 'one_month_analysis.csv'
         filen_name_2 = 'call_history_one_month.csv'
+
     elif data_flag==3:
         filen_name = 'three_months_analysis.csv'
         filen_name_2 = 'call_history_three_months.csv'
@@ -31,12 +32,9 @@ def unique_user_id(data_flag):
 
     #读取分析结果
     unique_data = pd.read_table(path + filen_name, encoding='utf-8', sep='\t')
-
-
     # print(unique_data)
     #找重复的user_id和相应的用户名列表
     group_count = unique_data.groupby('user_id').count()
-    print(group_count)
     user_list = group_count[group_count['top10_address_num']>1].index.values
     print(user_list)
     #找到unique_data中的重复user_id的索引，并把对应的行数据删掉
@@ -44,7 +42,7 @@ def unique_user_id(data_flag):
     unique_data.drop(unique_data_remove.index, axis=0, inplace=True)
 
     #晚点读取
-    call_history = pd.read_table(path + filen_name_2, encoding='utf-8', sep='\t')
+    call_history = pd.read_table(path + 'result_excel\\' + filen_name_2, encoding='utf-8', sep='\t')
     call_history_2 = call_history[call_history['user_id'].isin(user_list)]
     #能释放内存？
     call_history = None
@@ -52,8 +50,7 @@ def unique_user_id(data_flag):
 
     #被删掉的user_id的通话记录，重新计算
     result_list = ac.user_call_info(call_history_2)
-    print(result_list)
-    print('--------')
+
     #生成新的DataFrame
     unique_date_2 = DataFrame(result_list, columns=['user_id', 'address_call_times', 'top10_address_num','address_call_person', 'contacts_three_times'])
     #最终结果unique_date_new
