@@ -17,6 +17,7 @@ import unique_user_id as uui
 本模块要处理这个问题。
 '''
 def unique_user_id(data_flag):
+    print('unique_user_id()正在运行，请稍候...')
     if data_flag==1:
         #读取一个月通话记录的分析结果，找到重复的user_id。
         filen_name = 'one_month_analysis.csv'
@@ -36,13 +37,13 @@ def unique_user_id(data_flag):
     #找重复的user_id和相应的用户名列表
     group_count = unique_data.groupby('user_id').count()
     user_list = group_count[group_count['top10_address_num']>1].index.values
-    print(user_list)
+    print('被分割的user_id，要重新计算：', user_list)
     #找到unique_data中的重复user_id的索引，并把对应的行数据删掉
     unique_data_remove = unique_data[unique_data['user_id'].isin(user_list)]
     unique_data.drop(unique_data_remove.index, axis=0, inplace=True)
 
     #晚点读取
-    call_history = pd.read_table(path + 'result_excel\\' + filen_name_2, encoding='utf-8', sep='\t')
+    call_history = pd.read_table(path + filen_name_2, encoding='utf-8', sep='\t')
     call_history_2 = call_history[call_history['user_id'].isin(user_list)]
     #能释放内存？
     call_history = None
@@ -57,7 +58,7 @@ def unique_user_id(data_flag):
     unique_date_new = pd.concat([unique_data, unique_date_2])
 
     # 1,建立一个ExcelWriter;2.写入;3,save
-    writer = pd.ExcelWriter(path + filen_name_2[0:-3]+'xlsx')
+    writer = pd.ExcelWriter(path + 'result_excel\\' + filen_name_2[0:-3]+'xlsx')
     unique_date_new.to_excel(writer, 'yangjian')
     writer.save()
 
