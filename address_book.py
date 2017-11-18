@@ -243,14 +243,14 @@ def get_result(file_flag):
 
     # file_name_3 = 'call_history_three_months.csv'
     # 注意有时候encoding='gbk'得看生成文件时用的是什么编码格式。
-    address_book_chunker = pd.read_table(path + file_name_1, sep='\t', encoding='utf-8', chunksize=200000)
+    address_book_chunker = pd.read_table(path + file_name_1, sep='\t', encoding='utf-8', chunksize=500000)
     address_book_list_1 = []
     # address_book_list_2 = []
     last_user_id = []
     re_count_user = []
     i = 1
     for item in address_book_chunker:
-        print('\n\n-----------------------------第%d次处理数据至第%d行--------------------------------' % (i,i * 400000))
+        print('\n-----------------------------第%d次处理数据至第%d行--------------------------------' % (i,i * 500000))
         t1 = time.time()
         data_list = ac.user_call_info(item)
         #对于每一部分结果，生成本地文件
@@ -269,7 +269,7 @@ def get_result(file_flag):
             print(re_count_user)
         last_user_id.append(user_id)
         t2 = time.time()
-        print('-----------------------------第%d次处理结束，本次处理花费%ds。--------------------------------\n\n'%(i,(t2-t1)))
+        print('-----------------------------第%d次处理结束，本次处理花费%ds。--------------------------------\n'%(i,(t2-t1)))
         i += 1
 
     # user_mobile = address_book_remove_2(address_book_old)
@@ -323,15 +323,14 @@ start = time.time()
 # writer = pd.ExcelWriter(path + 'mobile_valid_2.xlsx')
 # mobile_valid.to_excel(writer, 'sheet1_yangjian')
 # writer.save()
-get_result(1)
-uui.unique_user_id(1)
-print('一个月的通话记录处理完了，花费%ds。即将处理三个月的通话记录，请稍候...\n'%(time.time()-start))
+# get_result(1)
+# uui.unique_user_id(1)
+# print('一个月的通话记录处理完了，花费%ds。即将处理三个月的通话记录，请稍候...\n'%(time.time()-start))
 get_result(3)
 uui.unique_user_id(3)
 print('三个月的通话记录处理完了，花费%ds\n'%(time.time()-start))
 print("\n------请吴雪飞同志在D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\result_excel\\路径下寻找三个excel文件------\n")
 print('文件夹中有readme文档，解释了字段名的意思。')
-print('\n************************ 周末愉快！orz **************************\n')
 end = time.time()
-print('\n累积花费时间：%ds\n all end'%(end-start))
+print('\n累积花费时间：%ds。****** all end ******'%(end-start))
 
