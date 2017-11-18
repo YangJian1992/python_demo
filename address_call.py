@@ -55,7 +55,8 @@ def user_call_info(data):
         # print(' address_book_num,通讯联系人的数量:', address_book_num)
 
         #通话次数超过3次的通讯录联系人数量为three_times
-        temp_count = group.groupby('receiver').count()
+        # temp_count = group.groupby('receiver').count()， 这行代码求的是和每个手机号的通话次数，但不一定是联系人的，所以要改写。
+        temp_count = call_book.groupby('receiver').count()
         three_times = len(temp_count[temp_count['mobile']>3])
         # print('通话次数超过3次的通讯录联系人数量为three_times:%d次'%three_times)
 
