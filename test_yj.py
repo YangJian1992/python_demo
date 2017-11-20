@@ -4,26 +4,37 @@ import re
 from pandas import Series, DataFrame
 import pandas as pd
 import time
-#本模块含有三个函数:
-# add_locations(data):data数据表中必须包含主叫"mobile"和被叫"receiver"字段,将归属地作为新的字段添加到表中。
-# lookup_location(target_number_0),输入字符串格式的手机号，得到一个列表，表示号码的所属的省名和市名。
-# program_time(fun_1, a,fun_2=None, fun_3=None)：计算函数fun_的运行时间，a为fun_的参数。
-path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
-file_name_1 = 'addressBookTest.xml'
+def merge_sort(alist):
+    if len(alist) <= 1:
+        print('alist:', alist)
+        return alist
+    # 二分分解
+    num = len(alist)// 2
+    left = merge_sort(alist[:num])
+    print('left:', left)
+    right = merge_sort(alist[num:])
+    print('right:', right)
+    # 合并
+    return merge(left,right)
 
-# lookup_count =1
-# #data_home_location 总数量为:343150
-# data_home_location = pd.read_pickle('D:\\work\\database\\home_location.pkl')
-# #data_call_history 总数量为:102994
-# data_call_history = pd.read_pickle('D:\\work\\database\\call_history.pkl')
-#
-# # print('data_home_location 总数量为:%d'%len(data_home_location))
-# b = data_call_history.copy()
+def merge(left, right):
+    '''合并操作，将两个有序数组left[]和right[]合并成一个大的有序数组'''
+    #left与right的下标指针
+    l, r = 0, 0
+    result = []
+    while l<len(left) and r<len(right):
+        if left[l] < right[r]:
+            result.append(left[l])
+            l += 1
+        else:
+            result.append(right[r])
+            r += 1
+    #第一遍时，left的序列l并没有加1，仍然为0
+    result += left[l:]
+    result += right[r:]
+    print('----------------result:', result)
+    return result
 
-# print(data_call_history)
-# print(target_date)
-m = pd.read_table('D:\\work\\database\\ddress_book_rules\\data_code\\address_test.csv', sep='\t')
-print(m)
-
-#将全局变量重置
-# lookup_count =1
+alist = [54,26,93,17,77,31,44,55,20]
+sorted_alist = merge_sort(alist)
+print(sorted_alist)
