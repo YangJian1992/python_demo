@@ -16,8 +16,7 @@ data_time_select(month_num, month_num_2, data)：根据时间筛选，如：进�
 '''
 
 #从数据库中读取通话记录
-def fun_readdata_mysql(select_string):
-    columns_add = ['user_id', 'auth_time', 'id', 'mobile', 'receiver', 'call_time', 'call_addr', 'call_type']
+def fun_readdata_mysql(select_string, columns_add):
     """
         创建连接读取mysql数据：
         select_string:用以筛选数据库数据的语句
