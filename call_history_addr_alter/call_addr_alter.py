@@ -178,6 +178,13 @@ def read_local_data():
     # data_old['call_addr_new'] = "NULL"
 
     #只有二级市名的情况--------------------------------------------------------------------------------------------
+    data_2 = data[(data['addr'].str.contains('市')&data['addr'].str.contains('区')&data['addr'].str.contains('盟'))]
+    for data_2_item in data_2.index:
+        data_2.ix[data_2_item, 'addr'] = data_2.ix[data_2_item, 'addr'][:-1]
+    data_3 = data[data['addr'].str.contains('自治州')]
+    for data_3_item in data_3.index:
+        data_3.ix[data_3_item, 'addr'] = data_3.ix[data_3_item, 'addr'][:-3]
+    #data_old是要处理的数据，data_2和data_3是要遍历的二级行政区
     data_other = data_old[(data_old['call_addr_new'] == 'NULL')&(~(data_old['call_addr'].str.contains('吉林')))]
     for item_other in data_other.index:
         data_other.ix[item_other, 'call_addr']
