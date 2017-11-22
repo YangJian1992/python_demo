@@ -9,7 +9,8 @@ data= DataFrame({'a':[1, 2, 3, 4],
                  'c': ['adkkda', 6, 5, 6]},index=['a', 'b', 'c', 'd'])
 string = '6984国252中'
 data.ix[:2, 'a'] = data.ix[:2, 'a']+1
-print(data)
+if re.search(r'国', string):
+    print("0000")
 # data.ix[0, 'a'] = 555
 # data['d'] = 'NULL'
 # data.ix[0,'c'] = data.ix[0, 'c'][:3]
