@@ -178,18 +178,43 @@ def read_local_data():
     # data_old['call_addr_new'] = "NULL"
 
     #只有二级市名的情况--------------------------------------------------------------------------------------------
-    data_2 = data[(data['addr'].str.contains('市')&data['addr'].str.contains('区')&data['addr'].str.contains('盟'))]
+    #对于市区和盟等二级行政区，去掉最后一个字，便于遍历查询，而自治州要去掉后面三个字
+    data_2 = data[(data['addr'].str.contains('市')|data['addr'].str.contains('区')|data['addr'].str.contains('盟'))]
     for data_2_item in data_2.index:
         data_2.ix[data_2_item, 'addr'] = data_2.ix[data_2_item, 'addr'][:-1]
+    print(data_2)
     data_3 = data[data['addr'].str.contains('自治州')]
     for data_3_item in data_3.index:
         data_3.ix[data_3_item, 'addr'] = data_3.ix[data_3_item, 'addr'][:-3]
     #data_old是要处理的数据，data_2和data_3是要遍历的二级行政区
-    data_other = data_old[(data_old['call_addr_new'] == 'NULL')&(~(data_old['call_addr'].str.contains('吉林')))]
-    for item_other in data_other.index:
-        data_other.ix[item_other, 'call_addr']
-    print(data_old)
 
+    data_other = data_old[(data_old['call_addr_new'] == 'NULL')&(~(data_old['call_addr'].str.contains('吉林')))]
+    # print(data_other,'__________________________________________________')
+    for city_2 in data_2.index:
+        city_2_word = data_2.ix[city_2, 'addr']
+        # print(city_2_word, '*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-')
+        city_2_index = data_other[data_other['call_addr'].str.contains(city_2_word)].index
+        # print(data_other[data_other['call_addr'].str.contains(city_2_word)], '------------------------------------------')
+        #该市必须被100整除或者第三位为9(省辖县)
+        if int(city_2)%100==0 or int(city_2)//1000==9:
+            province_word_2 = data.ix[str(data.ix[city_2, 'id']//10000*10000), 'addr']
+            # print(province_word_2, '*********************************************************')
+            data_old.ix[city_2_index, ['call_addr_new']] = province_word_2 + ',' + data.ix[city_2, 'addr']
+
+    for city_3 in data_3.index:
+        city_3_word = data_3.ix[city_3, 'addr']
+        city_3_index = data_other[data_other['call_addr'].str.contains(city_3_word)].index
+        # 该市必须被100整除或者第三位为9(省辖县)
+        if int(city_3) % 100 == 0 or int(city_3) // 1000 == 9:
+            province_word_3= data.ix[str(data.ix[city_3, 'id'] // 10000 * 10000), 'addr']
+            # print(province_word_3, '*********************************************************')
+            data_old.ix[city_3_index, ['call_addr_new']] = province_word_3 + ',' + data.ix[city_3, 'addr']
+
+
+    #生成excel
+    writer = pd.ExcelWriter(path + file_name_2[:-4] + '_analysis.xlsx' )
+    data_old.to_excel(writer, 'sheet1')
+    writer.save()
 #修改原通话记录中的call_addr
 def alter_addr():
     print('alter_addr()函数正执行，请稍候...')
