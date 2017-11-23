@@ -76,9 +76,10 @@ group by call_addr
 
 #读取本地的通话记录文件，并增加新列
 def read_local_data():
-    #不含中文的数据
-    #既有省名又有市名的数据
-    #只有二级市名的数据
+    #不含中文的数据，或者含有国外名称的数据
+    #既有一级行政区又有二级行政区的数据
+    #只有二级行政区的数据
+    #只有三级行政区的数据
     #其他
 
     path = "D:\\work\\database\\province-city\\"
@@ -90,7 +91,6 @@ def read_local_data():
     data = json.load(file)
     data = Series(data)
     index_new = []
-    list = []
     for index in data.index:
         index_new.append(int(index))
     #原地址规则文件
@@ -119,11 +119,11 @@ def read_local_data():
     #flag判断地址字符中是否含有多个省名,如果只有一个，就确定它属于哪个省，如果有多个省名，则给出提示。
     data_old['flag_province'] = 0
     data_old['flag_city'] = 0
-    #找出既有省名又有市名的数据
+    #找出既有省名又有市名的数据------------------------------------------------------------------------------------------------------------
     #遍历每一个省名
     for index_province in province.index:
         province_word = province.ix[index_province, 'addr_new']
-        if province_word not in ['北京', '天津', '上海', '重庆']:
+        if province_word not in ['北京', '天津', '上海', '重庆', '香港', '澳门']:
             # print(province_word, '***********************************************************')
             #找到含有该省名的地址，比如 海南
             data_province_index = data_old[data_old["call_addr"].str.contains(province_word)].index
@@ -157,19 +157,27 @@ def read_local_data():
                 else:
                     #如果是吉林市，先不考虑
                     pass
-        else:
+        elif province_word in ['北京', '天津', '上海', '重庆']:
             #如果是这四个直辖市
             data_province_index = data_old[data_old["call_addr"].str.contains(province_word)].index
             data_old.ix[data_province_index, 'call_addr_new'] = province_word + '市，' + province_word + '市'
+            data_old.ix[data_province_index, 'flag_province'] = data_old.ix[data_province_index, 'flag_province'] + 1
+        #香港、澳门
+        else:
+            data_province_index = data_old[data_old["call_addr"].str.contains(province_word)].index
+            data_old.ix[data_province_index, 'call_addr_new'] = province_word
+            data_old.ix[data_province_index, 'flag_province'] = data_old.ix[data_province_index, 'flag_province'] + 1
 
 
     # print(data_old)
-    #不含中文一律为'未知--------------------------------------------------------------------------------------------'
+    #-------------------------------------------------------------------------------------------------------------------------------
     for item_2 in data_old.index:
         addr_old = data_old.ix[item_2, 'call_addr']
-        #先看看地址中是否含有中文，不含有中文，新地址为“未知”
+        #先看看地址中是否含有中文，不含有中文，新地址为“未知”；如果含有国外信息，新地址也为未知。
         if re.search(r'[\u4e00-\u9fa5]', addr_old):
-            pass
+            if re.search(r'[未知|新西兰|菲律宾|越南|韩国|马来西亚|马尔代夫|英国|美国|俄罗斯|缅甸|海外|加拿大|'
+                         r'泰国|法国|日本|新加坡|意大利|德国|意大利|挪威]', addr_old):
+                data_old.ix[item_2, 'call_addr_new'] = '未知'
         else:
             data_old.ix[item_2, 'call_addr_new'] = '未知'
     #
@@ -177,16 +185,21 @@ def read_local_data():
     # #增加新列"call_addr_new"
     # data_old['call_addr_new'] = "NULL"
 
-    #只有二级市名的情况--------------------------------------------------------------------------------------------
-    #对于市区和盟等二级行政区，去掉最后一个字，便于遍历查询，而自治州要去掉后面三个字
-    data_2 = data[(data['addr'].str.contains('市')|data['addr'].str.contains('区')|data['addr'].str.contains('盟'))]
+    #只有二级市名的情况------------------------------------------------------------------------------------------------------------------------------
+    #目前中国的二级行政区由市和盟，自治州，地区组成，分别用data_2, data_3, data_4表示。另外还要考虑省辖县。
+    data_2 = data[(data['addr'].str.contains('市')|data['addr'].str.contains('盟')|data['id']%10000//1000==9)]
     for data_2_item in data_2.index:
         data_2.ix[data_2_item, 'addr'] = data_2.ix[data_2_item, 'addr'][:-1]
     print(data_2)
+    #自治州名字较长，取前两位，如临夏回族自治州
     data_3 = data[data['addr'].str.contains('自治州')]
     for data_3_item in data_3.index:
-        data_3.ix[data_3_item, 'addr'] = data_3.ix[data_3_item, 'addr'][:-3]
-    #data_old是要处理的数据，data_2和data_3是要遍历的二级行政区
+        data_3.ix[data_3_item, 'addr'] = data_3.ix[data_3_item, 'addr'][:2]
+
+    data_4 = data[data['addr'].str.contains('地区')]
+    for data_4_item in data_4.index:
+        data_4.ix[data_4_item, 'addr'] = data_4.ix[data_4_item, 'addr'][:-2]
+    #data_old是要处理的数据，data_2,data_3,data_4是要遍历的二级行政区，吉林省含有吉林市单独考虑
 
     data_other = data_old[(data_old['call_addr_new'] == 'NULL')&(~(data_old['call_addr'].str.contains('吉林')))]
     # print(data_other,'__________________________________________________')
@@ -196,22 +209,60 @@ def read_local_data():
         city_2_index = data_other[data_other['call_addr'].str.contains(city_2_word)].index
         # print(data_other[data_other['call_addr'].str.contains(city_2_word)], '------------------------------------------')
         #该市必须被100整除或者第三位为9(省辖县)
-        if int(city_2)%100==0 or int(city_2)//1000==9:
+        if int(city_2)%100==0 or int(city_2)%10000//1000==9:
             province_word_2 = data.ix[str(data.ix[city_2, 'id']//10000*10000), 'addr']
             # print(province_word_2, '*********************************************************')
             data_old.ix[city_2_index, ['call_addr_new']] = province_word_2 + ',' + data.ix[city_2, 'addr']
+            data_old.ix[city_2_index, 'flag_city'] = data_old.ix[city_2_index, 'flag_city'] + 1
 
     for city_3 in data_3.index:
         city_3_word = data_3.ix[city_3, 'addr']
         city_3_index = data_other[data_other['call_addr'].str.contains(city_3_word)].index
         # 该市必须被100整除或者第三位为9(省辖县)
-        if int(city_3) % 100 == 0 or int(city_3) // 1000 == 9:
+        if int(city_3) % 100 == 0 or int(city_3)%10000//1000 == 9:
             province_word_3= data.ix[str(data.ix[city_3, 'id'] // 10000 * 10000), 'addr']
             # print(province_word_3, '*********************************************************')
             data_old.ix[city_3_index, ['call_addr_new']] = province_word_3 + ',' + data.ix[city_3, 'addr']
+            data_old.ix[city_3_index, 'flag_city'] = data_old.ix[city_3_index, 'flag_city'] + 1
 
+    for city_4 in data_4.index:
+        city_4_word = data_4.ix[city_4, 'addr']
+        city_4_index = data_other[data_other['call_addr'].str.contains(city_4_word)].index
+        # 该市必须被100整除或者第三位为9(省辖县)
+        if int(city_4) % 100 == 0 or int(city_4) %10000//1000 == 9:
+            province_word_4 = data.ix[str(data.ix[city_4, 'id'] // 10000 * 10000), 'addr']
+            # print(province_word_3, '*********************************************************')
+            data_old.ix[city_4_index, ['call_addr_new']] = province_word_4 + ',' + data.ix[city_4, 'addr']
+            data_old.ix[city_4_index, 'flag_city'] = data_old.ix[city_4_index, 'flag_city'] + 1
 
-    #生成excel
+    #现在还有一部分数据只有三级行政区的名字， 如海拉尔,但不考虑直辖县，用data_county表示----------------------------------------------------------------
+    data_county = data[(data['id']%100 != 0)&(data['id']%10000//1000!=9)]
+    if 直辖市:
+        pass
+    data_county_1 = data_county[(data_county['addr'].str.contains('县'))&(data_county['addr'].str.contains('区'))&(data_county['addr'].str.contains('市'))]
+    data_county_2 = data_county[data_county['addr'].str.contains('自治县')]
+    #将data_old中处理的数据选进来，还有的县是直辖市和特别行政区，得挑出来单独命名。前两位是11，31，50，12，81，82
+    data_old_other_2 = data_old[(data_old['call_addr_new'] == 'NULL')&(~(data_old['call_addr'].str.contains('吉林')))]
+    for county_index_1 in data_county_1.index:
+        county_word_1 = data_county_1.ix[county_index_1, 'addr'][:-1]
+        county_old_index = data_old_other_2[data_old_other_2['call_addr'].str.contains(county_word_1)].index
+        #找到data中找到省名和市名，并在data_old中修改“call_addr_new”
+        province_word_5 = data.ix[str(data.ix[county_index_1, 'id'] // 10000 * 10000), 'addr']
+        city_word_5 = data.ix[str(data.ix[county_index_1, 'id'] // 100 * 100), 'addr']
+        data_old.ix[county_old_index, ['call_addr_new']] = province_word_5 + ',' + city_word_5
+
+    for county_index_2 in data_county_2.index:
+        #对于自治县，只取前两个字符
+        if county_index_2.startswith('469'):
+            print(county_index_2)
+        county_word_2 = data_county_2.ix[county_index_2, 'addr'][:2]
+        county_old_index_2 = data_old_other_2[data_old_other_2['call_addr'].str.contains(county_word_2)].index
+        #找到data中找到省名和市名，并在data_old中修改“call_addr_new”
+        province_word_6 = data.ix[str(data.ix[county_index_2, 'id'] // 10000 * 10000), 'addr']
+        city_word_6 = data.ix[str(data.ix[county_index_2, 'id'] // 100 * 100), 'addr']
+        data_old.ix[county_old_index_2, ['call_addr_new']] = province_word_6 + ',' + city_word_6
+
+    #生成excel-----------------------------------------------------------------------------------------------------------------------------------------
     writer = pd.ExcelWriter(path + file_name_2[:-4] + '_analysis.xlsx' )
     data_old.to_excel(writer, 'sheet1')
     writer.save()

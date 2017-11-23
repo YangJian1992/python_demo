@@ -289,23 +289,23 @@ def get_result(file_flag):
 start = time.time()
 
 #mysql代码查询
-# address_book = fun_readdata_mysql(
-#     '''
-#     select tt.user_id,ab.* from address_book ab
-# inner join (
-# select a.user_id,a.device,a.s from
-# (select dr.user_id,dr.device,dr.login_time,ao.create_time,to_seconds(ao.create_time)-to_seconds(dr.login_time) as s from user_device_record dr
-# left join (select * from credit_apply_orders where auth_status=2 group by user_id) ao on ao.user_id=dr.user_id
-# where dr.user_id in
-# (select ao.user_id
-# from
-# credit_apply_orders ao
-# left join (select * from user_loan_orders where first_loan=1 and loan_status=2 and loan_time>='2017-06-01' and loan_time <'2017-09-01' group by user_id ) lo on lo.user_id=ao.user_id
-# left join users u on u.id=ao.user_id
-# left join (select user_id,count(id) num , sum(if(overdue_days>0,1,0)) yqbs,max(overdue_days) overdue from user_loan_orders where first_loan=0 and loan_time>='2017-06-01'  and loan_status=2 group by user_id ) lo1 on lo1.user_id=ao.user_id
-# where ao.create_time>='2017-06-01' and ao.create_time<'2017-09-01' and ao.auth_status='2'  and ao.auth_time<'2017-09-01' and lo.user_id is not null) and  (to_seconds(ao.create_time)-to_seconds(dr.login_time))<=0 ) a group by a.user_id having a.s=max(a.s)) tt
-# on ab.device=tt.device ;
-# ''')
+address_book = fun_readdata_mysql(
+    '''
+    select tt.user_id,ab.* from address_book ab
+inner join (
+select a.user_id,a.device,a.s from
+(select dr.user_id,dr.device,dr.login_time,ao.create_time,to_seconds(ao.create_time)-to_seconds(dr.login_time) as s from user_device_record dr
+left join (select * from credit_apply_orders where auth_status=2 group by user_id) ao on ao.user_id=dr.user_id
+where dr.user_id in
+(select ao.user_id
+from
+credit_apply_orders ao
+left join (select * from user_loan_orders where first_loan=1 and loan_status=2 and loan_time>='2017-06-01' and loan_time <'2017-09-01' group by user_id ) lo on lo.user_id=ao.user_id
+left join users u on u.id=ao.user_id
+left join (select user_id,count(id) num , sum(if(overdue_days>0,1,0)) yqbs,max(overdue_days) overdue from user_loan_orders where first_loan=0 and loan_time>='2017-06-01'  and loan_status=2 group by user_id ) lo1 on lo1.user_id=ao.user_id
+where ao.create_time>='2017-06-01' and ao.create_time<'2017-09-01' and ao.auth_status='2'  and ao.auth_time<'2017-09-01' and lo.user_id is not null) and  (to_seconds(ao.create_time)-to_seconds(dr.login_time))<=0 ) a group by a.user_id having a.s=max(a.s)) tt
+on ab.device=tt.device ;
+''')
 # path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
 # file_name_1 = 'address_book_new_31.csv'
 # file_name_11 = 'address_book_new_32.csv'
