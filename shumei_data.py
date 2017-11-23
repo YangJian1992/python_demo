@@ -18,7 +18,7 @@ def get_data():
 SELECT 
     new_data.user_id,
     ucp.idcard,
-    ucp.verify_mobile,
+    users.mobile,
     ucp.name,
     new_data.device,
     new_data.auth_status,
@@ -41,10 +41,11 @@ FROM
     GROUP BY user_id) AS ulo ON new_data.user_id = ulo.user_id
         INNER JOIN
     user_credit_profile AS ucp ON new_data.user_id = ucp.user_id
+        INNER JOIN 
+    users on new_data.user_id = users.id
 WHERE
     lsar.provider LIKE '%数美%'
         AND LEFT(new_data.auth_time, 7) BETWEEN '2017-07' AND '2017-08'
-limit 15000
 '''
     columns = ['user_id', 'idcard', 'verify_mobile', 'name', 'device', 'auth_status', 'auth_time', 'max_overdue_days']
     # path = 'D:\\work\\database\\shumei\\'
@@ -57,6 +58,7 @@ limit 15000
     writer = pd.ExcelWriter(path + file_name[:-3] + 'xlsx')
     data.to_excel(writer, 'sheet1')
     writer.save()
+    print('get_data()函数运行结束。')
 
 
 
