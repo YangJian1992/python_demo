@@ -1,21 +1,37 @@
 #coding:utf-8
 import os
 import re
+import smtplib
 from pandas import Series, DataFrame
+from email.mime.text import MIMEText
+from email.header import Header
 import pandas as pd
 import time
+import datetime
+import threading
+import webbrowser
+import PyPDF2
 data= DataFrame({'a':[469025, 2, 3, 4],
                  'b': [6, 7, 8, 9],
                  'c': ['adkkda', 6, 5, 6]},index=['a', 'b', 'c', 'd'])
-string = '6984菲律'
-# data.ix[:2, 'a'] = data.ix[:2, 'a']+1 469000
-if re.search(r'阿联酋|新西兰|菲律宾|越南|韩国|马来西亚|马尔代夫|英国|美国|俄罗斯|缅甸|海外|加拿大|'
-                         r'泰国|法国|日本|新加坡|意大利|德国|意大利|挪威|阿尔巴尼亚|老挝|阿富汗|阿拉伯|瑞士|柬埔寨', string):
-    print('000000000000000')
-# data.ix[0, 'a'] = 555
-# data['d'] = 'NULL'
-# data.ix[0,'c'] = data.ix[0, 'c'][:3]
-# # data.ix[0,'a'] = data.ix[0,'a'][0] + 300
-# ind = data[data['a']>3].index
-# for i in ind:
-#     print(data.ix[i])
+
+start = time.time()
+def dfun2():
+    start2 = time.time()
+    df2 = pd.read_table(path + filename_2)
+    print(df2)
+    print('df2的时间是%d----------------------------------'%(time.time()-start2))
+path = 'D:\\work\\database\\ddress_book_rules\\data_code\\test_liuzhibo\\'
+filename = 'call_history_three_months.csv'
+filename_2 = 'call_history_new_1.csv'
+# thread_obj = threading.Thread(target=dfun2)
+# thread_obj.start()
+# start3 = time.time()
+# df1 = pd.read_table(path + filename)
+# print(df1)
+# print('df1时间为%d'%(time.time()-start3))
+# print('累计时间为%d'%(time.time()-start))
+dfun2()
+# subject = 'python mail'
+# message['Subject'] = Header(subject, 'utf-8')
+# print(smtp_obj.sendmail('920892845@qq.com', '1556492839@qq.com', message.as_string()))
