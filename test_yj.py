@@ -1,6 +1,7 @@
 #coding:utf-8
 import os
 import sys
+import gc
 import re
 import smtplib
 from pandas import Series, DataFrame
@@ -12,32 +13,52 @@ import datetime
 import threading
 import webbrowser
 from collections import  Iterator
-data= DataFrame({'a':[469025, 2, 3, 4],
-                 'b': [6, 7, 8, 9],
-                 'c': ['adkkda', 6, 5, 6]},index=['a', 'b', 'c', 'd'])
-
-def abc(fun):
-    def de():
-        start = time.time()
-        fun(2, 1, 2, 3, x=4, y=3)
-        print('函数执行所需时间为：%s'%(time.time()-start))
-    return de
-
-@abc
-def gg(x, *args, **kwargs):
-    print(type(args))
-    print(x, args, kwargs)
-    return 'python'
-
-print(gg(2, 1, 2, 3, x=4, y=3))
-
-# thread_obj = threading.Thread(target=dfun2)
-# thread_obj.start()
-# start3 = time.time()
-# df1 = pd.read_table(path + filename)
-# print(df1)
-# print('df1时间为%d'%(time.time()-start3))
-# print('累计时间为%d'%(time.time()-start))
-# subject = 'python mail'
-# message['Subject'] = Header(subject, 'utf-8')
-# print(smtp_obj.sendmail('920892845@qq.com', '1556492839@qq.com', message.as_string()))
+import copy
+from urllib import request
+from urllib import parse
+URL = "https://www.baidu.com"
+ua_header = {"User-Agent" : "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0;"}
+req_obj = request.Request(URL, headers = ua_header)
+page = request.urlopen(req_obj).read()
+# page = page.decode('utf-8')
+print(page)
+# data= DataFrame({'a':[469025, 2, 3, 4],
+#                  'b': [6, 7, 8, 9],
+#                  'c': ['adkkda', 6, 5, 6]},index=['a', 'b', 'c', 'd'])
+# b = copy.deepcopy(data)
+# def time_count(fun):
+#     def fun_2():
+#         start = time.time()
+#         fun(2, 1, 2, 3, a=4, y=3)
+#         print('函数执行所需时间为：%ss'%(time.time()-start))
+#     return fun_2
+#
+# @time_count
+# def gg(x, *args, **kwargs):
+#     print(type(args))
+#     print(x, args, kwargs)
+#     return 'python'
+#
+#
+# class Cat():
+#     def __init__(self, name, age):
+#         self.__name = name
+#         self.age = age
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#     # 使用语法糖可以把方法转化为属性，省去get()和set()方法。但是注意，方法名和属性名不能是一致的，如name和__name。
+#
+#     @name.setter
+#     def name(self, value):
+#         if isinstance(value, str):
+#             self.__name = value
+#         else:
+#             print('姓名输入有误')
+# a = 1356
+# # b = 1356
+# t = 'abc'
+# a = 'def'
+# b = re.match(r'\w{4,20}@(163|126|qq)\.com', '1aabbcc@qq.com')
+# print(b.group())
