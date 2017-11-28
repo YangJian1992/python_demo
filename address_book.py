@@ -45,60 +45,13 @@ def fun_readdata_mysql(select_string):
 def address_book_remove(data):
     print('输入的数据共%d行'%len(data))
     print('正在对数据进行筛选，请稍候...')
-    #给数据增加一列.默认为'0'
-    # data['mobile_9'] = 'NULL'
-    #手机号前9位重复超过20次的user_id和相应的9位手机号。
-    # mobile_remove_list = []
-    # # word_list = ['易信', '微会', 'poo', 'mimicall', 'Skype', '来电', '专线', '阿里通', '有信', '触宝', '微话',
-    # #              '钉钉', '酷宝', '微信', 'Skype']
-    # # word_list = ['专线']
-    # risky_mobile = []
-    # risky_num变量计算通讯录中高危号码数量是否达到15个
-    # risky_num = 0
-    #返回的结果，包括user_id和对应的有效手机号数量
-    # user_mobile = {}
-
-    #step1:
     start2 = time.time()
     #手机号的字段,通话记录中是'receiver，联系人中是mobile
     mobile = 'receiver'
-    # #c对data_filter数据进行后续的删除的操作，并把这个数据返回。使用isin方法，不用str.来调用，用Series来调用。
-    # #注意~运算符的使用，表示取反，非的意思，~和isin搭配使用。
-    # data_filter = data[(data['mobile'].str.len() == 11) & (data['mobile'] < '18999999999') & (data['mobile'] > '13000000000') &
-    #                    ~(data['name'].str.contains('专线'))]
-    #把手机强制转制成字符‘object'，找了好久才找到oz。虽然pandas的字符串的dtypes是object,但astype可以转换成'str'
     data[mobile] = data[mobile].astype('str', errors='raise')
     pattern = re.compile(r'^1[3-8][0-9]{9}$')
     data_filter = data[data[mobile].str.match(pattern)]
     print('通讯录11位筛选，正在生成数据，请稍候...累计花费时间为%ds。' % (time.time() - start2))
-    #step2:
-    # start3 = time.time()
-    # print('已经完成初步筛选，正在对前9位手机号进行判断，请稍候...')
-
-    # print('通讯录前九位进行筛选，正在生成数据，请稍候...累计花费时间为%ds。' % (time.time() - start3))
-    # print('两步筛选后的数据中，总行数为%d'%len(data))
-    # start4 = time.time()
-    # #第二种方法，比较哪种快
-    # # for index in data.index:
-    # #     mobile = str(data.ix[index,['mobile']].values[0])
-    # #     flag = 0
-    # #     #name也有数字格式的，需考虑str
-    # #     name = str(data.ix[index,['name']].values[0])
-    # #     if re.findall(r"^1[3-8]\d{9}$", mobile):
-    # #         for word in word_list:
-    # #             # data.drop(data[data['name'].str.contains(word)].index, axis=0, inplace=True)
-    # #             if word in name:
-    # #                 data.drop(index, axis=0, inplace=True)
-    # #                 #删除该索引后，就不用对word_list遍历,并把flag改为1
-    # #                 flag = 1
-    # #                 break
-    # #         # 符合手机号规则，且不在word_list中时，此时的索引值不会被删除，所以把手机号的前九位作为mobile_9的值
-    # #         if flag==0:
-    # #             data.ix[index, ['mobile_9']] = mobile[:9]
-    # #     else:
-    # #         data.drop(index, axis=0, inplace=True)
-    # # print('通讯录筛选step3，正在生成数据，请稍候...累计花费时间为%ds。' % (time.time() - start4))
-    #
 
     print('得到数据共%d行' % len(data_filter))
     return data_filter

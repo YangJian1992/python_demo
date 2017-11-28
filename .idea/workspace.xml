@@ -14,15 +14,15 @@
     <SUITE FILE_PATH="coverage/python_demo$crawler_test.coverage" NAME="crawler.test Coverage Results" MODIFIED="1511850389373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webcrawler" />
     <SUITE FILE_PATH="coverage/python_demo$call_addr_alter.coverage" NAME="call_addr_alter Coverage Results" MODIFIED="1511321503238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python_demo$shumei_data.coverage" NAME="shumei_data Coverage Results" MODIFIED="1511427864687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/python_demo$test_yj.coverage" NAME="test_yj Coverage Results" MODIFIED="1511849543657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python_demo$test_yj.coverage" NAME="test_yj Coverage Results" MODIFIED="1511866531282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="test_yj.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_yj.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_yj.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+            <state relative-caret-position="-660">
+              <caret line="95" column="34" lean-forward="true" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
               <folding>
                 <element signature="e#14#23#0" expanded="true" />
               </folding>
@@ -30,14 +30,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crawler.test.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webcrawler/crawler.test.py">
+      <file leaf-file-name="userBook.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/userBook.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="address_book.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/address_book.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-628">
+              <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#1113#1561#0" expanded="false" />
+                <element signature="e#1645#2840#0" expanded="false" />
+                <element signature="e#9258#10423#0" expanded="false" />
+                <element signature="e#10425#10501#0" expanded="false" />
+                <marker date="1511859478383" expanded="true" signature="9266:10417" ph="select tt.us... address_book" />
+                <marker date="1511859478383" expanded="true" signature="9323:10390" ph="select a.use... user_id" />
+                <marker date="1511859478383" expanded="true" signature="9359:10347" ph="select dr.us... user_device_record" />
+                <marker date="1511859478383" expanded="true" signature="9512:9582" ph="select * fro... credit_apply_orders" />
+                <marker date="1511859478383" expanded="true" signature="9633:10283" ph="select ao.us... credit_apply_orders" />
+                <marker date="1511859478383" expanded="true" signature="9690:9830" ph="select * fro... user_loan_orders" />
+                <marker date="1511859478383" expanded="true" signature="9909:10103" ph="select user_... user_loan_orders" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="unique_user_id.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/unique_user_id.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="60" column="12" lean-forward="false" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -67,6 +97,7 @@
       <find>index_unique</find>
       <find>NULL</find>
       <find>其他</find>
+      <find>'mobile_9'</find>
     </findStrings>
     <replaceStrings>
       <replace>data_old</replace>
@@ -80,6 +111,7 @@
       <replace>data_am_xg</replace>
       <replace>am_xg_name</replace>
       <replace>index_am_xg</replace>
+      <replace>columns_add</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -96,11 +128,12 @@
         <option value="$PROJECT_DIR$/call_history_filter.py" />
         <option value="$PROJECT_DIR$/mysql_connection.py" />
         <option value="$PROJECT_DIR$/call_addr_alter.py" />
-        <option value="$PROJECT_DIR$/address_book.py" />
         <option value="$PROJECT_DIR$/shumei_data.py" />
         <option value="$PROJECT_DIR$/call_history_addr_alter/call_addr_alter.py" />
-        <option value="$PROJECT_DIR$/test_yj.py" />
         <option value="$PROJECT_DIR$/webcrawler/crawler.test.py" />
+        <option value="$PROJECT_DIR$/address_book.py" />
+        <option value="$PROJECT_DIR$/spider/__init__.py" />
+        <option value="$PROJECT_DIR$/test_yj.py" />
       </list>
     </option>
   </component>
@@ -114,6 +147,22 @@
     <option name="x" value="-8" />
     <option name="width" value="736" />
     <option name="height" value="1038" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AngularJS</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -140,11 +189,6 @@
             </path>
             <path>
               <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="call_history_addr_alter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
             <path>
@@ -168,10 +212,11 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\资料\githubRepository\python_demo\spider" />
       <recent name="D:\资料\githubRepository\python_demo\call_history_addr_alter" />
     </key>
   </component>
@@ -187,7 +232,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.crawler.test">
+  <component name="RunManager" selected="Python.test_yj">
     <configuration name="call_addr_alter (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -237,7 +282,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python_demo" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/webcrawler/crawler.test.py" />
+      <option name="SCRIPT_NAME" value="D:\资料\githubRepository\python_demo\spider\crawler.test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -287,8 +332,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.crawler.test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test_yj" />
+        <item index="0" class="java.lang.String" itemvalue="Python.test_yj" />
+        <item index="1" class="java.lang.String" itemvalue="Python.crawler.test" />
         <item index="2" class="java.lang.String" itemvalue="Python.call_addr_alter (1)" />
         <item index="3" class="java.lang.String" itemvalue="Python.shumei_data" />
         <item index="4" class="java.lang.String" itemvalue="Python.call_addr_alter" />
@@ -313,7 +358,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2414163" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -321,7 +365,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -344,7 +388,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -359,12 +403,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webcrawler/crawler.test.py">
+    <entry file="file://$PROJECT_DIR$/spider/crawler.test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="9" column="52" lean-forward="false" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -663,29 +707,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spider/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/crawler.test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userBook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/address_book.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="23" column="7" lean-forward="false" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        <state relative-caret-position="-628">
+          <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+          <folding>
+            <element signature="e#1113#1561#0" expanded="false" />
+            <element signature="e#1645#2840#0" expanded="false" />
+            <element signature="e#9258#10423#0" expanded="false" />
+            <element signature="e#10425#10501#0" expanded="false" />
+            <marker date="1511859478383" expanded="true" signature="9266:10417" ph="select tt.us... address_book" />
+            <marker date="1511859478383" expanded="true" signature="9323:10390" ph="select a.use... user_id" />
+            <marker date="1511859478383" expanded="true" signature="9359:10347" ph="select dr.us... user_device_record" />
+            <marker date="1511859478383" expanded="true" signature="9512:9582" ph="select * fro... credit_apply_orders" />
+            <marker date="1511859478383" expanded="true" signature="9633:10283" ph="select ao.us... credit_apply_orders" />
+            <marker date="1511859478383" expanded="true" signature="9690:9830" ph="select * fro... user_loan_orders" />
+            <marker date="1511859478383" expanded="true" signature="9909:10103" ph="select user_... user_loan_orders" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unique_user_id.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="60" column="12" lean-forward="false" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_yj.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        <state relative-caret-position="-660">
+          <caret line="95" column="34" lean-forward="true" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
           <folding>
             <element signature="e#14#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webcrawler/crawler.test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

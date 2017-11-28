@@ -1,5 +1,6 @@
 from urllib import request
 import socket
+import sys
 
 
 #爬虫的小练习
