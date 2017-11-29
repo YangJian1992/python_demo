@@ -1,15 +1,11 @@
 #codeing: uft-8
-import re
 # import os
 # import sys
-import time
 # from datetime import datetime
-import pymysql
-import numpy as np
-from pandas import DataFrame, Series
 import pandas as pd
-import address_call as ac
-import unique_user_id as uui
+from pandas import DataFrame
+
+from call_history_addr_alter import address_call as ac
 
 '''
 办公电脑无法一次性处理大的文件，两三百兆的文件都不行。所以要分块读取文件。

@@ -1,15 +1,10 @@
 # coding:utf-8
-import re
 # import os
 # import sys
-import time
-import numpy as np
-from pandas import DataFrame, Series
 import pandas as pd
-import json
+
 # from datetime import datetime
-import pymysql
-import mysql_connection as my
+from call_history_addr_alter import mysql_connection as my
 
 
 def get_data():

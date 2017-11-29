@@ -3,14 +3,14 @@ import re
 # import os
 # import sys
 import time
+
+import address_call as ac
+import pandas as pd
 # from datetime import datetime
 import pymysql
-import numpy as np
-from pandas import DataFrame, Series
-import pandas as pd
-import call_history_filter as chf
-import address_call as ac
-import unique_user_id as uui
+from pandas import DataFrame
+
+from call_history_addr_alter import unique_user_id as uui
 
 '''
 功能：

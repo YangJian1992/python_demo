@@ -13,10 +13,11 @@ import threading
 import webbrowser
 from collections import  Iterator
 import copy
-from urllib import request
 from urllib import parse
+import urllib.request
 
 
 #这是一个测试
 if __name__ == '__main__':
-    pass
+    data = DataFrame([[3, 4, 5], [5, 6, 7]], columns=['a', 'b', 'c'])
+    print([3,4, 5,4].extend())

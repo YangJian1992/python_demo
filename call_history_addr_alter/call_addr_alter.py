@@ -1,15 +1,16 @@
 #coding: utf-8
+import json
 import re
-import os
 # import sys
 import time
-import numpy as np
-from pandas import DataFrame, Series
+
 import pandas as pd
-import json
+from pandas import DataFrame, Series
+
 # from datetime import datetime
 # import pymysql
-import mysql_connection as my
+from call_history_addr_alter import mysql_connection as my
+
 '''
 1.利用mysql过滤：
 call_addr为“未知”，“-”，“������������”及null
