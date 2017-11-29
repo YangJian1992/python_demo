@@ -130,6 +130,7 @@ if __name__ == '__main__':
 
     data_result = loan_result(loan_data)
     data_result.to_csv(PATH + FILE + '.csv', index=False, encoding='utf-8', sep='\t')
+    #得到工作簿
     writer = pd.ExcelWriter(PATH + FILE + '.xlsx')
     # data_result.to_excel(writer, 'total')
 
