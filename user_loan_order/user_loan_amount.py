@@ -46,7 +46,7 @@ def loan_result(loan_data):
             repay_time_list.append(' 0'+ str(i * 3) +':00:00')
         else:
             repay_time_list.append(' '+ str(i * 3) + ':00:00')
-    print(repay_time_list)
+    # print(repay_time_list)
 
     for due_repay_date, group in loan_data.groupby('due_repay_date'):
         repay_group = group[group['repay_status'] == 2]
@@ -62,7 +62,7 @@ def loan_result(loan_data):
         for j in range(8):
             amount_repay = repay_group[(repay_group['repay_time'] < due_repay_date + repay_time_list[j+1]) & (repay_group
                 ['repay_time'] >= due_repay_date + repay_time_list[j])]['amount'].sum()
-            print(due_repay_date + repay_time_list[j+1])
+            # print(due_repay_date + repay_time_list[j+1])
             repay_amount_list.append(amount_repay)
         for k in range(8):
             repay_ratio = round(repay_amount_list[k] / amount_sum*100, 2)
@@ -81,6 +81,7 @@ def loan_result(loan_data):
     # for i in range(8):
     #     result_columns.append('repay_ratio_' + str(i+1))
     # data_result = DataFrame(result_list, columns=result_columns)
+    #设置数据表的字段表
     result_columns = ['应还日期', '贷款金额总和', '还款金额的比例之和,%', '提前还款的比例,%']
     for i in range(8):
         result_columns.append('时间段_' + str((i+1)*3) + ':00,%')
@@ -121,7 +122,7 @@ if __name__ == '__main__':
     WHERE
         ucg.apply_type IN (1 , 4)
             AND ulo.due_repay_date IS NOT NULL
-            AND ulo.due_repay_date BETWEEN '2017-11-01' and '2017-11-30' 
+            AND ulo.due_repay_date BETWEEN '2017-11-01' and '2017-12-5' 
             '''
     columns_add = ['id', 'user_id', 'due_repay_date', 'repay_time', 'amount', 'repay_status', 'first_loan',
                    'apply_type']
@@ -134,6 +135,7 @@ if __name__ == '__main__':
     writer = pd.ExcelWriter(PATH + FILE + '.xlsx')
     # data_result.to_excel(writer, 'total')
 
+    #依次得到下面每个工作表
     data_first_1 = data_first_loan(loan_data, 1)
     data_result = loan_result(data_first_1)
     data_result.to_excel(writer, '首借_1')
@@ -165,8 +167,8 @@ if __name__ == '__main__':
     data_apply_4_first_0 = data_apply_type(data_first_0, 4)
     data_result = loan_result(data_apply_4_first_0)
     data_result.to_excel(writer, '申请类型_4_首借_0')
-
+    #记住保存工作簿
     writer.save()
 
-    print(data_result)
+    # print(data_result)
     print('*************************** end ********************************')
