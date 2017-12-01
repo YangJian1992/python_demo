@@ -2,7 +2,9 @@ import pandas as pd
 from pandas import Series, DataFrame
 import time
 import datetime
+import numpy as np
 import pymysql
+import matplotlib.pyplot as plt
 '''
 1.得到一张表，字段为应还的日期，该天的应还金额，提前还款的金额，以及每三小时的还款比例，该天总的还款比例，共12个字段。
 2.随着时间推移，不断更新表格的数据。
@@ -88,11 +90,13 @@ def loan_result(loan_data):
     data_result = DataFrame(result_list, columns=result_columns)
     return data_result
 
+
 #输入原数据和首借的参数，得到是否首借的数据
 def data_first_loan(loan_data, first_loan):
     print('data_first_loan()函数开始执行。。。')
     print(loan_data.dtypes)
     return(loan_data[loan_data['first_loan']==first_loan])
+
 
 #输入原数据和申请参数，得到不同申请类型的数据
 def data_apply_type(loan_data, apply_type):
@@ -101,41 +105,17 @@ def data_apply_type(loan_data, apply_type):
     return(loan_data[loan_data['apply_type']==apply_type])
 
 
-#开始执行函数
-if __name__ == '__main__':
-    print('************************** start *******************************')
+#生成本地文件
+def get_local_file(data_result):
     PATH = 'D:\\work\\database\\user_loan_amount\\'
     FILE = 'user_loan_amount'
-    select_string = '''SELECT 
-        ulo.id,
-        ulo.user_id,
-        ulo.due_repay_date,
-        ulo.repay_time,
-        ulo.amount,
-        ulo.repay_status,
-        ulo.first_loan,
-        ucg.apply_type
-    FROM
-        user_loan_orders AS ulo
-            LEFT JOIN
-        user_credit_grant AS ucg ON ucg.user_id = ulo.user_id
-    WHERE
-        ucg.apply_type IN (1 , 4)
-            AND ulo.due_repay_date IS NOT NULL
-            AND ulo.due_repay_date BETWEEN '2017-11-01' and '2017-12-5' 
-            '''
-    columns_add = ['id', 'user_id', 'due_repay_date', 'repay_time', 'amount', 'repay_status', 'first_loan',
-                   'apply_type']
-    #由数据库得到数据
-    loan_data = mysql_connection(select_string, columns_add)
 
-    data_result = loan_result(loan_data)
     data_result.to_csv(PATH + FILE + '.csv', index=False, encoding='utf-8', sep='\t')
-    #得到工作簿
+    # 得到工作簿
     writer = pd.ExcelWriter(PATH + FILE + '.xlsx')
     # data_result.to_excel(writer, 'total')
 
-    #依次得到下面每个工作表
+    # 依次得到下面每个工作表
     data_first_1 = data_first_loan(loan_data, 1)
     data_result = loan_result(data_first_1)
     data_result.to_excel(writer, '首借_1')
@@ -167,8 +147,55 @@ if __name__ == '__main__':
     data_apply_4_first_0 = data_apply_type(data_first_0, 4)
     data_result = loan_result(data_apply_4_first_0)
     data_result.to_excel(writer, '申请类型_4_首借_0')
-    #记住保存工作簿
+    # 记住保存工作簿
     writer.save()
+
+
+#f绘图
+def data_plot(data_result):
+    PATH = 'D:\\work\\database\\user_loan_amount\\fig\\'
+    FILE = 'month_ratio'
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    ax.set_ylabel('百分比')
+    print(data_result)
+    last_day = DataFrame(np.array(data_result[['还款金额的比例之和,%', '提前还款的比例,%']]), index=data_result['应还日期']
+                         .values, columns=['loan_ratio','loan_ratio_before'])
+    print(last_day)
+    last_day.plot(ax=ax, ylim=[0, 100], title='还款比例之和')
+    plt.savefig(PATH+FILE+'.svg', bbbox_inches='tight')
+    plt.show()
+
+
+#开始执行函数
+if __name__ == '__main__':
+    print('************************** start *******************************')
+    select_string = '''SELECT 
+        ulo.id,
+        ulo.user_id,
+        ulo.due_repay_date,
+        ulo.repay_time,
+        ulo.amount,
+        ulo.repay_status,
+        ulo.first_loan,
+        ucg.apply_type
+    FROM
+        user_loan_orders AS ulo
+            LEFT JOIN
+        user_credit_grant AS ucg ON ucg.user_id = ulo.user_id
+    WHERE
+        ucg.apply_type IN (1 , 4)
+            AND ulo.due_repay_date IS NOT NULL
+            AND ulo.due_repay_date BETWEEN '2017-10-01' and '2017-10-30' 
+            '''
+    columns_add = ['id', 'user_id', 'due_repay_date', 'repay_time', 'amount', 'repay_status', 'first_loan',
+                   'apply_type']
+    #由数据库得到数据
+    loan_data = mysql_connection(select_string, columns_add)
+    data_result = loan_result(loan_data)
+    data_plot(data_result)
+
+    # get_local_file(loan_data)
 
     # print(data_result)
     print('*************************** end ********************************')
