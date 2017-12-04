@@ -59,7 +59,6 @@ def loan_result(loan_data):
         amount_sum = group['amount'].sum()
         amount_repay_before = repay_group[repay_group['repay_time'] < due_repay_date + repay_time_list[0]]['amount'].sum()
         repay_ratio_before = round(amount_repay_before/amount_sum*100, 2)
-
         #计算每个时间段的金额和比例，放在列表中
         for j in range(8):
             amount_repay = repay_group[(repay_group['repay_time'] < due_repay_date + repay_time_list[j+1]) & (repay_group
@@ -151,25 +150,37 @@ def get_local_file(data_result):
     writer.save()
 
 
-#f绘图
-def data_plot(data_result):
+#f绘图。参数date_0是时间序列的起始日期。
+def data_plot(data_result, date_start, date_end):
     PATH = 'D:\\work\\database\\user_loan_amount\\fig\\'
     FILE = 'month_ratio'
     fig = plt.figure()
     ax = fig.add_subplot(1, 1, 1)
-    ax.set_ylabel('百分比')
-    print(data_result)
-    last_day = DataFrame(np.array(data_result[['还款金额的比例之和,%', '提前还款的比例,%']]), index=data_result['应还日期']
-                         .values, columns=['loan_ratio','loan_ratio_before'])
-    print(last_day)
-    last_day.plot(ax=ax, ylim=[0, 100], title='还款比例之和')
-    plt.savefig(PATH+FILE+'.svg', bbbox_inches='tight')
+    ax.set_ylabel('ratio,%')
+    ax.set_xlabel('date')
+    #创建时间序列索引,也可以用date_range()函数
+    index = pd.DatetimeIndex(data_result['应还日期'].values)
+    # index = pd.date_range(date_start, date_end, freq='24h')
+    # print(data_result)
+    #用np.array重新构造一个DF表，并使用时间序列索引
+    loan_month = DataFrame(np.array(data_result[['还款金额的比例之和,%', '提前还款的比例,%']]), index=index,
+                           columns=['loan_ratio','loan_ratio_before'])
+    #当日还款比例
+    loan_month['day_loan_ratio'] = loan_month['loan_ratio'] - loan_month['loan_ratio_before']
+    # print(index)
+    #plot()函数画图
+    print(loan_month)
+    loan_month.plot(ax=ax, ylim=[0, 100], title='repay_ratio')
+    plt.savefig(PATH+FILE+date_start[:-3]+'.png')
     plt.show()
 
 
 #开始执行函数
 if __name__ == '__main__':
     print('************************** start *******************************')
+    #查询数据库的日期范围。注意，这里的是变量是字符串，但select语句中日期还要再加字符串，也就是format中{}外面也要加引号。
+    date_start = '2017-10-01'
+    date_end = '2017-11-31'
     select_string = '''SELECT 
         ulo.id,
         ulo.user_id,
@@ -186,15 +197,15 @@ if __name__ == '__main__':
     WHERE
         ucg.apply_type IN (1 , 4)
             AND ulo.due_repay_date IS NOT NULL
-            AND ulo.due_repay_date BETWEEN '2017-10-01' and '2017-10-30' 
-            '''
+            AND ulo.due_repay_date BETWEEN "{date_start}" and "{date_end}"
+            '''.format(date_start=date_start, date_end=date_end)
+    print(select_string)
     columns_add = ['id', 'user_id', 'due_repay_date', 'repay_time', 'amount', 'repay_status', 'first_loan',
                    'apply_type']
     #由数据库得到数据
     loan_data = mysql_connection(select_string, columns_add)
     data_result = loan_result(loan_data)
-    data_plot(data_result)
-
+    data_plot(data_result, date_start, date_end)
     # get_local_file(loan_data)
 
     # print(data_result)
