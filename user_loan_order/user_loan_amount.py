@@ -171,7 +171,7 @@ def data_plot(data_result, date_start, date_end):
     #plot()函数画图
     print(loan_month)
     loan_month.plot(ax=ax, ylim=[0, 100], title='repay_ratio')
-    plt.savefig(PATH+FILE+date_start[:-3]+'.png')
+    plt.savefig(PATH + FILE + date_start[:-3] + '.png')
     plt.show()
 
 

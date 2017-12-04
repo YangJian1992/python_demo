@@ -24,6 +24,7 @@ import numpy as np
 import datetime
 import dateutil.parser as dp
 import pytz
+import tkinter
 
 
 import math
@@ -36,5 +37,8 @@ if __name__ == '__main__':
     b = ['a', '2', 2, 4, 5, '2', 'b', 4, 7, 'a', 5, 'd', 'a', 'z']
     f = DataFrame(np.array(data), index=data['a'].values, columns=['a', 'b', 'c'])
 
-    print('china"{}"'.format('aaaa'))
+    root = tkinter.Tk()
+    label = tkinter.Label(root, text='hello world')
+    label.pack()
+    tkinter.mainloop()
 
