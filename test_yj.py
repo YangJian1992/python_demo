@@ -25,6 +25,8 @@ import datetime
 import dateutil.parser as dp
 import pytz
 import tkinter
+import scrapy
+from bs4 import BeautifulSoup
 
 
 import math
