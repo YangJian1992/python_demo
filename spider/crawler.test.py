@@ -3,8 +3,11 @@ import socket
 import sys
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+from urllib.request import urlretrieve
 import re
 import scrapy
+
+#在编程目录下运行scrapy startproject project_name，建立scrapy项目目录。
 
 
 #爬虫的小练习
@@ -23,8 +26,8 @@ def spider_test():
     #BeautifulSoup()方便你处理html文档
     bs_obj = BeautifulSoup(page)
     # page = page.decode('utf-8')
-    print(bs_obj.findAll('a', {'href' : "http://www.lagou.com/"}))
-    print(bs_obj.findAll('a', href=re.compile('^http://www.lagou.com')))
+    # print(bs_obj.find('a', {'href' : "http://www.lagou.com/"}))
+    print(bs_obj.findAll(src=True))
 
 if __name__ == '__main__':
     spider_test()
