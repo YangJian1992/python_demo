@@ -11,7 +11,8 @@ import matplotlib.pyplot as plt
 
 '''
 
-#连接到数据库，输入参数为查询语句字符串，用'''表示，第二个参数为列名，返回查询到的DataFrame格式的数据
+
+# 连接到数据库，输入参数为查询语句字符串，用'''表示，第二个参数为列名，返回查询到的DataFrame格式的数据
 def mysql_connection(select_string, columns_add):
     start = time.time()
     conn = pymysql.connect(host='rr-bp1jnr76z49y5k9mno.mysql.rds.aliyuncs.com', port=3306, user='qiandaodao',
@@ -166,7 +167,7 @@ def data_plot(data_result, date_start, date_end):
     loan_month = DataFrame(np.array(data_result[['还款金额的比例之和,%', '提前还款的比例,%']]), index=index,
                            columns=['loan_ratio','loan_ratio_before'])
     #当日还款比例
-    loan_month['day_loan_ratio'] = loan_month['loan_ratio'] - loan_month['loan_ratio_before']
+    loan_month['loan_ratio_day'] = loan_month['loan_ratio'] - loan_month['loan_ratio_before']
     # print(index)
     #plot()函数画图
     print(loan_month)
@@ -179,8 +180,8 @@ def data_plot(data_result, date_start, date_end):
 if __name__ == '__main__':
     print('************************** start *******************************')
     #查询数据库的日期范围。注意，这里的是变量是字符串，但select语句中日期还要再加字符串，也就是format中{}外面也要加引号。
-    date_start = '2017-10-01'
-    date_end = '2017-11-31'
+    date_start = '2017-12-01'
+    date_end = '2017-12-05'
     select_string = '''SELECT 
         ulo.id,
         ulo.user_id,

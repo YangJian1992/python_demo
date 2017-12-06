@@ -4,6 +4,7 @@ import sys
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from urllib.request import urlretrieve
+import requests
 import re
 import scrapy
 
