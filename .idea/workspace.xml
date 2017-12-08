@@ -14,9 +14,10 @@
     <SUITE FILE_PATH="coverage/python_demo$call_addr_alter__1_.coverage" NAME="call_addr_alter (1) Coverage Results" MODIFIED="1511430673774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/call_history_addr_alter" />
     <SUITE FILE_PATH="coverage/python_demo$crawler_test.coverage" NAME="crawler.test Coverage Results" MODIFIED="1511850389373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webcrawler" />
     <SUITE FILE_PATH="coverage/python_demo$call_addr_alter.coverage" NAME="call_addr_alter Coverage Results" MODIFIED="1511321503238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python_demo$credit_apply_orders_addr.coverage" NAME="credit_apply_orders_addr Coverage Results" MODIFIED="1512728789228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/call_history_addr_alter" />
     <SUITE FILE_PATH="coverage/python_demo$idcard_district_alter.coverage" NAME="idcard_district_alter Coverage Results" MODIFIED="1512542679277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/call_history_addr_alter" />
     <SUITE FILE_PATH="coverage/python_demo$shumei_data.coverage" NAME="shumei_data Coverage Results" MODIFIED="1511427864687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/python_demo$test_yj.coverage" NAME="test_yj Coverage Results" MODIFIED="1512703239890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/python_demo$test_yj.coverage" NAME="test_yj Coverage Results" MODIFIED="1512715778201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python_demo$crawler_test__1_.coverage" NAME="crawler.test (1) Coverage Results" MODIFIED="1512611653484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" />
     <SUITE FILE_PATH="coverage/python_demo$user_loan_amount.coverage" NAME="user_loan_amount Coverage Results" MODIFIED="1512528619622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/user_loan_order" />
     <SUITE FILE_PATH="coverage/python_demo$nltk_test.coverage" NAME="nltk_test Coverage Results" MODIFIED="1512526776910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nltk" />
@@ -46,26 +47,57 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="credit_profile_county_null.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/call_history_addr_alter/credit_profile_county_null.py">
+      <file leaf-file-name="quotes_spider.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tutorial/tutorial/spiders/quotes_spider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="10" column="81" lean-forward="false" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+            <state relative-caret-position="336">
+              <caret line="15" column="35" lean-forward="false" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_yj.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_yj.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1372">
+              <caret line="49" column="31" lean-forward="false" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
-                <element signature="e#871#1080#0" expanded="false" />
-                <marker date="1512614037946" expanded="true" signature="879:1072" ph="select ucp.u... user_credit_profile" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="quotes_spider.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tutorial/tutorial/spiders/quotes_spider.py">
+      <file leaf-file-name="credit_apply_orders_addr.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders_addr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="15" column="35" lean-forward="false" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-              <folding />
+            <state relative-caret-position="450">
+              <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#151#684#0" expanded="false" />
+                <element signature="e#2340#7368#0" expanded="false" />
+                <element signature="e#7399#7424#0" expanded="false" />
+                <marker date="1512729522578" expanded="true" signature="7431:7545" ph="select id, u... credit_apply_orders" />
+                <marker date="1512729522578" expanded="true" signature="7431:7548" ph="select id, u... credit_apply_orders" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="idcard_district_alter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/call_history_addr_alter/idcard_district_alter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2238">
+              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="193" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#307#2625#0" expanded="false" />
+                <element signature="e#819#902#0" expanded="false" />
+                <element signature="e#2693#3378#0" expanded="false" />
+                <marker date="1512720483408" expanded="true" signature="2888:2917" ph="select * fro... idcard_district" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,23 +105,13 @@
       <file leaf-file-name="call_addr_alter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/call_history_addr_alter/call_addr_alter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="250" column="40" lean-forward="true" selection-start-line="250" selection-start-column="17" selection-end-line="250" selection-end-column="40" />
+            <state relative-caret-position="283">
+              <caret line="64" column="27" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
               <folding>
                 <element signature="e#15#26#0" expanded="true" />
+                <element signature="e#1819#15249#0" expanded="false" />
+                <element signature="e#7157#7487#0" expanded="false" />
                 <marker date="1512541093066" expanded="true" signature="1299:1353" ph="select call_... call_history" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_yj.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test_yj.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,8 +153,9 @@
       <find>call_addr</find>
       <find>data_old</find>
       <find>to_csv</find>
-      <find>city</find>
       <find>city_2</find>
+      <find>idcard_addr_new</find>
+      <find>city</find>
     </findStrings>
     <replaceStrings>
       <replace>data_old</replace>
@@ -152,6 +175,8 @@
       <replace>date_end</replace>
       <replace>addr_new</replace>
       <replace>city</replace>
+      <replace>location_new</replace>
+      <replace>location_1</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -179,8 +204,10 @@
         <option value="$PROJECT_DIR$/tutorial/tutorial/spiders/quotes_spider.py" />
         <option value="$PROJECT_DIR$/spider/crawler.test.py" />
         <option value="$PROJECT_DIR$/call_history_addr_alter/credit_profile_county_null.py" />
-        <option value="$PROJECT_DIR$/call_history_addr_alter/idcard_district_alter.py" />
         <option value="$PROJECT_DIR$/test_yj.py" />
+        <option value="$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders.py" />
+        <option value="$PROJECT_DIR$/call_history_addr_alter/idcard_district_alter.py" />
+        <option value="$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders_addr.py" />
       </list>
     </option>
   </component>
@@ -239,24 +266,6 @@
               <item name="python_demo" type="462c0819:PsiDirectoryNode" />
               <item name="call_history_addr_alter" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
-              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
-              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
-              <item name="spiders" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -291,7 +300,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_yj">
+  <component name="RunManager" selected="Python.credit_apply_orders_addr">
     <configuration name="crawler.test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -306,6 +315,24 @@
       <module name="python_demo" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/spider/crawler.test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="credit_apply_orders_addr" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/call_history_addr_alter" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python_demo" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders_addr.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -364,38 +391,20 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="user_loan_amount" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/user_loan_order" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="python_demo" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/user_loan_order/user_loan_amount.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.test_yj" />
-      <item index="1" class="java.lang.String" itemvalue="Python.user_loan_amount" />
-      <item index="2" class="java.lang.String" itemvalue="Python.crawler.test (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.idcard_district_alter" />
-      <item index="4" class="java.lang.String" itemvalue="Python.credit_profile_county_null" />
+      <item index="1" class="java.lang.String" itemvalue="Python.crawler.test (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.idcard_district_alter" />
+      <item index="3" class="java.lang.String" itemvalue="Python.credit_profile_county_null" />
+      <item index="4" class="java.lang.String" itemvalue="Python.credit_apply_orders_addr" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test_yj" />
-        <item index="1" class="java.lang.String" itemvalue="Python.credit_profile_county_null" />
-        <item index="2" class="java.lang.String" itemvalue="Python.crawler.test (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.idcard_district_alter" />
-        <item index="4" class="java.lang.String" itemvalue="Python.user_loan_amount" />
+        <item index="0" class="java.lang.String" itemvalue="Python.credit_apply_orders_addr" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test_yj" />
+        <item index="2" class="java.lang.String" itemvalue="Python.credit_profile_county_null" />
+        <item index="3" class="java.lang.String" itemvalue="Python.crawler.test (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python.idcard_district_alter" />
       </list>
     </recent_temporary>
   </component>
@@ -457,21 +466,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_yj.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/call_history_addr_alter/mysql_connection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -720,13 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/call_history_addr_alter/call_history_filter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3528">
-          <caret line="134" column="21" lean-forward="true" selection-start-line="134" selection-start-column="21" selection-end-line="134" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/call_history_addr_alter/address_book_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -771,13 +763,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="211" column="81" lean-forward="false" selection-start-line="211" selection-start-column="81" selection-end-line="211" selection-end-column="97" />
+          <folding>
+            <marker date="1511921110458" expanded="true" signature="9236:10387" ph="select tt.us... address_book" />
+            <marker date="1511921110458" expanded="true" signature="9293:10360" ph="select a.use... user_id" />
+            <marker date="1511921110458" expanded="true" signature="9329:10317" ph="select dr.us... user_device_record" />
+            <marker date="1511921110458" expanded="true" signature="9482:9552" ph="select * fro... credit_apply_orders" />
+            <marker date="1511921110458" expanded="true" signature="9603:10253" ph="select ao.us... credit_apply_orders" />
+            <marker date="1511921110458" expanded="true" signature="9660:9800" ph="select * fro... user_loan_orders" />
+            <marker date="1511921110458" expanded="true" signature="9879:10073" ph="select user_... user_loan_orders" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/call_history_addr_alter/userBook.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2138">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1206">
+          <caret line="144" column="32" lean-forward="true" selection-start-line="144" selection-start-column="32" selection-end-line="144" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/call_history_addr_alter/call_history_filter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="134" column="21" lean-forward="true" selection-start-line="134" selection-start-column="21" selection-end-line="134" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/call_history_addr_alter/credit_profile_county_null.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="37" column="57" lean-forward="true" selection-start-line="37" selection-start-column="57" selection-end-line="37" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#199#732#0" expanded="false" />
+            <element signature="e#871#1080#0" expanded="false" />
+            <marker date="1512614037946" expanded="true" signature="879:1072" ph="select ucp.u... user_credit_profile" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -793,55 +816,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tutorial/tutorial/spiders/quotes_spider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="336">
           <caret line="15" column="35" lean-forward="false" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/call_history_addr_alter/credit_profile_county_null.py">
+    <entry file="file://$PROJECT_DIR$/test_yj.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="10" column="81" lean-forward="false" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+        <state relative-caret-position="1372">
+          <caret line="49" column="31" lean-forward="false" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#871#1080#0" expanded="false" />
-            <marker date="1512614037946" expanded="true" signature="879:1072" ph="select ucp.u... user_credit_profile" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/call_history_addr_alter/call_addr_alter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="250" column="40" lean-forward="true" selection-start-line="250" selection-start-column="17" selection-end-line="250" selection-end-column="40" />
-          <folding>
-            <element signature="e#15#26#0" expanded="true" />
-            <marker date="1512541093066" expanded="true" signature="1299:1353" ph="select call_... call_history" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/call_history_addr_alter/idcard_district_alter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="92" column="25" lean-forward="false" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
+        <state relative-caret-position="-2238">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="193" selection-end-column="17" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
             <element signature="e#307#2625#0" expanded="false" />
             <element signature="e#819#902#0" expanded="false" />
-            <element signature="e#3408#8470#0" expanded="false" />
-            <marker date="1512704911035" expanded="true" signature="2888:2917" ph="select * fro... idcard_district" />
+            <element signature="e#2693#3378#0" expanded="false" />
+            <marker date="1512720483408" expanded="true" signature="2888:2917" ph="select * fro... idcard_district" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_yj.py">
+    <entry file="file://$PROJECT_DIR$/call_history_addr_alter/call_addr_alter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
+        <state relative-caret-position="283">
+          <caret line="64" column="27" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#15#26#0" expanded="true" />
+            <element signature="e#1819#15249#0" expanded="false" />
+            <element signature="e#7157#7487#0" expanded="false" />
+            <marker date="1512541093066" expanded="true" signature="1299:1353" ph="select call_... call_history" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders_addr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#151#684#0" expanded="false" />
+            <element signature="e#2340#7368#0" expanded="false" />
+            <element signature="e#7399#7424#0" expanded="false" />
+            <marker date="1512729522578" expanded="true" signature="7431:7545" ph="select id, u... credit_apply_orders" />
+            <marker date="1512729522578" expanded="true" signature="7431:7548" ph="select id, u... credit_apply_orders" />
           </folding>
         </state>
       </provider>

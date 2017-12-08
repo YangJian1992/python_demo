@@ -134,7 +134,7 @@ def read_local_data():
 
     #data_2为原地址表，是处理的数据
     data_old = pd.read_table(path + file_name_2, encoding='utf-8', sep='\t')
-    data_old['idcard_addr_new'] = "NULL"
+    data_old['idcard_addr_new'] = "null"
     #flag判断地址字符中是否含有多个省名,如果只有一个，就确定它属于哪个省，如果有多个省名，则给出提示。
     data_old['flag_province'] = 0
     data_old['flag_city'] = 0

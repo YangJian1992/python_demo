@@ -29,6 +29,7 @@ import scrapy
 from bs4 import BeautifulSoup
 import math
 import json
+import requests
 
 
 
@@ -45,4 +46,7 @@ if __name__ == '__main__':
     #
     # print(data)
     # print(data.set_index('b',  drop=False))
-    
+    url = 'http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/tutorial.html'
+    response = requests.get(url)
+    print(response.encoding)
+
