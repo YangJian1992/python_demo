@@ -10,6 +10,66 @@ from call_history_addr_alter import mysql_connection as my
 1.根据地区编号来查找。先改写直辖市，特别行政区，再考虑省辖县，
 """
 
+#如果只是根据地址编号添加统一格式，可以用下面这个函数
+def district():
+    path = "D:\\work\\database\\province-city\\"
+    file_name = "province_city_rule"
+    # 读取json文件
+    with open(path + file_name + '.json', encoding='utf-8') as file:
+        data = json.load(file)
+
+    data = Series(data)
+    print(data.reset_index().dtypes)
+    index_new = []
+    for index in data.index:
+        index_new.append(int(index))
+    #原地址规则文件
+    data = DataFrame(data, columns=['addr'])
+
+    # data.reset_index(inplace=True)
+    # print(data)
+    data['id'] = index_new
+    print(data.dtypes)
+    # # data.to_csv(path + file_name + '.csv', sep='\t', encoding='utf-8', index=False)
+    # # writer = pd.ExcelWriter(path + file_name + '.xlsx')
+    # # data.to_excel(writer, 'sheet')
+    # # writer.save()
+    # # data_old = pd.read_excel(path + file_name + '_all.xlsx', sheetname=1)
+    # # print(data_old.dtypes)
+    # # print(data_old)
+    data['new_addr'] = 'null'
+    data['province_code'] = data['id']//10000
+#北京、天津、上海，重庆，澳门、香港
+    # print(data[data['id']//10000==11])
+    for num in [11, 12, 31, 50]:
+        index_zhixia = data[data['id']//10000==num].index
+        item_zhixia = data[data['id']==num*10000]['addr'].values
+        data.ix[index_zhixia, ['new_addr']] = item_zhixia + ',' + item_zhixia
+        # print( data.ix[index_zhixia, ['new_addr']])
+    data.ix["810000":"810118", 'new_addr'] = '香港特别行政区'
+    data.ix["820000":"820109", 'new_addr'] = '澳门特别行政区'
+#直辖县，第三位为9， 如469001	五指山市
+    county_direct_index = data[data['id']%10000//1000==9].index
+    # print(data.ix[county_direct_index])
+    for index in county_direct_index:
+        province = data.ix[index[0:2] + '0000', 'addr']
+        data.ix[index, ['new_addr']] = province + ',' + data.ix[index, 'addr']
+    print(data.ix['429004'])
+#普通的二级行政区
+    for item, group in data.groupby('province_code'):
+        province = group.ix[str(item) + '0000', 'addr']
+        for index_2 in group.index:
+            if group.ix[index_2, 'new_addr'] == 'null':
+                #不是省名
+                if data.ix[index_2, 'id']%10000!=0 and data.ix[index_2, 'id']%10000//1000!=9:
+                    city_2 = group.ix[index_2[:4] + '00', 'addr']
+                    data.ix[index_2, 'new_addr'] = province + ',' + city_2
+    print(data)
+
+    writer = pd.ExcelWriter(path + file_name + '_alter.xlsx')
+    data.to_excel(writer, 'sheet1')
+    writer.save()
+
 #使用mysql语句将数据库中文件生成本地csv文件，方便后续操作，无返回值。
 def get_local_data():
     #计算时间
@@ -136,4 +196,5 @@ def read_local_data():
 
 if __name__ == '__main__':
     # get_local_data()
+    # district()
     read_local_data()
