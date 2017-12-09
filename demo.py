@@ -1,46 +1,5 @@
-# import os
-# import sys
-# import gc
-# import re
-# import smtplib
-# from pandas import Series, DataFrame
-# from email.mime.text import MIMEText
-# from email.header import Header
-# import pandas as pd
-# import time
-# import datetime
-# import threading
-# import webbrowser
-# from collections import  Iterator
-# import copy
-# from urllib import parse
-# import urllib.request
-# import operator
-# from collections import Counter
-# import logging
-# import itertools
-# import matplotlib.pyplot as plt
-# import numpy as np
-# import datetime
-# import dateutil.parser as dp
-# import pytz
-# import tkinter
-# import scrapy
-# from bs4 import BeautifulSoup
-#
-#
-# import math
+# -*- coding:utf-8 -*-
 
-
-# import os
-# import sys
-# import gc
-# import re
-# import smtplib
-# from pandas import Series, DataFrame
-# from email.mime.text import MIMEText
-# from email.header import Header
-# import pandas as pd
 import time
 # import datetime
 # import threading
@@ -79,4 +38,3 @@ if __name__ == '__main__':
             for k in range(100):
                 i**j
     print('时间为{time}'.format(time=(time.time()-start)))
-
