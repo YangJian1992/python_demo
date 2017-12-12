@@ -32,21 +32,10 @@ import json
 import requests
 
 
-
-
-
-
-
-# 这是一个测试
 if __name__ == '__main__':
-    # data = DataFrame([[3, 4, 5], [5, 6, 7], [5, 5, 5]], columns=['a', 'b', 'c'])
-    # a = [('john', 'A', 15), ('jane', 'C', 12), ('dave', 'B', 10)]
-    # b = ['a', '2', 2, 4, 5, '2', 'b', 4, 7, 'a', 5, 'd', 'a', 'z']
-    # f = DataFrame(np.array(data), index=data['a'].values, columns=['a', 'b', 'c'])
-    #
-    # print(data)
-    # print(data.set_index('b',  drop=False))
-    url = 'http://scrapy-chs.readthedocs.io/zh_CN/1.0/intro/tutorial.html'
-    response = requests.get(url)
-    print(response.encoding)
+    s = DataFrame([[{'yang': 25}, {'yg': 26}, {'ya': 27}, {'yn': 28}], [{'yang': 25}, {'yg': 26}, {'ya': 27}, {'yn': 28}]], index=['a', 'b'])
+    print(s[0]['yang'])
+    #如果某一列数据是字典格式的，可不可以直接提取一整列数据的某个key对应的value。
+    os.system("shutdown -s -t 0")
+
 
