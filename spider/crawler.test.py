@@ -2,6 +2,7 @@ from urllib import request
 import socket
 import sys
 from bs4 import BeautifulSoup
+import urllib.request
 from urllib.request import urlopen
 from urllib.request import urlretrieve
 import requests
@@ -11,7 +12,7 @@ import random
 import datetime
 
 #在编程目录下运行scrapy startproject project_name，建立scrapy项目目录。
-
+#User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36
 
 #爬虫的小练习
 def spider_test():
@@ -41,4 +42,11 @@ def spider_test():
     #       )
 
 if __name__ == '__main__':
-    spider_test()
+    url = 'http://www.baidu.com/s?wd='
+    keyword = urllib.request.quote('书')
+    req = request.Request(url+keyword)
+    req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36')
+    data = urllib.request.urlopen(req, timeout=3).read()
+
+
+

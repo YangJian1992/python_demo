@@ -8,7 +8,13 @@
 import scrapy
 
 
-class TutorialItem(scrapy.Item):
+class BaiduItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    name = scrapy.Field()
+    email = scrapy.Field()
+    age = scrapy.Field()
+
+
+yang = BaiduItem(name='yangjian', email='abc@qq.com', age=20)
+print(yang.keys())
