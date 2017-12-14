@@ -31,6 +31,8 @@ import math
 import json
 import requests
 import pymysql
+
+
 # 连接到数据库，输入参数为查询语句字符串，用'''表示，第二个参数为列名，返回查询到的DataFrame格式的数据
 def mysql_connection(select_string, columns_add):
         start = time.time()
@@ -69,7 +71,7 @@ def receiver_drop_duplicates(data):
 
 if __name__ == '__main__':
     path = 'D:\\work\\bang_miao_pei\\'
-    file = 'overdue'
+    file = 'not_overdue'
     select_string = '''
     SELECT
 	ca.mobile,
@@ -97,13 +99,13 @@ FROM
     WHERE
         ulo.first_loan = 1
             AND ulo.loan_status = 2
-            AND ulo.overdue_days > 0
+            AND ulo.overdue_days = 0
             AND LEFT(ulo.create_time, 7) = '2017-09'
-    LIMIT 2000) AS ca
+    LIMIT 500) AS ca
         LEFT JOIN
     call_history AS ch ON ch.mobile = ca.mobile
 WHERE
-    LEFT(ch.call_time, 7) BETWEEN '2017-09' AND '2017-11';
+    LEFT(ch.call_time, 7) BETWEEN '2017-06' AND '2017-08';
     '''
     columns_add = ['mobile', 'receiver', 'id', 'user_id', 'create_time', 'first_loan', 'loan_status', 'overdue_days', 'overdue_status']
     data = mysql_connection(select_string, columns_add)
