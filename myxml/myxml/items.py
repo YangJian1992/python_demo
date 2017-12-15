@@ -8,13 +8,10 @@
 import scrapy
 
 
-class TutorialItem(scrapy.Item):
+class MyxmlItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    name = scrapy.Field()
-    email = scrapy.Field()
-    age = scrapy.Field()
+    title = scrapy.Field()
+    link = scrapy.Field()
+    author = scrapy.Field()
 
-
-# yang = TutorialItem(name='yangjian', email='abc@qq.com', age=20)
-# print(yang['name'])

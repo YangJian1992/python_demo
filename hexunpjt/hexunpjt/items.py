@@ -8,13 +8,11 @@
 import scrapy
 
 
-class TutorialItem(scrapy.Item):
+class HexunpjtItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    #博客分别是姓名、链接、点击数、评论
     name = scrapy.Field()
-    email = scrapy.Field()
-    age = scrapy.Field()
-
-
-# yang = TutorialItem(name='yangjian', email='abc@qq.com', age=20)
-# print(yang['name'])
+    url = scrapy.Field()
+    hits = scrapy.Field()
+    comment = scrapy.Field()
