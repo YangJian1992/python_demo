@@ -31,12 +31,6 @@ import math
 import json
 import requests
 import pymysql
-path = 'D:\\work\\bang_miao_pei\\'
-file = 'cui_shou'
-data = pd.read_csv(path + file +'.csv', sep=',', encoding='utf-8')
-print(data.dtypes)
-data['mobile'] = data['mobile'].astype('str', errors='raise')
-print(data.dtypes)
-writer = pd.ExcelWriter(path + file + '.xlsx')
-data.to_excel(writer, 'sheet')
-writer.save()
+
+string_1 = 'python_2_3'
+print(re.search('python.*?_', string_1))
