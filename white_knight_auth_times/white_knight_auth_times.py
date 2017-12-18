@@ -80,16 +80,21 @@ def data_analysis(data):
     print('data_2的行数为{times}__________'.format(times=len(data_2)))
     print('data_3的行数为{times}__________'.format(times=len(data_3)))
     # print(data_2)
-    # data_2['data'] = 'null'
-    # data_2['detail'] = 'null'
-    # data_2['detail'] = data_2['risks'].str.extract('(白骑士多头查询总数:.*}]$)')
-    # data_2['detail'] = data_2['detail'].str.slice(0, -3)
-    # data_2['data'] = data_2['risks'].str.extract('("data":.*;)')
-    # data_2['data'] = data_2['data'].str.slice(8, )
-    #
-    # path = 'D:\\work\\database\\white_knight_auth_times\\'
-    # file = 'white_knight_auth_times_data_2'
-    # data_2.to_csv(path+file+'.csv', sep='\t', encoding='utf-8', index=False)
+    data_2['data'] = 'null'
+    data_2['detail'] = 'null'
+    data_2['data'] = data_2['risks'].str.extract('("data":.*;)')
+    data_2['data'] = data_2['data'].str.slice(8,-1 )
+    data_2['data'] = data_2['data'].str.split(';')
+
+    data_2['detail'] = data_2['risks'].str.extract('(白骑士多头查询总数:.*}]$)')
+    data_2['detail'] = data_2['detail'].str.slice(0, -4)
+    data_2['detail'] = data_2['detail'].str.findall('总数.*?(总数)?')
+
+
+
+    path = 'D:\\work\\database\\white_knight_auth_times\\'
+    file = 'white_knight_auth_times_data_2'
+    data_2.to_csv(path+file+'.csv', sep='\t', encoding='utf-8', index=False)
 
 
 
