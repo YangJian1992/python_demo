@@ -32,5 +32,8 @@ import json
 import requests
 import pymysql
 
-string_1 = 'python_2_3'
-print(re.search('python.*?_', string_1))
+a='{"a":3}'
+print(type(json.loads(a)))
+
+# print(DataFrame((data_dict['data']["transportation"][0])['origin']['total_contact_info']))
+# print(DataFrame((data_dict['data']["transportation"][0])['operator_callprofile']['total_contact_info']))
