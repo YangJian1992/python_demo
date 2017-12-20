@@ -32,8 +32,39 @@ import json
 import requests
 import pymysql
 
-a='{"a":3}'
-print(type(json.loads(a)))
+# a='{"a":3}'
+# print(type(json.loads(a)))
 
 # print(DataFrame((data_dict['data']["transportation"][0])['origin']['total_contact_info']))
 # print(DataFrame((data_dict['data']["transportation"][0])['operator_callprofile']['total_contact_info']))
+# with open('C:\\Users\\QDD\\Desktop\\1.txt', 'r') as file:
+#     data = file.read()
+# print(type(data))
+# print(data)
+# print(json.loads(data))
+# data = DataFrame([{"a":3, 'b':5}, {"a":3,'b':5}
+# ])
+# data = [3, 4, 5]
+# for i in range(3):
+#     data.append(i)
+#
+# print(data)
+# import re
+data = 'abc123def2'
+if 'abc1' in data:
+    data_list = re.findall('\d+', data)
+    print(type(data_list[0]))
+# print(data_list)
+# def count_call_time(time_list):
+#     if len(time_list) == 3:
+#         return (time_list[0]*3600+time_list[1]*60+time_list[2])
+#     elif len(time_list) == 2:
+#         return time_list[0]*60+time_list[1]
+#     elif len(time_list) == 1:
+#         return time_list[0]
+#     else:
+#         print("通话时间数据格式有误，请检查。")
+# data = DataFrame()
+# print(data.index)
+# print(len(data.index))
+
