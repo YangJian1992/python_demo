@@ -50,45 +50,32 @@ def get_local_file(m):
     path = 'D:\\work\\dian_hua_bang\\cui_shou_fen\\test_data_2\\'
     file = 'operator_info_test_{num}'.format(num=m+1)
     select_string = '''
- SELECT 
-    uu.id,
-    uu.user_id,
-    uu.create_time,
-    uu.first_loan,
-    uu.loan_status,
-    uu.overdue_days,
-    uu.overdue_status,
-    uu.repay_status,
-    uu.mobile,
+  SELECT 
+    ulo.id,
+    ulo.user_id,
+    ulo.create_time,
+    ulo.first_loan,
+    ulo.loan_status,
+    ulo.overdue_days,
+    ulo.overdue_status,
+    ulo.repay_status,
+    oi.mobile,
     oi.data_src,
     oi.reg_time,
     oi.is_valid,
     oi.skip
 FROM
-    (SELECT 
-            ulo.id,
-            ulo.user_id,
-            ulo.create_time,
-            ulo.first_loan,
-            ulo.loan_status,
-            ulo.overdue_days,
-            ulo.overdue_status,
-            ulo.repay_status,
-            users.mobile
-    FROM
-        user_loan_orders AS ulo
-    INNER JOIN users ON users.id = ulo.user_id
-    WHERE
-        ulo.first_loan = 1
-            AND ulo.loan_status = 2
-            AND LEFT(ulo.create_time, 7) = '2017-09') AS uu
+    user_loan_orders AS ulo
         INNER JOIN
-    operator_info AS oi ON oi.user_id = uu.user_id
+    operator_info AS oi ON oi.user_id = ulo.user_id
 WHERE
-    oi.skip = 2
-order by uu.user_id
+    ulo.first_loan = 1
+        AND ulo.loan_status = 2
+        AND LEFT(ulo.create_time, 7) = '2017-09'
+        AND oi.skip = 2
+ORDER BY oi.create_time
 limit {m}, {n}
-    '''.format(m=m*500, n=m*500+500)
+    '''.format(m=m*250, n=m*250+250)
     # columns_add = ['id', 'user_id', 'mobile', 'name', 'reg_time', 'is_valid', 'id_card', 'create_time', 'data_src', 'skip']
     data = mysql_connection(select_string)
     print('已经从数据库获得数据，正在生成本地文件，请稍候...')
@@ -243,9 +230,12 @@ def get_result_file():
 
 if __name__ == '__main__':
     # read_analysis_file(0)
-    for num in range(6, 16):
+    for num in range(0, 32):
+        start = time.time()
+        print('\n正在处理第{num}块数据，共32块数据。请稍候。。。'.format(num=num+1))
         get_local_file(num)
         read_analysis_file(num)
+        print('第{num}块数据处理完毕，共花费{time}s'.format(num=num, time=time.time()-start))
     get_result_file()
     # data_list=[[] for i in range(3)]
     # file_list = os.listdir(path)
