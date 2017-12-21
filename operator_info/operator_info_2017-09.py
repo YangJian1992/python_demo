@@ -5,6 +5,8 @@ import time
 import json
 import pymysql
 import os
+import numpy as np
+import datetime
 '''
 这个文件是用来得到电话邦催收分的测试数据。通话详单的create_time为2017年9月
 '''
@@ -86,7 +88,7 @@ WHERE
     oi.skip = 2
 order by uu.user_id
 limit {m}, {n}
-    '''.format(m=m*1000, n=m+200)
+    '''.format(m=m*1000, n=m*1000+1000)
     # columns_add = ['id', 'user_id', 'mobile', 'name', 'reg_time', 'is_valid', 'id_card', 'create_time', 'data_src', 'skip']
     data = mysql_connection(select_string)
     print('已经从数据库获得数据，正在生成本地文件，请稍候...')
@@ -104,14 +106,14 @@ def count_call_time(time_list):
         elif len(time_list) == 1:
             return time_list[0]
         else:
-            return (-1)
+            print('error')
 
 
 #读取本地文件
 def read_analysis_file(num):
     print('read_analysis_file()开始执行，请稍候。。。')
     path = 'D:\\work\\dian_hua_bang\\cui_shou_fen\\test_data_2\\'
-    file = 'operator_info_test_{num}'.format(num=num)
+    file = 'operator_info_test_{num}'.format(num=num+1)
     data = pd.read_csv(path+file+'.csv', sep='\t', encoding='utf-8')
     start = time.time()
     #用字符串填充空数据
@@ -126,11 +128,11 @@ def read_analysis_file(num):
         if data.loc[index, 'skip'] == 2:
             #建立一张空列表，用来存放某个用户的通话详情
             data_user_list = []
-            user_id = data.loc[index, 'user_id']
+            # user_id = data.loc[index, 'user_id']
             mobile = data.loc[index, 'mobile']
-            is_valid = data.loc[index, 'is_valid']
-            skip = data.loc[index, 'skip']
-            create_time = data.loc[index, 'create_time']
+            # is_valid = data.loc[index, 'is_valid']
+            # skip = data.loc[index, 'skip']
+            # create_time = data.loc[index, 'create_time']
             #解析data_src字段，获取通话详情
             data_src = data.loc[index, 'data_src']
             data_src = json.loads(data_src)
@@ -147,27 +149,31 @@ def read_analysis_file(num):
                 #每个用户的通话数据表， 因为data_user_list可能为空, 无法concat，会报错。
                 if len(data_user_list) != 0:
                     data_user = pd.concat(data_user_list, ignore_index=True)
-                    data_user['user_id'] = user_id
+                    # data_user['user_id'] = user_id
                     data_user['mobile'] = mobile
-                    data_user['is_valid'] = is_valid
-                    data_user['skip'] = skip
-                    data_user['create_time'] = create_time
+                    # data_user['is_valid'] = is_valid
+                    # data_user['skip'] = skip
+                    # data_user['create_time'] = create_time
+                    print(data_user)
                     call_list.append(data_user)
-    #所有用户的通话数据表
-    data = pd.concat(call_list, ignore_index=True)
+    #删除‘data_src’列， 减少内存
+    del data['data_src']
+    data_users_all = pd.concat(call_list, ignore_index=True)
+    #将两张表作笛卡尔积，为了将data中的字段添加到另一张表中
+    data = pd.merge(data, data_users_all, on='mobile', how='inner')
 
     data.to_csv(path + file + '_analysis.csv', sep='\t', encoding='utf-8', index=False)
-    print('read_analysis_file()已结束，请稍候。。。')
+    print('read_analysis_file()已结束，共花费%ds，请稍候。。。'%(time.time()-start))
 
 
 #再次处理数据，把时间换算成秒，并加上逾期标签。
 def analysis(data):
+
     data['mobile'] = data['mobile'].astype('str', errors='raise')
     data['another_nm'] = data['another_nm'].astype('str', errors='raise')
     data['call_duration'] = data['comm_time'].str.findall('\d+')
     print(data['call_duration'])
     data['call_duration'] = data['call_duration'].map(lambda x: count_call_time(x))
-    print(data['call_duration'])
     data['uid'] = 'uid' + data['mobile']
     #逾期标签
     data['level'] = 'null'
@@ -182,9 +188,12 @@ def analysis(data):
     overdue_index_2 = data[(data['overdue_status'] == 1) & (data['repay_status'] != 2)].index
     if len(overdue_index_2) != 0:
         data.ix[overdue_index_2, ['level']] = '逾期未还'
-    data_2 = data['uid', 'another_nm', 'call_duration', 'start_time', 'comm_mode', 'create_time', 'level']
-    data_2 = DataFrame(data_2, columns=['uid', 'other_tel', 'call_duration', 'start_time', 'call_type', 'search_time'])
-    data_3 = data['uid', 'level']
+
+    # print(data, '****************************************************************************\n')
+    data_2 = data[['uid', 'another_nm', 'call_duration', 'start_time', 'comm_mode', 'create_time']]
+    # print(data_2, '***********************************************************  data_2\n')
+    data_2 = DataFrame(np.array(data_2), columns=['uid', 'other_tel', 'call_duration', 'start_time', 'call_type', 'search_time'])
+    data_3 = data[['uid', 'level']]
     return [data, data_2, data_3]
 # def a():
 #     with open('C:\\Users\\QDD\\Desktop\\1.txt', 'r') as file:
@@ -219,11 +228,10 @@ def analysis(data):
 
 
 if __name__ == '__main__':
-    # get_local_file()
+    # read_analysis_file(0)
     for num in range(8):
         get_local_file(num)
         read_analysis_file(num)
-        break
     path = 'D:\\work\\dian_hua_bang\\cui_shou_fen\\test_data_2\\'
     data_list=[[] for i in range(3)]
     file_list = os.listdir(path)
@@ -239,7 +247,7 @@ if __name__ == '__main__':
     for key, item in enumerate(data_list):
         data = pd.concat(item, ignore_index=True)
         data.to_csv(path + 'data_result_{key}.csv'.format(key=key), encoding='utf-8', sep='\t')
-    data_drop = data_list[0].drop_duplicates('user_id')
+    data_drop = data_list[0][0].drop_duplicates('user_id')
     print(len(data_drop))
 
 

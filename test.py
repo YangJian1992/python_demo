@@ -31,6 +31,7 @@ import math
 import json
 import requests
 import pymysql
+from dateutil.parser import parse
 
 # a='{"a":3}'
 # print(type(json.loads(a)))
@@ -42,7 +43,12 @@ import pymysql
 # print(type(data))
 # print(data)
 # print(json.loads(data))
-# data = DataFrame([{"a":3, 'b':5}, {"a":3,'b':5}
+# data = DataFrame([{"a":3, 'b':5}, {"a":3,'b':5}])
+# data = DataFrame(data, columns=['a', 'c'])
+# print(data
+#       )
+# print(data.columns)
+# print('a' in data.columns)
 # ])
 # data = [3, 4, 5]
 # for i in range(3):
@@ -50,10 +56,10 @@ import pymysql
 #
 # print(data)
 # import re
-data = 'abc123def2'
-if 'abc1' in data:
-    data_list = re.findall('\d+', data)
-    print(type(data_list[0]))
+# data = 'abc123def2'
+# if 'abc1' in data:
+#     data_list = re.findall('\d+', data)
+#     print(type(data_list[0]))
 # print(data_list)
 # def count_call_time(time_list):
 #     if len(time_list) == 3:
@@ -67,4 +73,8 @@ if 'abc1' in data:
 # data = DataFrame()
 # print(data.index)
 # print(len(data.index))
+print(parse('2017-09-22 08:13:50'))
+print(datetime.datetime.now())
+print(datetime.datetime.strptime('2017-09-22 08:13:50', '%Y-%m-%d %H:%M:%S'))
+print(time.mktime((datetime.datetime.strptime('2017-09-22 08:13:50', '%Y-%m-%d %H:%M:%S'))))
 
