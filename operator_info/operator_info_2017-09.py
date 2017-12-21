@@ -88,7 +88,7 @@ WHERE
     oi.skip = 2
 order by uu.user_id
 limit {m}, {n}
-    '''.format(m=m*1000, n=m*1000+1000)
+    '''.format(m=m*500, n=m*500+500)
     # columns_add = ['id', 'user_id', 'mobile', 'name', 'reg_time', 'is_valid', 'id_card', 'create_time', 'data_src', 'skip']
     data = mysql_connection(select_string)
     print('已经从数据库获得数据，正在生成本地文件，请稍候...')
@@ -154,21 +154,19 @@ def read_analysis_file(num):
                     # data_user['is_valid'] = is_valid
                     # data_user['skip'] = skip
                     # data_user['create_time'] = create_time
-                    print(data_user)
+                    # print(data_user)
                     call_list.append(data_user)
     #删除‘data_src’列， 减少内存
     del data['data_src']
     data_users_all = pd.concat(call_list, ignore_index=True)
     #将两张表作笛卡尔积，为了将data中的字段添加到另一张表中
     data = pd.merge(data, data_users_all, on='mobile', how='inner')
-
     data.to_csv(path + file + '_analysis.csv', sep='\t', encoding='utf-8', index=False)
     print('read_analysis_file()已结束，共花费%ds，请稍候。。。'%(time.time()-start))
 
 
 #再次处理数据，把时间换算成秒，并加上逾期标签。
 def analysis(data):
-
     data['mobile'] = data['mobile'].astype('str', errors='raise')
     data['another_nm'] = data['another_nm'].astype('str', errors='raise')
     data['call_duration'] = data['comm_time'].str.findall('\d+')
@@ -189,11 +187,11 @@ def analysis(data):
     if len(overdue_index_2) != 0:
         data.ix[overdue_index_2, ['level']] = '逾期未还'
 
-    # print(data, '****************************************************************************\n')
+    print(data, '****************************************************************************\n')
     data_2 = data[['uid', 'another_nm', 'call_duration', 'start_time', 'comm_mode', 'create_time']]
     # print(data_2, '***********************************************************  data_2\n')
     data_2 = DataFrame(np.array(data_2), columns=['uid', 'other_tel', 'call_duration', 'start_time', 'call_type', 'search_time'])
-    data_3 = data[['uid', 'level']]
+    data_3 = data[['uid', 'level']].drop_duplicates('uid')
     return [data, data_2, data_3]
 # def a():
 #     with open('C:\\Users\\QDD\\Desktop\\1.txt', 'r') as file:
@@ -221,6 +219,22 @@ def analysis(data):
 #
 #     return data
 
+def get_result_file():
+    path = 'D:\\work\\dian_hua_bang\\cui_shou_fen\\test_data_2\\'
+    file_list = os.listdir(path)
+    file_list_2 = []
+    for item in file_list:
+        if 'analysis' in item:
+            file_list_2.append(item)
+    print(file_list_2)
+    for key, name in enumerate(file_list_2):
+        data = pd.read_csv(path + name, sep='\t', encoding='utf-8')
+        data_result_list = analysis(data)
+        for key_2, result_item in enumerate(data_result_list):
+            name_index = name.rfind('_')
+            result_item.to_csv(path + 'result\\' + name[:name_index] + '_result_{key_2}.csv'.format(key_2=key_2), sep='\t',
+                               encoding='utf-8')
+
 
 
 
@@ -229,26 +243,27 @@ def analysis(data):
 
 if __name__ == '__main__':
     # read_analysis_file(0)
-    for num in range(8):
+    for num in range(6, 16):
         get_local_file(num)
         read_analysis_file(num)
-    path = 'D:\\work\\dian_hua_bang\\cui_shou_fen\\test_data_2\\'
-    data_list=[[] for i in range(3)]
-    file_list = os.listdir(path)
-    print(file_list)
-    for key, name in enumerate(file_list):
-        print('开始for')
-        if 'analysis' in name:
-            data = pd.read_csv(path+name, sep='\t', encoding='utf-8')
-            data_result_list = analysis(data)
-            print(data)
-            for key, item in enumerate(data_list):
-                item.append(data_result_list[key])
-    for key, item in enumerate(data_list):
-        data = pd.concat(item, ignore_index=True)
-        data.to_csv(path + 'data_result_{key}.csv'.format(key=key), encoding='utf-8', sep='\t')
-    data_drop = data_list[0][0].drop_duplicates('user_id')
-    print(len(data_drop))
+    get_result_file()
+    # data_list=[[] for i in range(3)]
+    # file_list = os.listdir(path)
+    # print(file_list)
+    # for key, name in enumerate(file_list):
+    #     print('开始for')
+    #     if 'analysis' in name:
+    #         data = pd.read_csv(path+name, sep='\t', encoding='utf-8')
+    #         data_result = analysis(data)
+    #         data_result.to_csv(path+'result_'+name, sep='\t', encoding='utf-8')
+    #         # print(data)
+    #         # for key, item in enumerate(data_list):
+    #         #     item.append(data_result_list[key])
+    # for key, item in enumerate(data_list):
+    #     data = pd.concat(item, ignore_index=True)
+    #     data.to_csv(path + 'data_result_{key}.csv'.format(key=key), encoding='utf-8', sep='\t')
+    # data_drop = data_list[0][0].drop_duplicates('user_id')
+    # print(len(data_drop))
 
 
     # os.system('shutdown -s -t 0')

@@ -13,7 +13,7 @@
     <SUITE FILE_PATH="coverage/python_demo$crawler_test.coverage" NAME="crawler.test Coverage Results" MODIFIED="1513229984972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" />
     <SUITE FILE_PATH="coverage/python_demo$idcard_district_alter.coverage" NAME="idcard_district_alter Coverage Results" MODIFIED="1512542679277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/call_history_addr_alter" />
     <SUITE FILE_PATH="coverage/python_demo$shumei_data.coverage" NAME="shumei_data Coverage Results" MODIFIED="1511427864687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/python_demo$operator_info_2017_09.coverage" NAME="operator_info_2017-09 Coverage Results" MODIFIED="1513825967238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/operator_info" />
+    <SUITE FILE_PATH="coverage/python_demo$operator_info_2017_09.coverage" NAME="operator_info_2017-09 Coverage Results" MODIFIED="1513839522447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/operator_info" />
     <SUITE FILE_PATH="coverage/python_demo$user_loan_amount.coverage" NAME="user_loan_amount Coverage Results" MODIFIED="1513575490615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/user_loan_order" />
     <SUITE FILE_PATH="coverage/python_demo$nltk_test.coverage" NAME="nltk_test Coverage Results" MODIFIED="1512526776910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nltk" />
     <SUITE FILE_PATH="coverage/python_demo$credit_profile_county_null.coverage" NAME="credit_profile_county_null Coverage Results" MODIFIED="1512614028390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/call_history_addr_alter" />
@@ -43,8 +43,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="75" column="33" lean-forward="false" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
+            <state relative-caret-position="506">
+              <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -55,15 +55,15 @@
       <file leaf-file-name="operator_info_2017-09.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/operator_info/operator_info_2017-09.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="253" column="35" lean-forward="true" selection-start-line="253" selection-start-column="35" selection-end-line="253" selection-end-column="35" />
+            <state relative-caret-position="112">
+              <caret line="37" column="30" lean-forward="true" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="32" />
               <folding>
                 <element signature="e#1#37#0" expanded="true" />
-                <element signature="e#7497#7507#0" expanded="false" />
-                <marker date="1513825919389" expanded="true" signature="1840:2691" ph="SELECT * FRO... operator_info" />
-                <marker date="1513825919389" expanded="true" signature="1841:2688" ph="SELECT uu.id... id" />
-                <marker date="1513825919389" expanded="true" signature="1841:2691" ph="SELECT uu.id... id" />
-                <marker date="1513825919389" expanded="true" signature="2088:2557" ph="SELECT ulo.i... user_loan_orders" />
+                <element signature="e#7515#7525#0" expanded="false" />
+                <marker date="1513839589288" expanded="true" signature="1840:2691" ph="SELECT * FRO... operator_info" />
+                <marker date="1513839589288" expanded="true" signature="1841:2688" ph="SELECT uu.id... id" />
+                <marker date="1513839589288" expanded="true" signature="1841:2691" ph="SELECT uu.id... id" />
+                <marker date="1513839589288" expanded="true" signature="2088:2557" ph="SELECT ulo.i... user_loan_orders" />
               </folding>
             </state>
           </provider>
@@ -190,7 +190,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="736" />
     <option name="height" value="1038" />
@@ -412,7 +412,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16040772" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -421,7 +421,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32918552" sideWeight="0.4892704" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2658371" sideWeight="0.4892704" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47850677" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -735,16 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="75" column="33" lean-forward="false" selection-start-line="75" selection-start-column="33" selection-end-line="75" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/operator_info/operator_info_2017-09_result.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2186">
@@ -757,17 +747,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/operator_info/operator_info_2017-09.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="253" column="35" lean-forward="true" selection-start-line="253" selection-start-column="35" selection-end-line="253" selection-end-column="35" />
+        <state relative-caret-position="112">
+          <caret line="37" column="30" lean-forward="true" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="32" />
           <folding>
             <element signature="e#1#37#0" expanded="true" />
-            <element signature="e#7497#7507#0" expanded="false" />
-            <marker date="1513825919389" expanded="true" signature="1840:2691" ph="SELECT * FRO... operator_info" />
-            <marker date="1513825919389" expanded="true" signature="1841:2688" ph="SELECT uu.id... id" />
-            <marker date="1513825919389" expanded="true" signature="1841:2691" ph="SELECT uu.id... id" />
-            <marker date="1513825919389" expanded="true" signature="2088:2557" ph="SELECT ulo.i... user_loan_orders" />
+            <element signature="e#7515#7525#0" expanded="false" />
+            <marker date="1513839589288" expanded="true" signature="1840:2691" ph="SELECT * FRO... operator_info" />
+            <marker date="1513839589288" expanded="true" signature="1841:2688" ph="SELECT uu.id... id" />
+            <marker date="1513839589288" expanded="true" signature="1841:2691" ph="SELECT uu.id... id" />
+            <marker date="1513839589288" expanded="true" signature="2088:2557" ph="SELECT ulo.i... user_loan_orders" />
           </folding>
         </state>
       </provider>

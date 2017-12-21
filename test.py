@@ -73,8 +73,9 @@ from dateutil.parser import parse
 # data = DataFrame()
 # print(data.index)
 # print(len(data.index))
-print(parse('2017-09-22 08:13:50'))
 print(datetime.datetime.now())
-print(datetime.datetime.strptime('2017-09-22 08:13:50', '%Y-%m-%d %H:%M:%S'))
-print(time.mktime((datetime.datetime.strptime('2017-09-22 08:13:50', '%Y-%m-%d %H:%M:%S'))))
+import time
+t = time.strptime('2017-09-22 08:13:50', '%Y-%m-%d %H:%M:%S')
+print(t)
+print(time.mktime(t))
 
