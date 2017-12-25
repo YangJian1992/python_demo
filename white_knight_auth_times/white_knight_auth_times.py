@@ -86,16 +86,22 @@ def read_local_file():
     file = 'white_knight_days0'
     data = pd.read_csv(path+file+'.csv', sep=',', encoding='utf-8')
     data['rule_0'] = 'null'
+    data['rule_0_0总数'] = 0
     data['data_0'] = 'null'
     data_rule = data[data['risks'].str.contains('总数')]
     data_rule_0 = data_rule['risks'].str.extract('(总数.+data)').str[0:-7].str.replace('总数', '#总数').str.split('#').str[1:]
     index_0 = data_rule_0.index
+    data_rule_0_0 = data_rule_0.str[0].str.extract('((?<=总数:)\d+)').astype('int')
+    print(data_rule_0.str[0])
+    index_0_0 = data_rule_0.index
+    print(data_rule_0_0)
     data_rule_1 = data_rule['risks'].str.extract('(data.+credit)').str[7:-9].str.split(';').str[:-1]
     index_1 = data_rule_1.index
     data.ix[index_0,'rule_0'] = data_rule_0
     data.ix[index_1, 'data_0'] = data_rule_1
+    data.ix[index_0_0, 'rule_0_0总数'] = data_rule_0_0
     data.to_csv(path+file+'_analysis.csv', encoding="gbk", sep=',')
-    print(data)
+    # print(data)
 
 
     # return data
