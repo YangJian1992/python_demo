@@ -75,7 +75,7 @@ WHERE
         AND oi.skip = 2
 ORDER BY oi.create_time
 limit {m}, {n}
-    '''.format(m=m*250, n=m*250+250)
+    '''.format(m=m*100, n=m*100+100)
     # columns_add = ['id', 'user_id', 'mobile', 'name', 'reg_time', 'is_valid', 'id_card', 'create_time', 'data_src', 'skip']
     data = mysql_connection(select_string)
     print('已经从数据库获得数据，正在生成本地文件，请稍候...')
@@ -98,57 +98,61 @@ def count_call_time(time_list):
 
 #读取本地文件
 def read_analysis_file(num):
+    start = time.time()
     print('read_analysis_file()开始执行，请稍候。。。')
     path = 'D:\\work\\dian_hua_bang\\cui_shou_fen\\test_data_2\\'
     file = 'operator_info_test_{num}'.format(num=num+1)
-    data = pd.read_csv(path+file+'.csv', sep='\t', encoding='utf-8')
-    start = time.time()
-    #用字符串填充空数据
-    data.fillna('null')
-    #先把data['data_src']数据转换成字典格式
-    # fun1 = lambda x : json.dumps(x)
-    # fun2 = lambda x : json.loads(x)
-    # data['data_src'] = data['data_src'].map(fun1)
-    # data['data_src'] = data['data_src'].map(fun2)
-    call_list = []
-    for index in data.index:
-        if data.loc[index, 'skip'] == 2:
-            #建立一张空列表，用来存放某个用户的通话详情
-            data_user_list = []
-            # user_id = data.loc[index, 'user_id']
-            mobile = data.loc[index, 'mobile']
-            # is_valid = data.loc[index, 'is_valid']
-            # skip = data.loc[index, 'skip']
-            # create_time = data.loc[index, 'create_time']
-            #解析data_src字段，获取通话详情
-            data_src = data.loc[index, 'data_src']
-            data_src = json.loads(data_src)
-            #该用户六个月的通话记录
-            if 'call_info' in data_src['data']["transportation"][0]['origin']:
-                call_six_monthes = data_src['data']["transportation"][0]['origin']['call_info']['data']
-                # print(call_six_monthes)
-                #把每个月的通话记录，转换成df格式，并添加到空表中去，存在没有‘detail'的情况。
-                for item in call_six_monthes:
-                    if 'details' in item:
-                        data_item = DataFrame(item["details"])
-                        # print(data_item)
-                        data_user_list.append(data_item)
-                #每个用户的通话数据表， 因为data_user_list可能为空, 无法concat，会报错。
-                if len(data_user_list) != 0:
-                    data_user = pd.concat(data_user_list, ignore_index=True)
-                    # data_user['user_id'] = user_id
-                    data_user['mobile'] = mobile
-                    # data_user['is_valid'] = is_valid
-                    # data_user['skip'] = skip
-                    # data_user['create_time'] = create_time
-                    # print(data_user)
-                    call_list.append(data_user)
-    #删除‘data_src’列， 减少内存
-    del data['data_src']
-    data_users_all = pd.concat(call_list, ignore_index=True)
-    #将两张表作笛卡尔积，为了将data中的字段添加到另一张表中
-    data = pd.merge(data, data_users_all, on='mobile', how='inner')
-    data.to_csv(path + file + '_analysis.csv', sep='\t', encoding='utf-8', index=False)
+    chunk_list = []
+    data_chunk = pd.read_csv(path+file+'.csv', sep='\t', encoding='utf-8', chunksize=20)
+    for data in data_chunk:
+        #用字符串填充空数据
+        data.fillna('null')
+        #先把data['data_src']数据转换成字典格式
+        # fun1 = lambda x : json.dumps(x)
+        # fun2 = lambda x : json.loads(x)
+        # data['data_src'] = data['data_src'].map(fun1)
+        # data['data_src'] = data['data_src'].map(fun2)
+        call_list = []
+        for index in data.index:
+            if data.loc[index, 'skip'] == 2:
+                #建立一张空列表，用来存放某个用户的通话详情
+                data_user_list = []
+                # user_id = data.loc[index, 'user_id']
+                mobile = data.loc[index, 'mobile']
+                # is_valid = data.loc[index, 'is_valid']
+                # skip = data.loc[index, 'skip']
+                # create_time = data.loc[index, 'create_time']
+                #解析data_src字段，获取通话详情
+                data_src = data.loc[index, 'data_src']
+                data_src = json.loads(data_src)
+                #该用户六个月的通话记录
+                if 'call_info' in data_src['data']["transportation"][0]['origin']:
+                    call_six_monthes = data_src['data']["transportation"][0]['origin']['call_info']['data']
+                    # print(call_six_monthes)
+                    #把每个月的通话记录，转换成df格式，并添加到空表中去，存在没有‘detail'的情况。
+                    for item in call_six_monthes:
+                        if 'details' in item:
+                            data_item = DataFrame(item["details"])
+                            # print(data_item)
+                            data_user_list.append(data_item)
+                    #每个用户的通话数据表， 因为data_user_list可能为空, 无法concat，会报错。
+                    if len(data_user_list) != 0:
+                        data_user = pd.concat(data_user_list, ignore_index=True)
+                        # data_user['user_id'] = user_id
+                        data_user['mobile'] = mobile
+                        # data_user['is_valid'] = is_valid
+                        # data_user['skip'] = skip
+                        # data_user['create_time'] = create_time
+                        # print(data_user)
+                        call_list.append(data_user)
+        #删除‘data_src’列， 减少内存
+        del data['data_src']
+        data_users_all = pd.concat(call_list, ignore_index=True)
+        #将两张表作笛卡尔积，为了将data中的字段添加到另一张表中
+        data = pd.merge(data, data_users_all, on='mobile', how='inner')
+        chunk_list.append(data)
+    data_result = pd.concat(chunk_list, ignore_index=True)
+    data_result.to_csv(path + file + '_analysis.csv', sep='\t', encoding='utf-8', index=False)
     print('read_analysis_file()已结束，共花费%ds，请稍候。。。'%(time.time()-start))
 
 
@@ -214,13 +218,41 @@ def get_result_file():
         if 'analysis' in item:
             file_list_2.append(item)
     print(file_list_2)
-    for key, name in enumerate(file_list_2):
+    for key, name in enumerate(file_list):
         data = pd.read_csv(path + name, sep='\t', encoding='utf-8')
         data_result_list = analysis(data)
         for key_2, result_item in enumerate(data_result_list):
             name_index = name.rfind('_')
             result_item.to_csv(path + 'result\\' + name[:name_index] + '_result_{key_2}.csv'.format(key_2=key_2), sep='\t',
                                encoding='utf-8')
+
+
+#把多个结果文件合并
+def conbine_data():
+    path = 'D:\\work\\dian_hua_bang\\cui_shou_fen\\test_data_2\\result\\test_2\\'
+    file_list = os.listdir(path)
+    data_list_1 = []
+    data_list_2 = []
+    for name in file_list:
+        if name.endswith('_1.csv'):
+            pass
+            # data_1 = pd.read_csv(path+name, sep='\t', encoding='uft-8', index=False)
+            # data_list_1.append(data_1)
+        elif name.endswith('_2.csv'):
+            data_2 = pd.read_csv(path + name, sep='\t', encoding='utf-8')
+            data_list_2.append(data_2)
+        else:
+            pass
+    # data_1 = pd.concat(data_list_1)
+    # data_1.to_csv(path + 'operator_info_test_result_1.csv', sep='\t', encoding='uft-8', index=False)
+
+    data_2 = pd.concat(data_list_2)
+    data_2.to_csv(path + 'operator_info_test_result_2.csv', sep='\t', encoding='utf-8')
+    # print('\n\ndata_1样本中的用户数量为：', len(data_1.drop_duplicates('uid')))
+    print('\n\ndata_2样本中的用户数量为：',len(data_2.drop_duplicates('uid')))
+
+
+
 
 
 
@@ -230,30 +262,33 @@ def get_result_file():
 
 if __name__ == '__main__':
     # read_analysis_file(0)
-    for num in range(0, 32):
-        start = time.time()
-        print('\n正在处理第{num}块数据，共32块数据。请稍候。。。'.format(num=num+1))
-        get_local_file(num)
-        read_analysis_file(num)
-        print('第{num}块数据处理完毕，共花费{time}s'.format(num=num, time=time.time()-start))
-    get_result_file()
-    # data_list=[[] for i in range(3)]
-    # file_list = os.listdir(path)
-    # print(file_list)
-    # for key, name in enumerate(file_list):
-    #     print('开始for')
-    #     if 'analysis' in name:
-    #         data = pd.read_csv(path+name, sep='\t', encoding='utf-8')
-    #         data_result = analysis(data)
-    #         data_result.to_csv(path+'result_'+name, sep='\t', encoding='utf-8')
-    #         # print(data)
-    #         # for key, item in enumerate(data_list):
-    #         #     item.append(data_result_list[key])
-    # for key, item in enumerate(data_list):
-    #     data = pd.concat(item, ignore_index=True)
-    #     data.to_csv(path + 'data_result_{key}.csv'.format(key=key), encoding='utf-8', sep='\t')
-    # data_drop = data_list[0][0].drop_duplicates('user_id')
-    # print(len(data_drop))
+    # for num in range(27, 55):
+    #     start = time.time()
+    #     print('\n正在处理第{num}块数据。请稍候。。。'.format(num=num+1))
+    #     get_local_file(num)
+    #     read_analysis_file(num)
+    #     print('第{num}块数据处理完毕，共花费{time}s'.format(num=num+1, time=time.time()-start))
+    # get_result_file()
+    conbine_data()
 
 
-    # os.system('shutdown -s -t 0')
+    # # data_list=[[] for i in range(3)]
+    # # file_list = os.listdir(path)
+    # # print(file_list)
+    # # for key, name in enumerate(file_list):
+    # #     print('开始for')
+    # #     if 'analysis' in name:
+    # #         data = pd.read_csv(path+name, sep='\t', encoding='utf-8')
+    # #         data_result = analysis(data)
+    # #         data_result.to_csv(path+'result_'+name, sep='\t', encoding='utf-8')
+    # #         # print(data)
+    # #         # for key, item in enumerate(data_list):
+    # #         #     item.append(data_result_list[key])
+    # # for key, item in enumerate(data_list):
+    # #     data = pd.concat(item, ignore_index=True)
+    # #     data.to_csv(path + 'data_result_{key}.csv'.format(key=key), encoding='utf-8', sep='\t')
+    # # data_drop = data_list[0][0].drop_duplicates('user_id')
+    # # print(len(data_drop))
+    #
+    #
+    # # os.system('shutdown -s -t 0')

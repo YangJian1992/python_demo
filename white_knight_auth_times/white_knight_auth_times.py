@@ -37,21 +37,40 @@ def get_local_file():
     file = 'white_knight_auth_times'
     select_string = '''
         SELECT 
+    lc.user_id,
+            ulo.overdue_days,
+            lc.risk_count,
+            lc.loan_id,
+            lc.risks,
+            lc.auth_status,
+            lc.create_time,
+            lc.id as lsar_id,
+            lc.type
+            
+FROM
+    (SELECT 
         cao.user_id,
-        lsar.loan_id,
-        lsar.id,
-        lsar.type,
-        lsar.risks,
-        lsar.risk_count,
-        auth_status,
-        cao.create_time
+            lsar.loan_id,
+            lsar.id,
+            lsar.type,
+            lsar.risks,
+            lsar.risk_count,
+            auth_status,
+            cao.create_time
     FROM
         qiandaodao.loan_system_auth_record AS lsar
-            INNER JOIN
-        credit_apply_orders AS cao ON cao.id = lsar.loan_id
+    INNER JOIN credit_apply_orders AS cao ON cao.id = lsar.loan_id
     WHERE
         lsar.type = 24
             AND lsar.risks LIKE '%白骑士%'
+            and left(cao.create_time, 7) = '2017-10' )AS lc
+        INNER JOIN
+    user_loan_orders AS ulo ON ulo.user_id = lc.user_id
+WHERE
+    ulo.first_loan = 1
+        AND ulo.loan_status = 2
+        AND ulo.overdue_days = 0
+        limit 200
         '''
     columns_add = ['user_id', 'loan_id', 'lsar.id', 'type', 'risks', 'risk_count', 'auth_status', 'create_time']
     data = mysql_connection(select_string, columns_add)
@@ -64,37 +83,26 @@ def get_local_file():
 #读取本地文件
 def read_local_file():
     path = 'D:\\work\\database\\white_knight_auth_times\\'
-    file = 'white_knight_auth_times'
-    data = pd.read_csv(path+file+'.csv', sep='\t', encoding='utf-8')
-    return data
+    file = 'white_knight_days0'
+    data = pd.read_csv(path+file+'.csv', sep=',', encoding='utf-8')
+    data['rule_0'] = 'null'
+    data['data_0'] = 'null'
+    data_rule = data[data['risks'].str.contains('总数')]
+    data_rule_0 = data_rule['risks'].str.extract('(总数.+data)').str[0:-7].str.replace('总数', '#总数').str.split('#').str[1:]
+    index_0 = data_rule_0.index
+    data_rule_1 = data_rule['risks'].str.extract('(data.+credit)').str[7:-9].str.split(';').str[:-1]
+    index_1 = data_rule_1.index
+    data.ix[index_0,'rule_0'] = data_rule_0
+    data.ix[index_1, 'data_0'] = data_rule_1
+    data.to_csv(path+file+'_analysis.csv', encoding="gbk", sep=',')
+    print(data)
+
+
+    # return data
 
 
 #数据分析,把数据分为两部分，
-def data_analysis(data):
-    # print(data.dtypes)
-    # print(data)
-    data_1 = data[data['risks'].str.contains('"level":1')]
-    data_2 = data[data['risks'].str.contains('"level":2')]
-    data_3 = data[data['risks'].str.contains('"level":3')]
-    print('data_1的行数为{times}__________'.format(times=len(data_1)))
-    print('data_2的行数为{times}__________'.format(times=len(data_2)))
-    print('data_3的行数为{times}__________'.format(times=len(data_3)))
-    # print(data_2)
-    data_2['data'] = 'null'
-    data_2['detail'] = 'null'
-    data_2['data'] = data_2['risks'].str.extract('("data":.*;)')
-    data_2['data'] = data_2['data'].str.slice(8,-1 )
-    data_2['data'] = data_2['data'].str.split(';')
 
-    data_2['detail'] = data_2['risks'].str.extract('(白骑士多头查询总数:.*}]$)')
-    data_2['detail'] = data_2['detail'].str.slice(0, -4)
-    data_2['detail'] = data_2['detail'].str.findall('总数.*?(总数)?')
-
-
-
-    path = 'D:\\work\\database\\white_knight_auth_times\\'
-    file = 'white_knight_auth_times_data_2'
-    data_2.to_csv(path+file+'.csv', sep='\t', encoding='utf-8', index=False)
 
 
 
@@ -102,6 +110,5 @@ def data_analysis(data):
 
 if __name__ == '__main__':
     start = time.time()
-    data = read_local_file()
-    data_analysis(data)
+    read_local_file()
     print('一共花费{time}s'.format(time=time.time()-start))

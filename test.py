@@ -55,8 +55,10 @@ from dateutil.parser import parse
 #     data.append(i)
 #
 # print(data)
-# import re
-# data = 'abc123def2'
+import re
+data = "总数:19,银行:1,消费金融:15,P2P理财:2总数:21,银行:1,消费金融:16,P2P理财:2,其它:1"
+
+list = ["总数:19,银行:1,消费金融:15,P2P理财:2", "总数:21,银行:1,消费金融:16,P2P理财:2,其它:1"]
 # if 'abc1' in data:
 #     data_list = re.findall('\d+', data)
 #     print(type(data_list[0]))
@@ -73,9 +75,10 @@ from dateutil.parser import parse
 # data = DataFrame()
 # print(data.index)
 # print(len(data.index))
-print(datetime.datetime.now())
-import time
-t = time.strptime('2017-09-22 08:13:50', '%Y-%m-%d %H:%M:%S')
-print(t)
-print(time.mktime(t))
+# print(datetime.datetime.now())
+# import time
+# t = time.strptime('2017-09-22 08:13:50', '%Y-%m-%d %H:%M:%S')
+# print(t)
+# print(time.mktime(t))
+
 
