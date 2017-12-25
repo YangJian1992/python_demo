@@ -58,9 +58,24 @@ from dateutil.parser import parse
 import re
 data = "总数总数:19,银行:1,消费金融:15,P2P理财:2总数:21,银行:1,消费金融:16,P2P理财:2,其它:1"
 
-list = '256.300.888.999'
+list = 'xx <aa <bbb> <bbb> aa> yy'
 a=re.findall('(?:总数){2}:', data)
-b=re.match('(\d{1,3}\.){3}\d{1,3}', list)
+b=re.search('''
+<                         
+    [^<>]*                
+    (
+        (
+            (?'Open'<)   
+            [^<>]*       
+        )+
+        (
+            (?'-Open'>)   
+            [^<>]*       
+        )+
+    )*
+    (?(Open)(?!))        
+
+>''', list)
 print(b)
 # if 'abc1' in data:
 #     data_list = re.findall('\d+', data)
