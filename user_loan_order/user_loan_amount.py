@@ -181,7 +181,7 @@ if __name__ == '__main__':
     print('************************** start *******************************')
     #查询数据库的日期范围。注意，这里的是变量是字符串，但select语句中日期还要再加字符串，也就是format中{}外面也要加引号。
     date_start = '2017-11-01'
-    date_end = '2017-12-17'
+    date_end = '2017-12-26'
     select_string = '''SELECT 
         ulo.id,
         ulo.user_id,

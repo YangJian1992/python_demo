@@ -252,6 +252,14 @@ def conbine_data():
     print('\n\ndata_2样本中的用户数量为：',len(data_2.drop_duplicates('uid')))
 
 
+def last_analysis(data):
+    count = data.drop_duplicates('uid')
+    uid = data['uid']
+    return [uid, len(count)]
+
+
+
+
 
 
 
@@ -261,6 +269,46 @@ def conbine_data():
 
 
 if __name__ == '__main__':
+    num_list = [1, 2, 4, 8, 39]
+    count_list = []
+    data_list = []
+    path = 'D:\\work\\dian_hua_bang\\cui_shou_fen\\test_data_2\\result\\qiandaodao_cuishoufen_test\\test_2\\'
+    for num in num_list:
+        file = 'operator_info_test_{num}_result_2'.format(num=num)
+        data = pd.read_csv(path + file + '.csv', sep='\t', encoding='utf-8')
+        count_list.append(len(data))
+        data_list.append(data)
+    data = pd.concat(data_list)
+    count_0 = sum(count_list)
+    count_1 = len(data)
+    data_2 = data.drop_duplicates('uid')
+    count_2 = len(data_2)
+    print(count_0, count_1, count_2)
+    data.to_csv(path + 'operator_info.csv', sep='\t', encoding='utf-8', index=False)
+
+
+    # merge_list = []
+    # path = 'D:\\work\\dian_hua_bang\\cui_shou_fen\\test_data_2\\result\\qiandaodao_cuishoufen_test\\test_1\\'
+    # for num in num_list:
+    #     file = 'operator_info_test_{num}_result_1'.format(num=num)
+    #     data = pd.read_csv(path + file + '.csv', sep='\t', encoding='utf-8')
+    #     data_list.append(data)
+    #     count_list.append(last_analysis(data))
+    # for i in range(4):
+    #     item = pd.merge(data_list[i], data_list[i+1], on='uid')
+    #     print('\nitem:', item)
+    #     if len(merge_list) != 0:
+    #         merge_list.append(item)
+    # print('\nmerge_list:',merge_list)
+    # data = pd.concat(data_list, ignore_index=True)
+    # count_sum = sum([item[1] for item in count_list])
+    # data.to_csv(path+'operator_info.csv', sep='\t', encoding='utf-8')
+    #
+    # data_1 = data.drop_duplicates('uid')
+    # print('\ncount_sum={cs}, data_1={d1}'.format(cs=count_sum, d1=data_1))
+
+
+
     # read_analysis_file(0)
     # for num in range(27, 55):
     #     start = time.time()
@@ -269,7 +317,7 @@ if __name__ == '__main__':
     #     read_analysis_file(num)
     #     print('第{num}块数据处理完毕，共花费{time}s'.format(num=num+1, time=time.time()-start))
     # get_result_file()
-    conbine_data()
+    # conbine_data()
 
 
     # # data_list=[[] for i in range(3)]

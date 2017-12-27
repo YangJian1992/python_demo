@@ -32,6 +32,7 @@ import json
 import requests
 import pymysql
 from dateutil.parser import parse
+from functools import reduce
 
 # a='{"a":3}'
 # print(type(json.loads(a)))
@@ -55,28 +56,12 @@ from dateutil.parser import parse
 #     data.append(i)
 #
 # print(data)
-import re
-data = "总数总数:19,银行:1,消费金融:15,P2P理财:2总数:21,银行:1,消费金融:16,P2P理财:2,其它:1"
-
-list = 'xx <aa <bbb> <bbb> aa> yy'
-a=re.findall('(?:总数){2}:', data)
-b=re.search('''
-<                         
-    [^<>]*                
-    (
-        (
-            (?'Open'<)   
-            [^<>]*       
-        )+
-        (
-            (?'-Open'>)   
-            [^<>]*       
-        )+
-    )*
-    (?(Open)(?!))        
-
->''', list)
-print(b)
+# import re
+# data = "总数总数:19,银行:1,消费金融:15,P2P理财:2总数:21,银行:1,消费金融:16,P2P理财:2,其它:1"
+#
+# list = 'xx <aa <bbb> <bbb> aa> yy'
+# a=re.findall('(?:总数){2}:', data)
+# print()
 # if 'abc1' in data:
 #     data_list = re.findall('\d+', data)
 #     print(type(data_list[0]))
@@ -98,5 +83,11 @@ print(b)
 # t = time.strptime('2017-09-22 08:13:50', '%Y-%m-%d %H:%M:%S')
 # print(t)
 # print(time.mktime(t))
+# a = filter(lambda x:x>4, range(9))
+# print(list(a))
+# print([x for x in a])
+def x2(x):
+    return x*x
+x = [3, 4, 5, 6, 7]
 
 
