@@ -33,6 +33,7 @@ import requests
 import pymysql
 from dateutil.parser import parse
 from functools import reduce
+from pyspark.sql.types import *
 
 # a='{"a":3}'
 # print(type(json.loads(a)))
@@ -86,8 +87,24 @@ from functools import reduce
 # a = filter(lambda x:x>4, range(9))
 # print(list(a))
 # print([x for x in a])
-def x2(x):
-    return x*x
-x = [3, 4, 5, 6, 7]
+from pyspark import SparkContext
+
+sc = SparkContext('local')
+doc = sc.parallelize([['a','b','c'],['b','d','d']])
+words = doc.flatMap(lambda d:d).distinct().collect()
+word_dict = {w:i for w,i in zip(words,range(len(words)))}
+word_dict_b = sc.broadcast(word_dict)
+
+def wordCountPerDoc(d):
+    dict={}
+    wd = word_dict_b.value
+    for w in d:
+        if (wd[w]) in dict:
+            dict[wd[w]] +=1
+        else:
+            dict[wd[w]] = 1
+    return dict
+print(doc.map(wordCountPerDoc).collect())
+print("successful!")
 
 
