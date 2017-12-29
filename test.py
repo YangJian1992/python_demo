@@ -34,6 +34,11 @@ import pymysql
 from dateutil.parser import parse
 from functools import reduce
 from pyspark.sql.types import *
+from sklearn import linear_model
+# clf = linear_model.LinearRegression()
+# clf.fit ([[0, 0], [1, 1], [2, 2]], [0, 1, 2])
+# print(clf.coef_)
+# print(clf.predict([[0.5, 0.5]]))
 
 # a='{"a":3}'
 # print(type(json.loads(a)))
@@ -87,24 +92,18 @@ from pyspark.sql.types import *
 # a = filter(lambda x:x>4, range(9))
 # print(list(a))
 # print([x for x in a])
-from pyspark import SparkContext
 
-sc = SparkContext('local')
-doc = sc.parallelize([['a','b','c'],['b','d','d']])
-words = doc.flatMap(lambda d:d).distinct().collect()
-word_dict = {w:i for w,i in zip(words,range(len(words)))}
-word_dict_b = sc.broadcast(word_dict)
+# path='D:\\work\\dian_hua_bang\\cui_shou_fen\\test_data_2\\result\\'
+# data_list = []
+# for num in [1, 2, 4, 8, 39]:
+#     file = 'operator_info_test_{num}_result_0.csv'.format(num=num)
+#     data = pd.read_csv(path+file, sep='\t', encoding='utf-8')
+#     data.drop_duplicates('uid', inplace=True)
+#     data = data[['loan_status',	'mobile', 'overdue_days', 'overdue_status', 'reg_time', 'repay_status', 'uid']]
+#     data_list.append(data)
+# data = pd.concat(data_list)
+data_2 = pd.read_csv('D:\\work\\dian_hua_bang\\cui_shou_fen\\test_result_3.csv', sep=',', encoding='gbk')
+data_2.to_csv('D:\\work\\dian_hua_bang\\cui_shou_fen\\test_result_000000000000.csv', sep='\t', encoding='gbk', index=False)
 
-def wordCountPerDoc(d):
-    dict={}
-    wd = word_dict_b.value
-    for w in d:
-        if (wd[w]) in dict:
-            dict[wd[w]] +=1
-        else:
-            dict[wd[w]] = 1
-    return dict
-print(doc.map(wordCountPerDoc).collect())
-print("successful!")
 
 
