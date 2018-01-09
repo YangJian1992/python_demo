@@ -36,10 +36,10 @@ from functools import reduce
 from pyspark.sql.types import *
 from sklearn import linear_model
 
-t_str = '13666666666'
+data = DataFrame([{'t':'2018-01-08 14:12:26', 'name':'yang'},{'t':'2017-01-08 14:12:26', 'name':'jian'}, {'t':'2014-01-08 14:12:26', 'name':'yj'}])
+a= range(10)
 
 
-print(re.match('1[3-9]\d{9}', t_str))
 
 
 
