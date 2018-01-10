@@ -39,6 +39,27 @@ from sklearn import linear_model
 data = DataFrame([{'t':'2018-01-08 14:12:26', 'name':'yang'},{'t':'2017-01-08 14:12:26', 'name':'jian'}, {'t':'2014-01-08 14:12:26', 'name':'yj'}])
 a= range(10)
 
+num_list =[1, 2,   4, 5, 6, 7,   9,   22, 23, 24]
+count_list = []
+count_num = 1
+for key, item in enumerate(num_list):
+    if key > 0 :
+        if num_list[key] - num_list[key-1] == 1:
+            count_num += 1
+            #序列中的最后一个元素需要单独考虑
+            if key == len(num_list) - 1:
+                count_list.append(count_num)
+        else:
+            #当出现不连续的数时，就把之前的计数变量加到计数列表中去
+            count_list.append(count_num)
+            count_num = 1
+            # 序列中的最后一个元素需要单独考虑
+            if key == len(num_list) - 1:
+                count_list.append(count_num)
+    else:
+        print('序列至少包含两个数据')
+
+print(len(data))
 
 
 
