@@ -36,6 +36,8 @@ from functools import reduce
 from pyspark.sql.types import *
 from sklearn import linear_model
 #如果函数中有多个结果要被其他函数使用，可以把函数放在类中
+#还得考虑reg_time入网时间，如果入网时长不到一个月，不到三个月，不到一周，这些情况该怎么办？
+#reg_time<7, <30, <90
 
 def mysql_connection(select_string):
     start = time.time()
@@ -100,7 +102,7 @@ def time_call_data(data):
     time_stamp = time.mktime(time_tuple)
     # print(time_stamp)
 
-    latest_7 = time_stamp + 8*3600 - 1*24*3600
+    latest_7 = time_stamp + 8*3600 - 7*24*3600
     latest_7_time = time.strftime('%Y-%m-%d %H:%M:%S',  time.gmtime(latest_7))
     # print(time.gmtime(latest_7))
     # print('**************', latest_7_time)
@@ -190,6 +192,7 @@ def continue_no_call_times(data_list, time_range_list):
             # print('data_days:', data_days)
             # 之前去掉时间，只看日期时，多算了一天，这里要去掉一天，index_null_days即为没有通话的日期
             index_null_days = data_days[data_days['time'] == 'null'].index[:-1]
+            print('index_null_days:', index_null_days)
             # print('\n无通话记录的日期：', index_null_days)
             #下面计算最大连续天数
             count_list = []
@@ -256,6 +259,7 @@ if __name__ == '__main__':
     file_list = os.listdir(path)
     #样本的号码
     mobile_list = []
+    data_result_list = []
     for item in file_list:
         mobile = item[0:11]
         mobile_list.append(mobile)
@@ -263,6 +267,7 @@ if __name__ == '__main__':
         address_data = address_test(mobile)
         #得到近7天， 30天， 90天的通话记录
         call_data_list = time_call_data(call_data)
+        print('&&&&&&&', call_data_list)
         #得到近7天， 30天， 90天的起止时间
         time_range_list = time_analysis(call_data)
         #7， 30， 90天通话记录对应的夜间通话次数, 总通话次数，有效手机号数量列表、连续1，2， 3天没有通话的次数
@@ -284,7 +289,14 @@ if __name__ == '__main__':
         print('\n近7天，30天， 90天的有效手机号码、主叫、被叫号码的数量：', call_valid_num_list)
         print('\n近7天，30天， 90天的连续1，2， 3天没有通话的次数和最大连续无通话的天数：', continue_no_call_times_list)
 
-        break
+        result_dict = {'手机号码':mobile, '夜间通话次数': night_times_list, '总的通话次数以及主叫和被叫的通话次数': call_times_list, '有效手机号码、主叫、被叫号码的数量':
+            call_valid_num_list, '连续1，2， 3天没有通话的次数和最大连续无通话的天数': continue_no_call_times_list}
+        data_result_list.append(result_dict)
+    data = DataFrame(data_result_list)
+    data_mobile = data.pop('手机号码')
+    data.insert(0, '手机号码', data_mobile)
+    data.to_csv('C:\\Users\\QDD\\Desktop\\operator\\operator\\result.csv', sep=',', encoding='gbk', index=False)
+
 
 
 
