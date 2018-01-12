@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$" />
     <content url="jar://D:/软件/spark-2.2.1-bin-hadoop2.7/spark-2.2.1-bin-hadoop2.7/python/lib/py4j-0.10.4-src.zip!/" />
     <content url="jar://D:/软件/spark-2.2.1-bin-hadoop2.7/spark-2.2.1-bin-hadoop2.7/python/lib/pyspark.zip!/" />
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 2.7.14 (C:\ProgramData\Anaconda2\python.exe)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
