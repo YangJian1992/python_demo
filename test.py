@@ -35,9 +35,15 @@ from dateutil.parser import parse
 from functools import reduce
 from pyspark.sql.types import *
 from sklearn import linear_model
-import tensorflow
+import tensorflow as tf
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from matplotlib.font_manager import FontProperties
+font = FontProperties(fname=r"c:\windows\fonts\msyh.ttc", size=15)
 
-data = DataFrame([{'t':'2018-01-08 14:12:26', 'name':'yang'},{'t':'2017-01-08 14:12:26', 'name':'jian'}, {'t':'2014-01-08 14:12:26', 'name':'yj'}])
+
+data = DataFrame([{'t':'2018-01-08 14:12:26', 'name':'yang'},{'t':'2017-01-08 14:12:26', 'name':'jian'},
+                  {'t':'2014-01-08 14:12:26', 'name':'yj'}])
 a= range(10)
 
 # with open('C:\\Users\\QDD\\Desktop\\operator\\operator\\17369735519_2018-01-08.json', encoding='utf-8') as file:
@@ -100,39 +106,14 @@ a= range(10)
 # data_2.to_csv('D:\\work\database\\特定地区的用户和身份证前六位\\result_end_2.csv', sep=',', encoding='gbk', index=False)
 
 
-import tensorflow as tf
-import numpy as np
-
-# 使用 NumPy 生成假数据(phony data), 总共 100 个点.
-x_data = np.float32(np.random.rand(2, 100)) # 随机输入
-y_data = np.dot([0.100, 0.200], x_data) + 0.300
-
-# 构造一个线性模型
-#
-b = tf.Variable(tf.zeros([1]))
-W = tf.Variable(tf.random_uniform([1, 2], -1.0, 1.0))
-y = tf.matmul(W, x_data) + b
-
-# 最小化方差
-loss = tf.reduce_mean(tf.square(y - y_data))
-optimizer = tf.train.GradientDescentOptimizer(0.5)
-train = optimizer.minimize(loss)
-
-# 初始化变量
-init = tf.initialize_all_variables()
-
-# 启动图 (graph)
-sess = tf.Session()
-sess.run(init)
-
-# 拟合平面
-for step in xrange(0, 201):
-    sess.run(train)
-    if step % 20 == 0:
-        print step, sess.run(W), sess.run(b)
-
-# 得到最佳拟合结果 W: [[0.100  0.200]], b: [0.300]
-
+plt.title("散点图练习", fontproperties=font)
+plt.bar([1, 2, 3, 4, 5, 6], [2, 3, 4, 6, 9, 12])
+plt.xlabel('横坐标', fontproperties=font)
+plt.ylabel('纵坐标', fontproperties=font)
+plt.legend()
+plt.show()
+print(np.cov([1, 2, 3, 4, 5, 6], [2, 3, 4, 6, 9, 12]))
+print(np.cov([6, 8, 10, 14, 18], [7, 9, 13, 17.5, 18]))
 
 
 
