@@ -40,37 +40,91 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from matplotlib.font_manager import FontProperties
 
-def read_analysis_data(filename):
-    PATH = 'D:\\work\\dian_shang\\dianshangfile\\dianshangfile\\'
+def read_analysis_taobao_data(filename):
+    PATH = 'D:\\work\\2018_1_新的风控规则\\2018-01-26-dianshang\\'
     with open(PATH+filename, encoding='utf-8') as file:
         data_dict = json.load(file)
+    for key, item in data_dict.items():
+        print(key,item)
+    #收货地址不全，并不是和商品订单一一对应，用left join
+    data_delever = DataFrame(data_dict['recentdeliveraddress'])
+    if 'actual_fee' in data_delever.columns:
+        del data_delever['actual_fee']
+    if 'trade_createtime' in data_delever.columns:
+        del data_delever['trade_createtime']
+    print(data_delever)
 
     sub = data_dict['tradedetails']['tradedetails']
     for item in sub:
         print(item['sub_orders'][0]['item_name'])
 
     dict_1 = data_dict['userinfo']
+
     dict_2 = data_dict['alipaywealth']
     dict_1.update(dict_2)
+    del dict_1['mapping_id']
     # dict_1外面需要放在一个列表中，列表中每个字典都df中的一行，如果不是放在列表中，则无法转换成df
     data_user = DataFrame([dict_1])
     data_trade = DataFrame(data_dict['tradedetails']['tradedetails'])
+    print(data_trade)
     data_trade['real_name'] = dict_1['real_name']
     data = pd.merge(data_user, data_trade, on='real_name')
     if len(data_dict['tradedetails']['tradedetails'])!=0:
         data['sub_orders'] = data['sub_orders'].map(lambda x: [item['item_name'] for item in x] if len(x)>0 else x)
-        data.to_csv('D:\\work\\dian_shang\\dianshangfile\\result\\'+filename[:-4]+'csv', encoding='gbk', sep=',', index=False)
+        # for money_column in ['actual_fee', 'huabei_totalcreditamount','huabei_creditamount', 'total_profit', 'balance', 'total_quotient']:
+        #     data[money_column] = data[money_column] * 0.01
 
 
-    # print(data_user)
-    # print(data_trade)
-    # print(data)
+        if 'trade_id' in data_delever.columns:
+            data_result = pd.merge(data, data_delever, how='left', on='trade_id')
+            for item in ['nick', 'pic', 'tao_score', 'seller_id', 'seller_nick']:
+                if item in data_result.columns:
+                    data_result.drop([item], axis=1, inplace=True)
+            writer = pd.ExcelWriter(PATH+'excel\\'+filename[:-4]+'xlsx')
+            data_result.to_excel(writer, 'yangjian_2018-01-26')
+            writer.save()
+
+def read_analysis_jd_data(filename):
+    PATH = 'D:\\work\\2018_1_新的风控规则\\2018-01-26-dianshang\\'
+    with open(PATH + filename, encoding='utf-8') as file:
+        data_dict = json.load(file)
+    for key, item in data_dict.items():
+        print(key, item , '\n************************\n')
+    sub = data_dict['tradedetails']['tradedetails']
+    dict_info = data_dict['userinfo']
+    del dict_info['mapping_id']
+    dict_info.update(data_dict['wealth'])
+    data_info = DataFrame([dict_info])
+    print(np.array(data_info.columns))
+    for item in ['touravailable_limit', 'tourcredit_limit', 'tourcredit_waitpay','tourdelinquency_balance',
+                    'vip_count', 'vip_level','vip_count', 'nick']:
+        if item in data_info.columns:
+            data_info.drop([item], axis=1, inplace=True)
+    print('*******************',data_info.columns, '*******************')
+
+    data = DataFrame(sub)
+    data['user_name'] = data_dict['userinfo']['user_name']
+    if len(data) != 0:
+        data['products'] = data['products'].map(lambda x: [item['name'] if 'name' in item else 'name_null' for item in x] if len(x) > 0 else x)
+        data_result = pd.merge(data_info, data, on='user_name')
+        writer = pd.ExcelWriter(PATH+'excel\\'+filename[:-4]+'.xlsx')
+        data_result.to_excel(writer, 'yangjian_2018-01-26')
+        writer.save()
+        print(data_result)
+
+
+
 
 
 if __name__ == '__main__':
-    PATH = 'D:\\work\\dian_shang\\dianshangfile\\dianshangfile\\'
+    PATH = 'D:\\work\\2018_1_新的风控规则\\2018-01-26-dianshang\\'
     for filename in os.listdir(PATH):
-        if 'taobao' in filename:
-            data = read_analysis_data(filename)
-        # break
+        if 'json' in filename:
+#             if filename[:11] in ['18886375402','18871079959','18734166471','15889691339','15217168280','15039046549','13723587862',
+# '13714179773','13460842893']:
+            if 'taobao' in filename:
+                read_analysis_taobao_data(filename)
+            else:
+                read_analysis_jd_data(filename)
+                #     break
 
