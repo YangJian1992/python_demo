@@ -31,8 +31,9 @@
     <SUITE FILE_PATH="coverage/python_demo$operator_info_2017_09_result.coverage" NAME="operator_info_2017-09_result Coverage Results" MODIFIED="1513757586010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/operator_info" />
     <SUITE FILE_PATH="coverage/python_demo$ml_test_1.coverage" NAME="ml_test_1 Coverage Results" MODIFIED="1515133448932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ml" />
     <SUITE FILE_PATH="coverage/python_demo$test_yj.coverage" NAME="test_yj Coverage Results" MODIFIED="1513074083149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/python_demo$taobao_user_info.coverage" NAME="taobao_user_info Coverage Results" MODIFIED="1517208750795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taobao_orders" />
+    <SUITE FILE_PATH="coverage/python_demo$taobao_user_info.coverage" NAME="taobao_user_info Coverage Results" MODIFIED="1517995853824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taobao_orders" />
     <SUITE FILE_PATH="coverage/python_demo$crawler_test__1_.coverage" NAME="crawler.test (1) Coverage Results" MODIFIED="1512611653484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" />
+    <SUITE FILE_PATH="coverage/python_demo$user_info_jd_taobao.coverage" NAME="user_info_jd_taobao Coverage Results" MODIFIED="1517996310347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taobao_orders" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -47,48 +48,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="credit_apply_orders_province_city.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders_province_city.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1064">
-              <caret line="44" column="29" lean-forward="false" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
-              <folding>
-                <element signature="e#72#90#0" expanded="true" />
-                <element signature="e#1493#1510#0" expanded="false" />
-                <marker date="1516012200282" expanded="true" signature="1011:1092" ph="select user_... credit_apply_orders" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_loan_amount.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user_loan_order/user_loan_amount.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-224">
-              <caret line="95" column="33" lean-forward="false" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
-              <folding>
-                <element signature="e#357#890#0" expanded="false" />
-                <marker date="1516070391067" expanded="true" signature="6870:7350" ph="SELECT ulo.i... user_loan_orders" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="credit_apply_orders_addr.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders_addr.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1120">
-              <caret line="44" column="29" lean-forward="false" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ml_test_01.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ml_test_01.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ml_book_weiwei/ml_test_01.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
-              <caret line="14" column="10" lean-forward="false" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+              <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -99,10 +63,11 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="160" column="20" lean-forward="false" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="20" />
+            <state relative-caret-position="-1293">
+              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="62" selection-end-column="17" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#1129#1624#0" expanded="false" />
                 <marker date="1517375612889" expanded="false" signature="2071:2443" ph="SELECT COUNT... credit_id" />
                 <marker date="1517375612889" expanded="true" signature="2119:2422" ph="SELECT credi... t_user_credit_model_record" />
                 <marker date="1517375612889" expanded="false" signature="2514:2876" ph="SELECT COUNT... credit_id" />
@@ -119,8 +84,26 @@
       <file leaf-file-name="taobao_user_info.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taobao_orders/taobao_user_info.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1876">
-              <caret line="107" column="68" lean-forward="false" selection-start-line="107" selection-start-column="68" selection-end-line="107" selection-end-column="68" />
+            <state relative-caret-position="184">
+              <caret line="120" column="29" lean-forward="false" selection-start-line="120" selection-start-column="29" selection-end-line="120" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#2954#4283#0" expanded="false" />
+                <element signature="e#4724#5219#0" expanded="false" />
+                <element signature="e#6229#6270#0" expanded="false" />
+                <marker date="1517995786621" expanded="false" signature="5437:6146" ph="SELECT tui.m... credit_id" />
+                <marker date="1517995786621" expanded="true" signature="5475:5726" ph="SELECT credi... t_user_credit_model_record" />
+                <marker date="1517995786621" expanded="true" signature="5761:5969" ph="SELECT credi... t_user_credit_model_record" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_info_jd_taobao.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/taobao_orders/user_info_jd_taobao.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="271">
+              <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -139,7 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>data_old</find>
       <find>to_csv</find>
       <find>city_2</find>
       <find>idcard_addr_new</find>
@@ -169,9 +151,9 @@
       <find>result_list</find>
       <find>mys</find>
       <find>飞利浦台灯护眼灯书桌大学生儿童寝室宿舍学习床头led台灯保视力四档触摸调光太空银</find>
+      <find>//</find>
     </findStrings>
     <replaceStrings>
-      <replace>data_province_index</replace>
       <replace>index_province</replace>
       <replace>data_rule</replace>
       <replace>unique_name</replace>
@@ -201,6 +183,7 @@
       <replace>date_index</replace>
       <replace>days</replace>
       <replace>index_null_days</replace>
+      <replace>\\</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -253,8 +236,9 @@
         <option value="$PROJECT_DIR$/ml_book_weiwei/Boston_house_price.py" />
         <option value="$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders_province_city.py" />
         <option value="$PROJECT_DIR$/user_loan_order/user_loan_amount.py" />
-        <option value="$PROJECT_DIR$/taobao_orders/taobao_user_info.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/taobao_orders/taobao_user_info.py" />
+        <option value="$PROJECT_DIR$/taobao_orders/user_info_jd_taobao.py" />
       </list>
     </option>
   </component>
@@ -301,7 +285,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -318,6 +301,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -355,25 +339,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration name="Boston_house_price" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ml_book_weiwei" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="python_demo" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ml_book_weiwei/Boston_house_price.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.user_info_jd_taobao">
     <configuration name="credit_apply_orders_province_city" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -428,6 +394,24 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="user_info_jd_taobao" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/taobao_orders" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="python_demo" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/taobao_orders/user_info_jd_taobao.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="user_loan_amount" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -448,18 +432,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.test" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Boston_house_price" />
-      <item index="2" class="java.lang.String" itemvalue="Python.credit_apply_orders_province_city" />
-      <item index="3" class="java.lang.String" itemvalue="Python.user_loan_amount" />
-      <item index="4" class="java.lang.String" itemvalue="Python.taobao_user_info" />
+      <item index="1" class="java.lang.String" itemvalue="Python.credit_apply_orders_province_city" />
+      <item index="2" class="java.lang.String" itemvalue="Python.user_loan_amount" />
+      <item index="3" class="java.lang.String" itemvalue="Python.taobao_user_info" />
+      <item index="4" class="java.lang.String" itemvalue="Python.user_info_jd_taobao" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test" />
+        <item index="0" class="java.lang.String" itemvalue="Python.user_info_jd_taobao" />
         <item index="1" class="java.lang.String" itemvalue="Python.taobao_user_info" />
-        <item index="2" class="java.lang.String" itemvalue="Python.user_loan_amount" />
-        <item index="3" class="java.lang.String" itemvalue="Python.credit_apply_orders_province_city" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Boston_house_price" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.user_loan_amount" />
+        <item index="4" class="java.lang.String" itemvalue="Python.credit_apply_orders_province_city" />
       </list>
     </recent_temporary>
   </component>
@@ -492,7 +476,7 @@
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25429183" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27682403" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30542988" sideWeight="0.527897" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -521,12 +505,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="16" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/yj.txt" />
     <entry file="file://$PROJECT_DIR$/call_history_addr_alter/address_call.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -767,9 +750,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders_addr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_loan_order/user_loan_amount.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="769">
+          <caret line="95" column="33" lean-forward="false" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+          <folding>
+            <element signature="e#357#890#0" expanded="false" />
+            <marker date="1516070391067" expanded="true" signature="6870:7350" ph="SELECT ulo.i... user_loan_orders" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders_province_city.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1064">
+        <state relative-caret-position="489">
           <caret line="44" column="29" lean-forward="false" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
           <folding>
             <element signature="e#72#90#0" expanded="true" />
@@ -779,41 +781,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taobao_orders/taobao_user_info.py">
+    <entry file="file://$PROJECT_DIR$/ml_book_weiwei/ml_test_01.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1876">
-          <caret line="107" column="68" lean-forward="false" selection-start-line="107" selection-start-column="68" selection-end-line="107" selection-end-column="68" />
+        <state relative-caret-position="308">
+          <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/call_history_addr_alter/credit_apply_orders_addr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1120">
-          <caret line="44" column="29" lean-forward="false" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user_loan_order/user_loan_amount.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-224">
-          <caret line="95" column="33" lean-forward="false" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
-          <folding>
-            <element signature="e#357#890#0" expanded="false" />
-            <marker date="1516070391067" expanded="true" signature="6870:7350" ph="SELECT ulo.i... user_loan_orders" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="160" column="20" lean-forward="false" selection-start-line="160" selection-start-column="20" selection-end-line="160" selection-end-column="20" />
+        <state relative-caret-position="-1293">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="62" selection-end-column="17" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#1129#1624#0" expanded="false" />
             <marker date="1517375612889" expanded="false" signature="2071:2443" ph="SELECT COUNT... credit_id" />
             <marker date="1517375612889" expanded="true" signature="2119:2422" ph="SELECT credi... t_user_credit_model_record" />
             <marker date="1517375612889" expanded="false" signature="2514:2876" ph="SELECT COUNT... credit_id" />
@@ -826,12 +810,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ml_book_weiwei/ml_test_01.py">
+    <entry file="file://$PROJECT_DIR$/taobao_orders/taobao_user_info.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="10" lean-forward="false" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        <state relative-caret-position="184">
+          <caret line="120" column="29" lean-forward="false" selection-start-line="120" selection-start-column="29" selection-end-line="120" selection-end-column="29" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#2954#4283#0" expanded="false" />
+            <element signature="e#4724#5219#0" expanded="false" />
+            <element signature="e#6229#6270#0" expanded="false" />
+            <marker date="1517995786621" expanded="false" signature="5437:6146" ph="SELECT tui.m... credit_id" />
+            <marker date="1517995786621" expanded="true" signature="5475:5726" ph="SELECT credi... t_user_credit_model_record" />
+            <marker date="1517995786621" expanded="true" signature="5761:5969" ph="SELECT credi... t_user_credit_model_record" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taobao_orders/user_info_jd_taobao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -37,11 +37,12 @@ from pyspark.sql.types import *
 from sklearn import linear_model
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import shutil
 from sklearn.linear_model import LinearRegression
 from matplotlib.font_manager import FontProperties
 
 def read_analysis_taobao_data(filename):
-    PATH = 'D:\\work\\2018_1_新的风控规则\\01-27and28-dianshang\\'
+    PATH = 'D:\\work\\2018_1_新的风控规则\\dianshang_json\\only_dianshang\\'
     with open(PATH+filename, encoding='utf-8') as file:
         data_dict = json.load(file)
     for key, item in data_dict.items():
@@ -83,7 +84,7 @@ def read_analysis_taobao_data(filename):
             writer.save()
 
 def read_analysis_jd_data(filename):
-    PATH = 'D:\\work\\2018_1_新的风控规则\\01-27and28-dianshang\\'
+    PATH = 'D:\\work\\2018_1_新的风控规则\\dianshang_json\\only_dianshang\\'
     with open(PATH + filename, encoding='utf-8') as file:
         data_dict = json.load(file)
     for key, item in data_dict.items():
@@ -110,15 +111,103 @@ def read_analysis_jd_data(filename):
         writer.save()
         print(data_result)
 
+def mycopyfile(srcfile, dstfile):
+    if not os.path.isfile(srcfile):
+        print("%s not exist!"%(srcfile))
+    else:
+        fpath, fname=os.path.split(dstfile)    #分离文件名和路径
+        if not os.path.exists(fpath):
+            os.makedirs(fpath)                #创建路径
+        shutil.copyfile(srcfile,dstfile)      #复制文件
+        print('正在复制...')
+        # print("copy %s -> %s"%( srcfile,dstfile))
+
+def mysql_connection(select_string):
+    start = time.time()
+    conn = pymysql.connect(host='rr-bp1jnr76z49y5k9mno.mysql.rds.aliyuncs.com', port=3306, user='qiandaodao',
+                           passwd='qdddba@2017*', db='qiandaodao', charset='utf8')
+    print('已经连接到数据库，请稍候...')
+    cur = conn.cursor()
+    cur.execute(select_string)
+
+    temp = cur.fetchall()
+    print('已经查询到数据，正在处理，请稍候...查询花费时间为%ds。' % (time.time() - start))
+    # 提交
+    conn.commit()
+    # 关闭指针对象
+    cur.close()
+    # 关闭连接对象
+    conn.close()
+    return (temp)
+
 
 if __name__ == '__main__':
-    PATH = 'D:\\work\\2018_1_新的风控规则\\01-27and28-dianshang\\'
-    for filename in os.listdir(PATH):
-        if 'json' in filename:
-            if 'taobao' in filename:
-                read_analysis_taobao_data(filename)
-            else:
-                read_analysis_jd_data(filename)
-                #     break
+    PATH_CP = 'D:\\work\\2018_1_新的风控规则\\dianshang_json\\'
+    PATH_TO = 'D:\\work\\2018_1_新的风控规则\\dianshang_json\\all_json\\'
+#     phone_list = DataFrame(list(mysql_connection('''
+#      SELECT
+#     tui.mobile
+# FROM
+#     (SELECT
+#         credit_id, SUM(IF(auth_result = 20, 1, 0)) AS num_reject_2
+#     FROM
+#         qiandaodao_risks_control.t_user_credit_model_record
+#     WHERE
+#         rule_id LIKE 'MX_REPORT%'
+#     GROUP BY credit_id
+#     HAVING num_reject_2 > 0) AS a
+#         INNER JOIN
+#     (SELECT
+#         credit_id, SUM(IF(auth_result = 20, 1, 0)) AS num_reject
+#     FROM
+#         qiandaodao_risks_control.t_user_credit_model_record AS tucmr
+#     GROUP BY credit_id
+#     HAVING num_reject > 0) AS b ON a.credit_id = b.credit_id
+#         INNER JOIN
+#     qiandaodao_risks_control.t_user_info AS tui ON b.credit_id = tui.credit_id
+# WHERE
+#     num_reject_2 = num_reject;
+#     ''')), columns=['mobile'])
+#     phone_list = list(phone_list['mobile'])
+
+
+#     for filedir in os.listdir(PATH_CP):
+#         if 'ec' in filedir:
+#             if filedir=='ec':
+#                 for filedir_1_item in os.listdir(PATH_CP+'ec\\'):
+#                     if filedir_1_item[:11] in phone_list:
+#                         mycopyfile(PATH_CP+'ec\\'+filedir_1_item, PATH_TO+filedir_1_item)
+#             else:
+#                 for filedir_1_item in os.listdir(PATH_CP+filedir+'\\ec\\'):
+#                     #filedir_1_item为日期文件夹名称
+#                     for filedir_2_item in os.listdir(PATH_CP+filedir+'\\ec\\'+filedir_1_item+'\\'):
+#                         #filedir_2_item京东、淘宝
+#                         for file_item in os.listdir(PATH_CP+filedir+'\\ec\\'+filedir_1_item+'\\'+filedir_2_item+'\\'):
+#                             if file_item[:11] in phone_list:
+#                                 print('*****************************************找到：', file_item[:11])
+#                                 file_item_name = PATH_CP+filedir+'\\ec\\'+filedir_1_item+'\\'+filedir_2_item+'\\'+file_item
+#                                 mycopyfile(file_item_name, PATH_TO + file_item)
+# #
+#     # PATH = 'D:\\work\\2018_1_新的风控规则\\dianshang_json\\only_dianshang\\'
+#     # for filename in os.listdir(PATH):
+#     #     if 'json' in filename:
+#     #         if 'taobao' in filename:
+#     #             read_analysis_taobao_data(filename)
+#     #         else:
+#     #             read_analysis_jd_data(filename)
+
+    for filedir in os.listdir(PATH_CP):
+            if 'ec' in filedir:
+                if filedir == 'ec':
+                    for filedir_1_item in os.listdir(PATH_CP + 'ec\\'):
+                        mycopyfile(PATH_CP + 'ec\\' + filedir_1_item, PATH_TO + filedir_1_item)
+                else:
+                    for filedir_1_item in os.listdir(PATH_CP + filedir + '\\ec\\'):
+                        # filedir_1_item为日期文件夹名称
+                        for filedir_2_item in os.listdir(PATH_CP + filedir + '\\ec\\' + filedir_1_item + '\\'):
+                            # filedir_2_item京东、淘宝
+                            for file_item in os.listdir(PATH_CP + filedir + '\\ec\\' + filedir_1_item + '\\' + filedir_2_item + '\\'):
+                                file_item_name = PATH_CP + filedir + '\\ec\\' + filedir_1_item + '\\' + filedir_2_item + '\\' + file_item
+                                mycopyfile(file_item_name, PATH_TO + file_item)
 
 
