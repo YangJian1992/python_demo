@@ -2,14 +2,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import pandas as pd
+import taobao_orders.user_info_jd_taobao as tou
 
 
 
-def sofmax(s):
-    return np.exp(s) / np.sum(np.exp(s), axis=0)
-x = np.arange(-3.0, 6.0, 0.1)
-scores = np.vstack([x, np.ones_like(x), 0.2*np.ones_like(x)])
-print(sofmax(scores)[0].shape)
-plt.plot(x, sofmax(scores).T, linewidth=2)
-y = np.poly1d([1, 0, 0])
-plt.show()
+a = {"a":3, "b":4, "c":5}
+arr = pd.DataFrame([a,a])
+data = pd.DataFrame(arr.values, columns=[['m','m','n'],['b', 'c', 'a']])
+print(data)
+print(data.stack())
+print(arr)
+print(arr.stack())
