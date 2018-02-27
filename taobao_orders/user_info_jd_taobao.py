@@ -78,6 +78,8 @@ def read_analysis_taobao_data(filename, PATH):
 
     #交易订单明细
     data_tradedetails = data_dict['tradedetails']['tradedetails']
+    for item_3 in data_tradedetails:
+        print(item_3, '\n*************************************************************************')
     if len(data_tradedetails) != 0:
         data_tradedetails = DataFrame(data_tradedetails)
         #报错了，有缺失值Na
@@ -101,7 +103,7 @@ def read_analysis_taobao_data(filename, PATH):
             #不同类别的商品数量
             result_dict['goods_class_num'] = goods_class_num
 
-            #交易的最近和最早时间。又报错了，因为'trade_createtime'字段中含有float格式的数据。日了狗了。
+            #交易的最近和最早时间。又报错了，因为'trade_createtime'字段中含有float格式的数据。
             data_tradedetails['trade_createtime'] = data_tradedetails['trade_createtime'].astype('str')
             result_dict['trade_createtime_range'] = [data_tradedetails['trade_createtime'].min(), data_tradedetails['trade_createtime'].max()]
             #交易成功的订单数量，及订单额度的统计量（总和，最大值，平均值，标准差）
@@ -196,16 +198,16 @@ if __name__ == '__main__':
                  "deliveraddress", "deliveraddress", "deliveraddress", "deliveraddress",
                  "tradedetails", "tradedetails", "tradedetails", "tradedetails", "tradedetails", "tradedetails", "tradedetails"
                  ]
-    #read_analysis_taobao_data('13013717182_taobao_2018-01-23.json', PATH)
-    file_list = os.listdir(PATH)
-    result_list = []
-    for item_name in file_list:
-        if 'json' in item_name and ('taobao' in item_name):
-            taobao_dict = read_analysis_taobao_data(item_name, PATH)
-            result_list.append(taobao_dict)
-
-    data = DataFrame(result_list, columns=columns).values
-    data = DataFrame(data, columns=[columns_1, columns])
-    writer = pd.ExcelWriter(PATH+'info_taobao.xlsx')
-    data.to_excel(writer, 'sheet1')
-    writer.save()
+    read_analysis_taobao_data('13855230268_taobao_2018-01-24.json', PATH)
+    # file_list = os.listdir(PATH)
+    # result_list = []
+    # for item_name in file_list:
+    #     if 'json' in item_name and ('taobao' in item_name):
+    #         taobao_dict = read_analysis_taobao_data(item_name, PATH)
+    #         result_list.append(taobao_dict)
+    #
+    # data = DataFrame(result_list, columns=columns).values
+    # data = DataFrame(data, columns=[columns_1, columns])
+    # writer = pd.ExcelWriter(PATH+'info_taobao.xlsx')
+    # data.to_excel(writer, 'sheet1')
+    # writer.save()

@@ -40,12 +40,6 @@ import matplotlib.pyplot as plt
 import shutil
 from sklearn.linear_model import LinearRegression
 from matplotlib.font_manager import FontProperties
+from dateutil.parser import parse
 
-
-m = [{'a':2.4455, "b":3.44344}, {'a':4.4435, "b":6.42}, {'a':3.4485, "b":8.32532}]
-n = DataFrame(m)
-print(n)
-print(n['b'].sum(), round(n['b'].max(),2), '\n****************************')
-n['a'] = n['a'].map(lambda x:round(x, 1))
-print(n)
-print(round(n['a'].sum(), 2), round(n['a'].max(),2))
+print(DataFrame([]))
