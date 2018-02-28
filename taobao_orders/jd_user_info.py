@@ -55,6 +55,8 @@ def trade_analysis(time_str, data_trade):
     if time_str > trade_time_min:
         data = data_trade[data_trade['trade_time']>time_str]
         return [len(data), round(data['amount'].sum(), 2), round(data['amount'].mean(), 2)]
+    else:
+        return []
 
 #主要函数
 def read_analysis_jd_data(filename, PATH):
