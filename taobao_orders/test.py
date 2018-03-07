@@ -3,6 +3,9 @@ import sys
 import gc
 import re
 import smtplib
+import xlrd
+import  openpyxl
+import xlsxwriter
 from pandas import Series, DataFrame
 from email.mime.text import MIMEText
 from email.header import Header
@@ -41,6 +44,12 @@ import shutil
 from sklearn.linear_model import LinearRegression
 from matplotlib.font_manager import FontProperties
 from dateutil.parser import parse
+import smtplib
+import email.mime.multipart
+import email.mime.text
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
 
 def fun_readdata_mysql(select_string, columns):
     """
@@ -184,5 +193,4 @@ WHERE
     #         print("过往借款, Y,  num, num1, ratio:", (k, k1, num, num1, round(num1 / num * 100, 2)))
 
 if __name__ == "__main__":
-    fun_2()
-
+    pass

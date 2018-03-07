@@ -90,9 +90,10 @@ def send_email(smtpHost,port, sendAddr, password, recipientAddrs, subject='', co
     if os.path.exists(PATH_2):
         # 添加附件，从本地路径读取。如果添加多个附件，可以定义part_2,part_3等，然后使用part_2.add_header()和msg.attach(part_2)即可。
         for part_name in os.listdir(PATH_2):
-            part = MIMEApplication(open(PATH_2 + '\\' + part_name,'rb').read())
-            part.add_header('Content-Disposition', 'attachment', filename=part_name)#给附件重命名,一般和原文件名一样,改错了可能无法打开.
-            msg.attach(part)
+            if 'xlsx' in part_name:
+                part = MIMEApplication(open(PATH_2 + '\\' + part_name,'rb').read())
+                part.add_header('Content-Disposition', 'attachment', filename=part_name)#给附件重命名,一般和原文件名一样,改错了可能无法打开.
+                msg.attach(part)
     else:
         print(PATH_2+'不存在，请先处理数据得到结果后再发邮件。')
         return
@@ -103,12 +104,13 @@ def send_email(smtpHost,port, sendAddr, password, recipientAddrs, subject='', co
     smtp.quit()
 
 
+#处理数据
 def data_analysis():
     PATH = 'D:\\work\\loan_rules'
     # 此刻时间点和七天前的时间点，按自然日计算
     time_stamp = time.gmtime(time.time() + 8 * 3600)#按日期处理，今天是2018-03-05， 应该小于等于2018-03-06
     time_stamp_latest = time.gmtime(time.time() + 8*3600 + 24*3600)
-    time_stamp_2 = time.gmtime(time.time() + 8 * 3600- 6 * 24 * 3600)#不是七，是六，按自然日计算
+    time_stamp_2 = time.gmtime(time.time() + 8 * 3600- 14 * 24 * 3600)#不是七，是六，按自然日计算
     time_now = time.strftime('%Y-%m-%d %H:%M:%S', time_stamp)[:10]
     time_latest = time.strftime('%Y-%m-%d %H:%M:%S', time_stamp_latest)[:10]#select语句中要用的条件
     time_7days = time.strftime('%Y-%m-%d %H:%M:%S', time_stamp_2)[:10]
@@ -161,42 +163,50 @@ group by m.credit_id
 ) a on  a.credit_id=r.credit_id
 where r.create_time>'{time_1}' and r.create_time<='{time_2}' group by d;
             '''.format(time_1=time_7days, time_2=time_latest)
-    columns = ['d', '贷前总量', '贷中总量','贷前等待', '贷中等待', '贷前通过率', '贷中通过率', '贷前_内部准入', '贷前_外部欺诈', '贷前_外黑', '贷前_外部逾期',
-               '贷前_内黑', '贷前_内部逾期', '贷前_外部多头', '贷前_通话电商', '贷中_内部准入', '贷中_外部欺诈', '贷中_外黑',
-                     '贷中_外部逾期', '贷中_内黑', '贷中_内部逾期', '贷中_外部多头', '贷中_通话电商']
+    columns = ['日期', '贷前总量', '贷中总量','贷前等待,%', '贷中等待,%', '贷前通过率,%', '贷中通过率,%', '贷前_内部准入,%', '贷前_外部欺诈,%',
+               '贷前_外黑,%', '贷前_外部逾期,%', '贷前_内黑,%', '贷前_内部逾期,%', '贷前_外部多头,%', '贷前_通话电商,%', '贷中_内部准入,%',
+               '贷中_外部欺诈,%', '贷中_外黑,%', '贷中_外部逾期,%', '贷中_内黑,%', '贷中_内部逾期,%', '贷中_外部多头,%', '贷中_通话电商,%']
     data = mysql_data(select_string, columns)
     print(data)
-
+    for col_item in data.columns:
+        if col_item != '日期':
+            if col_item in ['贷前总量', '贷中总量']:
+                data[col_item] = data[col_item].astype('int')
+            else:
+                data[col_item] = data[col_item].astype('float')
+                data[col_item] = data[col_item].map(lambda x: round(x*100, 2))
     #创建文件夹
     PATH_2 = PATH + '\\rules_loan_{date_name}'.format(date_name=time_now)
     if os.path.exists(PATH_2):
-        print(PATH+"已存在！文件夹内容已覆盖")
+        print(PATH+"已存在！文件夹内容将被覆盖")
     else:
         os.mkdir(PATH_2)
     writer = pd.ExcelWriter(PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now))
-    data.to_excel(writer, 'data')
+    data.to_excel(writer, '数据')
     writer.save()
-    #格式
-    for col_item in ['贷前总量', '贷中总量','贷前等待', '贷中等待', '贷前通过率', '贷中通过率', '贷前_内部准入', '贷前_外部欺诈', '贷前_外黑', '贷前_外部逾期',
-               '贷前_内黑', '贷前_内部逾期', '贷前_外部多头', '贷前_通话电商', '贷中_内部准入', '贷中_外部欺诈', '贷中_外黑',
-                     '贷中_外部逾期', '贷中_内黑', '贷中_内部逾期', '贷中_外部多头', '贷中_通话电商']:
-        if col_item in ['贷前总量', '贷中总量']:
-            data[col_item] = data[col_item].astype('int')
-        else:
-            data[col_item] = data[col_item].astype('float')
-    data_before = data.set_index('d')[['贷前_内部准入', '贷前_外部欺诈', '贷前_外黑', '贷前_外部逾期', '贷前_内黑', '贷前_内部逾期', '贷前_外部多头', '贷前_通话电商']]
-    data_ing = data.set_index('d')[['贷中_内部准入', '贷中_外部欺诈', '贷中_外黑', '贷中_外部逾期', '贷中_内黑', '贷中_内部逾期','贷中_外部多头', '贷中_通话电商']]
+    # #格式
+    # for col_item in ['贷前总量', '贷中总量','贷前等待', '贷中等待', '贷前通过率', '贷中通过率', '贷前_内部准入', '贷前_外部欺诈', '贷前_外黑', '贷前_外部逾期',
+    #            '贷前_内黑', '贷前_内部逾期', '贷前_外部多头', '贷前_通话电商', '贷中_内部准入', '贷中_外部欺诈', '贷中_外黑',
+    #                  '贷中_外部逾期', '贷中_内黑', '贷中_内部逾期', '贷中_外部多头', '贷中_通话电商']:
+    #     if col_item in ['贷前总量', '贷中总量']:
+    #         data[col_item] = data[col_item].astype('int')
+    #     else:
+    #         data[col_item] = data[col_item].astype('float')
+    data['日期'] = pd.DatetimeIndex(data['日期'])
+    print(data['日期'])
+    data_before = data.set_index('日期')[['贷前_内部准入,%', '贷前_外部欺诈,%','贷前_外黑,%', '贷前_外部逾期,%', '贷前_内黑,%', '贷前_内部逾期,%', '贷前_外部多头,%', '贷前_通话电商,%']]
+    data_ing = data.set_index('日期')[['贷中_内部准入,%','贷中_外部欺诈,%', '贷中_外黑,%', '贷中_外部逾期,%', '贷中_内黑,%', '贷中_内部逾期,%', '贷中_外部多头,%', '贷中_通话电商,%']]
     #画图，中文字体
-    font = FontProperties(fname=r"c:\windows\fonts\msyh.ttc", size=8)
+    font = FontProperties(fname=r"c:\windows\fonts\msyh.ttc", size=15)
     font_1 = FontProperties(fname=r"c:\windows\fonts\msyh.ttc", size=15)#柱状图的标题大一点
     #建立画布1，同一规则，贷前七天的拆线图
     rule_name_1 = data_before.columns
-    fig_1 = plt.figure(figsize=(16, 8), dpi=120)
-    fig_1_ax = [fig_1.add_subplot(4, 2, i) for i in range(1, 8)]
+    fig_1 = plt.figure(figsize=(16, 8), dpi=100)
+    fig_1_ax = [fig_1.add_subplot(2, 2, i) for i in range(1, 5)]
     for key_1, item_1 in enumerate(fig_1_ax):
         print(item_1)
         item_1.set_title(rule_name_1[key_1], fontproperties=font)
-        item_1.set_xlabel("日期", fontproperties=font)
+        #item_1.set_xlabel("日期", fontproperties=font)
         #item_1.set_ylabel(rule_name_1[key_1], fontproperties=font)
         data_s = data_before[rule_name_1[key_1]]
         item_1.plot(data_s.index, data_s.values, color='r', marker='o', linestyle='dashed')
@@ -208,12 +218,12 @@ where r.create_time>'{time_1}' and r.create_time<='{time_2}' group by d;
 
     #建立画布2，同一规则，贷中七天的拆线图
     rule_name_2 = data_ing.columns
-    fig_2 = plt.figure(figsize=(16, 8), dpi=120)
-    fig_2_ax = [fig_2.add_subplot(4, 2, i) for i in range(1, 8)]
+    fig_2 = plt.figure(figsize=(16, 8), dpi=100)
+    fig_2_ax = [fig_2.add_subplot(4, 2, i) for i in range(1, 9)]
     for key_2, item_2 in enumerate(fig_2_ax):
         print(item_2)
         item_2.set_title(rule_name_2[key_2], fontproperties=font)
-        item_2.set_xlabel("日期", fontproperties=font)
+        #item_2.set_xlabel("日期", fontproperties=font)
         #item_2.set_ylabel(rule_name_2[key_2], fontproperties=font)
         data_s = data_ing[rule_name_2[key_2]]
         item_2.plot(data_s.index, data_s.values, color='r', marker='o', linestyle='dashed')
@@ -224,7 +234,7 @@ where r.create_time>'{time_1}' and r.create_time<='{time_2}' group by d;
     fig_2.savefig(PATH_2 + '\\贷中规则随时间变化拆线图.png')
 
     # 建立画布3，同一天，贷前规则的柱状图
-    fig_3 = plt.figure(figsize=(18, 8), dpi=160)
+    fig_3 = plt.figure(figsize=(14, 6), dpi=160)
     ax_3= fig_3.add_subplot(111)
     ax_3.set_title('贷前规则柱状图', fontproperties=font_1)
     ax_3_plot = data_before.plot(kind='bar', ax=ax_3,  alpha=0.5, title='贷前规则柱状图')#df调用plot()返回的是ax对象
@@ -236,7 +246,7 @@ where r.create_time>'{time_1}' and r.create_time<='{time_2}' group by d;
     fig_3.savefig(PATH_2 + '\\贷前规则柱状图.png')
 
     # 建立画布4，同一天，贷中规则的柱状图
-    fig_4 = plt.figure(figsize=(16, 8), dpi=160)
+    fig_4 = plt.figure(figsize=(14, 6), dpi=160)
     ax_4 = fig_4.add_subplot(111)
     ax_4.set_title('贷中规则柱状图', fontproperties=font_1)
     ax_4_plot = data_ing.plot(kind='bar', ax=ax_4, alpha=0.5, title='贷中规则柱状图')  # df调用plot()返回的是ax对象
@@ -247,32 +257,49 @@ where r.create_time>'{time_1}' and r.create_time<='{time_2}' group by d;
     fig_4.show()
     fig_4.savefig(PATH_2 + '\\贷中规则柱状图.png')
 
-    #将生成的图片插入到excel中
-    work_book = openpyxl.load_workbook(PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now))
-    #work_book = xlsxwriter.Workbook(PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now))
-    sheet_1 = work_book.add_worksheet("yj——2")
-    sheet_1.insert_image('A1','D:\\work\\loan_rules\\rules_loan_2018-03-06\\贷中规则柱状图.png')#如果是jpg的格式，在workbook.close()时出错。
+    #将生成的4张图片插入到excel中
+    # work_book = xlsxwriter.Workbook(PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now))
+    # for image_name in ["贷前规则随时间变化拆线图", "贷中规则随时间变化拆线图", "贷前规则柱状图", "贷中规则柱状图"]:
+    #     work_book.add_worksheet(image_name).insert_image('A1', PATH_2 + '\\'+ image_name+'.png')
+    # work_book.close()
+    # sheet_1 = work_book.add_worksheet("贷前规则随时间变化拆线图")
+    # sheet_2 = work_book.add_worksheet("贷中规则随时间变化拆线图")
+    # sheet_3 = work_book.add_worksheet("贷前规则柱状图")
+    # sheet_4 = work_book.add_worksheet("贷中规则柱状图")
+    #sheet_1.insert_image('A1', PATH_2 + '\\贷中规则柱状图.png')#如果是jpg的格式，在workbook.close()时出错。
     #work_book.close()
-    work_book_o = pd.ExcelWriter(PATH_2 + '\\{date_name}.xlsx'.format(date_name=time_now), engine='openpyxl')
-    work_book_o.book = work_book
 
-    work_book_old = xlrd.open_workbook(PATH_2 + '\\{date_name}.xlsx'.format(date_name=time_now))
-    #writer = pd.ExcelWriter(PATH_2 + '\\{date_name}.xlsx'.format(date_name=time_now))
-    data.to_excel(PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now), sheet_name='data_2')
-    writer.save()
+    #打开保存有图片的工作簿，追加数据
+
+    wb_path = PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now)
+    work_book = openpyxl.load_workbook(wb_path)  # 这是现有的工作簿，只有sheet1表
+    for image_name in ["贷前规则随时间变化拆线图", "贷中规则随时间变化拆线图", "贷前规则柱状图", "贷中规则柱状图"]:
+        image_path = PATH_2 + '\\'+ image_name+'.png'
+        img = openpyxl.drawing.image.Image(image_path)
+        work_book.create_sheet(title=image_name).add_image(img, 'A1')
+    work_book.save(wb_path)
+    # writer = pd.ExcelWriter(PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now), engine='openpyxl')  # 关键要指定engine='openpyxl'
+    # writer.book = work_book
+    # writer.sheets = dict((ws.title, ws) for ws in work_book.worksheets)
+    # [ws.add_image() for ws in work_book.worksheets]
+    # data.to_excel(writer, sheet_name='数据3')  # 在原工作簿中新建sheet2，存放data，但sheet1不变
+    # writer.save()
 
 
 if __name__ == "__main__":
-    #data_analysis()
+    data_analysis()
     try:
         # 设置好邮箱信息
         smtpHost = 'smtp.exmail.qq.com'  # 这是QQ邮箱服务器。如果是腾讯企业邮箱，其服务器为smtp.exmail.qq.com。其他邮箱需要查询服务器地址和端口号。
         port = 465  # 端口号
         sendAddr = 'yangj@qiandaodao.com'  # 发送方地址
-        password = input("请输入邮箱授权码：")  # 手动输入授权码更安全.授权码的获取:打开qq邮箱->设置->账户->开启IMAP/SMTP服务->发送短信->授权码
+        password = 'ZEWEbUPUo25pkTLD'#input("请输入邮箱授权码：")  # 手动输入授权码更安全.授权码的获取:打开qq邮箱->设置->账户->开启IMAP/SMTP服务->发送短信->授权码
         recipientAddrs = 'liuzhibo@qiandaodao.com'  # 接收方可以是多个账户, 用分号分开,send_email()函数中手动设置
-        subject = '近七天贷前贷中规则'  # 主题
-        content = 'Hello world'  # 正文内容
+        subject = '近七天贷前贷中数据'  # 主题
+        content = '''
+        你好， 
+            附件中包括数据和相应的图片，请查收。
+        ''' # 正文内容
         send_email(smtpHost, port, sendAddr, password, recipientAddrs, subject, content)  # 调用函数
     except Exception as err:
         print(err)
