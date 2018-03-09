@@ -34,6 +34,7 @@ import math
 import json
 import requests
 import pymysql
+import PIL #注意，不是pillow
 from dateutil.parser import parse
 from functools import reduce
 from pyspark.sql.types import *
@@ -110,7 +111,7 @@ def data_analysis():
     # 此刻时间点和七天前的时间点，按自然日计算
     time_stamp = time.gmtime(time.time() + 8 * 3600)#按日期处理，今天是2018-03-05， 应该小于等于2018-03-06
     time_stamp_latest = time.gmtime(time.time() + 8*3600 + 24*3600)
-    time_stamp_2 = time.gmtime(time.time() + 8 * 3600- 14 * 24 * 3600)#不是七，是六，按自然日计算
+    time_stamp_2 = time.gmtime(time.time() + 8 * 3600- 13 * 24 * 3600)#不是14，是13，求14天之前的时间点
     time_now = time.strftime('%Y-%m-%d %H:%M:%S', time_stamp)[:10]
     time_latest = time.strftime('%Y-%m-%d %H:%M:%S', time_stamp_latest)[:10]#select语句中要用的条件
     time_7days = time.strftime('%Y-%m-%d %H:%M:%S', time_stamp_2)[:10]
@@ -181,112 +182,106 @@ where r.create_time>'{time_1}' and r.create_time<='{time_2}' group by d;
         print(PATH+"已存在！文件夹内容将被覆盖")
     else:
         os.mkdir(PATH_2)
+    #生成工作簿
     writer = pd.ExcelWriter(PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now))
     data.to_excel(writer, '数据')
     writer.save()
-    # #格式
-    # for col_item in ['贷前总量', '贷中总量','贷前等待', '贷中等待', '贷前通过率', '贷中通过率', '贷前_内部准入', '贷前_外部欺诈', '贷前_外黑', '贷前_外部逾期',
-    #            '贷前_内黑', '贷前_内部逾期', '贷前_外部多头', '贷前_通话电商', '贷中_内部准入', '贷中_外部欺诈', '贷中_外黑',
-    #                  '贷中_外部逾期', '贷中_内黑', '贷中_内部逾期', '贷中_外部多头', '贷中_通话电商']:
-    #     if col_item in ['贷前总量', '贷中总量']:
-    #         data[col_item] = data[col_item].astype('int')
-    #     else:
-    #         data[col_item] = data[col_item].astype('float')
-    data['日期'] = pd.DatetimeIndex(data['日期'])
-    print(data['日期'])
-    data_before = data.set_index('日期')[['贷前_内部准入,%', '贷前_外部欺诈,%','贷前_外黑,%', '贷前_外部逾期,%', '贷前_内黑,%', '贷前_内部逾期,%', '贷前_外部多头,%', '贷前_通话电商,%']]
-    data_ing = data.set_index('日期')[['贷中_内部准入,%','贷中_外部欺诈,%', '贷中_外黑,%', '贷中_外部逾期,%', '贷中_内黑,%', '贷中_内部逾期,%', '贷中_外部多头,%', '贷中_通话电商,%']]
+
+    #建立时间序列
+    data['日期'] = data['日期'].str[5:]
+    data.set_index('日期', inplace=True)
+    data_sum = data[['贷前总量', '贷中总量','贷前等待,%', '贷中等待,%', '贷前通过率,%', '贷中通过率,%']]
+    data_before = data[['贷前_内部准入,%', '贷前_外部欺诈,%','贷前_外黑,%', '贷前_外部逾期,%', '贷前_内黑,%', '贷前_内部逾期,%', '贷前_外部多头,%', '贷前_通话电商,%']]
+    data_ing = data[['贷中_内部准入,%','贷中_外部欺诈,%', '贷中_外黑,%', '贷中_外部逾期,%', '贷中_内黑,%', '贷中_内部逾期,%', '贷中_外部多头,%', '贷中_通话电商,%']]
     #画图，中文字体
-    font = FontProperties(fname=r"c:\windows\fonts\msyh.ttc", size=15)
+    font = FontProperties(fname=r"c:\windows\fonts\msyh.ttc", size=10)
     font_1 = FontProperties(fname=r"c:\windows\fonts\msyh.ttc", size=15)#柱状图的标题大一点
     #建立画布1，同一规则，贷前七天的拆线图
     rule_name_1 = data_before.columns
-    fig_1 = plt.figure(figsize=(16, 8), dpi=100)
-    fig_1_ax = [fig_1.add_subplot(2, 2, i) for i in range(1, 5)]
-    for key_1, item_1 in enumerate(fig_1_ax):
-        print(item_1)
-        item_1.set_title(rule_name_1[key_1], fontproperties=font)
-        #item_1.set_xlabel("日期", fontproperties=font)
-        #item_1.set_ylabel(rule_name_1[key_1], fontproperties=font)
-        data_s = data_before[rule_name_1[key_1]]
-        item_1.plot(data_s.index, data_s.values, color='r', marker='o', linestyle='dashed')
-        #item_1.legend(loc='best')
-        #调整每幅图的的间隔，左右间隔以整个图的左边界为准，上下间隔是以整个图的下边界为准。wspace是子两图之间宽度间隔，hspace是两子图之间的高度间隔
-    fig_1.subplots_adjust(left=0.05, bottom=0.05, right=0.95, top=0.95, wspace=0.1, hspace=0.5)#间隔百分比
-    fig_1.savefig(PATH_2+'\\贷前规则随时间变化拆线图.png')
-    fig_1.show()
-
-    #建立画布2，同一规则，贷中七天的拆线图
-    rule_name_2 = data_ing.columns
-    fig_2 = plt.figure(figsize=(16, 8), dpi=100)
-    fig_2_ax = [fig_2.add_subplot(4, 2, i) for i in range(1, 9)]
-    for key_2, item_2 in enumerate(fig_2_ax):
-        print(item_2)
-        item_2.set_title(rule_name_2[key_2], fontproperties=font)
-        #item_2.set_xlabel("日期", fontproperties=font)
-        #item_2.set_ylabel(rule_name_2[key_2], fontproperties=font)
-        data_s = data_ing[rule_name_2[key_2]]
-        item_2.plot(data_s.index, data_s.values, color='r', marker='o', linestyle='dashed')
-        #item_1.legend(loc='best')
-        #调整每幅图的的间隔，左右间隔以整个图的左边界为准，上下间隔是以整个图的下边界为准。wspace是子两图之间宽度间隔，hspace是两子图之间的高度间隔
-    fig_2.subplots_adjust(left=0.05, bottom=0.05, right=0.95, top=0.95, wspace=0.1, hspace=0.5)#间隔百分比
-    fig_2.show()
-    fig_2.savefig(PATH_2 + '\\贷中规则随时间变化拆线图.png')
+    #为每个字段画拆线图
+    for key, item_rule in enumerate(data.columns):
+        fig = plt.figure(figsize=(7, 4), dpi=100)
+        fig_ax = fig.add_subplot(1, 1, 1)
+        data_s = data[item_rule]
+        fig_ax.plot(data_s.index, data_s.values, color='blue', marker='o', linestyle='dashed')
+        fig_ax.set_title(item_rule, fontproperties=font_1)
+        fig.subplots_adjust(left=0.08, bottom=0.1, right=0.95, top=0.9, wspace=0.1, hspace=0.5)#间隔百分比
+        fig.savefig(PATH_2+'\\' + item_rule+'.png')
+        plt.close()#关闭当前画图,可以传入参数'all'，删除所有
 
     # 建立画布3，同一天，贷前规则的柱状图
-    fig_3 = plt.figure(figsize=(14, 6), dpi=160)
+    fig_3 = plt.figure(figsize=(12, 6), dpi=100)
     ax_3= fig_3.add_subplot(111)
     ax_3.set_title('贷前规则柱状图', fontproperties=font_1)
-    ax_3_plot = data_before.plot(kind='bar', ax=ax_3,  alpha=0.5, title='贷前规则柱状图')#df调用plot()返回的是ax对象
+    ax_3.set_xlabel('日期', fontproperties=font)
+    ax_3.set_ylabel('百分比', fontproperties=font)
+    ax_3_plot = data_before[7:].plot(kind='bar', ax=ax_3,  alpha=0.8, title='贷前规则柱状图')#df调用plot()返回的是ax对象
     labels = ax_3_plot.get_xticklabels() + ax_3_plot.legend().texts
     for label_3 in labels:
         label_3.set_fontproperties(font)
-    fig_3.subplots_adjust(left=0.05, bottom=0.1, right=0.95, top=0.95)  # 间隔百分比
+    fig_3.subplots_adjust(left=0.05, bottom=0.15, right=0.95, top=0.95)  # 间隔百分比调整每幅图的的间隔，左右间隔以整个图的左边界为准，上下间隔是以整个图的下边界为准。wspace是子两图之间宽度间隔，hspace是两子图之间的高度间隔
     fig_3.show()
     fig_3.savefig(PATH_2 + '\\贷前规则柱状图.png')
+    plt.close()  # 关闭当前画图,可以传入参数'all'，删除所有
 
     # 建立画布4，同一天，贷中规则的柱状图
-    fig_4 = plt.figure(figsize=(14, 6), dpi=160)
+    fig_4 = plt.figure(figsize=(12, 6), dpi=100)
     ax_4 = fig_4.add_subplot(111)
     ax_4.set_title('贷中规则柱状图', fontproperties=font_1)
-    ax_4_plot = data_ing.plot(kind='bar', ax=ax_4, alpha=0.5, title='贷中规则柱状图')  # df调用plot()返回的是ax对象
+    ax_4.set_xlabel('日期', fontproperties=font)
+    ax_4.set_ylabel('百分比', fontproperties=font)
+    ax_4_plot = data_ing[7:].plot(kind='bar', ax=ax_4, alpha=0.8, title='贷中规则柱状图')  # df调用plot()返回的是ax对象
     labels = ax_4_plot.get_xticklabels() + ax_4_plot.legend().texts
     for label_4 in labels:
         label_4.set_fontproperties(font)
-    fig_4.subplots_adjust(left=0.05, bottom=0.1, right=0.95, top=0.95)  # 间隔百分比
+    fig_4.subplots_adjust(left=0.05, bottom=0.15, right=0.95, top=0.95)  # 间隔百分比
     fig_4.show()
     fig_4.savefig(PATH_2 + '\\贷中规则柱状图.png')
-
-    #将生成的4张图片插入到excel中
-    # work_book = xlsxwriter.Workbook(PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now))
-    # for image_name in ["贷前规则随时间变化拆线图", "贷中规则随时间变化拆线图", "贷前规则柱状图", "贷中规则柱状图"]:
-    #     work_book.add_worksheet(image_name).insert_image('A1', PATH_2 + '\\'+ image_name+'.png')
-    # work_book.close()
-    # sheet_1 = work_book.add_worksheet("贷前规则随时间变化拆线图")
-    # sheet_2 = work_book.add_worksheet("贷中规则随时间变化拆线图")
-    # sheet_3 = work_book.add_worksheet("贷前规则柱状图")
-    # sheet_4 = work_book.add_worksheet("贷中规则柱状图")
-    #sheet_1.insert_image('A1', PATH_2 + '\\贷中规则柱状图.png')#如果是jpg的格式，在workbook.close()时出错。
-    #work_book.close()
+    plt.close()  # 关闭当前画图,可以传入参数'all'，删除所有
 
     #打开保存有图片的工作簿，追加数据
-
     wb_path = PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now)
     work_book = openpyxl.load_workbook(wb_path)  # 这是现有的工作簿，只有sheet1表
-    for image_name in ["贷前规则随时间变化拆线图", "贷中规则随时间变化拆线图", "贷前规则柱状图", "贷中规则柱状图"]:
-        image_path = PATH_2 + '\\'+ image_name+'.png'
-        img = openpyxl.drawing.image.Image(image_path)
-        work_book.create_sheet(title=image_name).add_image(img, 'A1')
+    #建立多个工作表用于存放图片
+    for sheet_name in ['总体变化图', '贷前规则变化拆线图', '贷中规则变化拆线图', '贷前规则柱状图', '贷中规则柱状图']:
+        sheet = work_book.create_sheet(title=sheet_name)
+        if sheet_name == '总体变化图':
+            for key, image_name in enumerate(map(lambda x:x+'.png', data_sum.columns)):
+                image_path = PATH_2 + '\\'+ image_name
+                img = openpyxl.drawing.image.Image(image_path)
+                #一行两张图片，不能重叠
+                if key <= 2:
+                    sheet.add_image(img, 'B'+ str(key*20+1))
+                else:
+                    sheet.add_image(img, 'M' + str((key-3) * 20 + 1))
+        elif sheet_name == '贷前规则变化拆线图':
+            for key, image_name in enumerate(map(lambda x:x + '.png', data_before.columns)):
+                image_path = PATH_2 + '\\'+ image_name
+                img = openpyxl.drawing.image.Image(image_path)
+                if key <= 3:
+                    sheet.add_image(img, 'B'+ str(key*20+1))
+                else:
+                    sheet.add_image(img, 'M' + str((key-4) * 20 + 1))
+        elif sheet_name == '贷中规则变化拆线图':
+            for key, image_name in enumerate(map(lambda x:x+'.png', data_before.columns)):
+                image_path = PATH_2 + '\\'+ image_name
+                img = openpyxl.drawing.image.Image(image_path)
+                if key <= 3:
+                    sheet.add_image(img, 'B'+ str(key*20+1))
+                else:
+                    sheet.add_image(img, 'M' + str((key-4) * 20 + 1))
+        else:
+            image_path = PATH_2 + '\\' + sheet_name +'.png'
+            img = openpyxl.drawing.image.Image(image_path)
+            sheet.add_image(img, 'A1')
     work_book.save(wb_path)
-    # writer = pd.ExcelWriter(PATH_2+'\\{date_name}.xlsx'.format(date_name=time_now), engine='openpyxl')  # 关键要指定engine='openpyxl'
-    # writer.book = work_book
-    # writer.sheets = dict((ws.title, ws) for ws in work_book.worksheets)
-    # [ws.add_image() for ws in work_book.worksheets]
-    # data.to_excel(writer, sheet_name='数据3')  # 在原工作簿中新建sheet2，存放data，但sheet1不变
-    # writer.save()
-
+    #图片插入到excel后，再删除文件夹中的所有png图片
+    image_list = list(filter(lambda x:'png' in x, os.listdir(PATH_2)))#需要用list转换一下
+    [os.remove(PATH_2+'\\'+x) for x in image_list]#列表推导式中的元素可以为空，只执行删除操作。
 
 if __name__ == "__main__":
+    time_stamp = time.gmtime(time.time() + 8 * 3600)
+    time_now = time.strftime('%Y-%m-%d %H:%M:%S', time_stamp)[:10]
     data_analysis()
     try:
         # 设置好邮箱信息
@@ -295,11 +290,11 @@ if __name__ == "__main__":
         sendAddr = 'yangj@qiandaodao.com'  # 发送方地址
         password = 'ZEWEbUPUo25pkTLD'#input("请输入邮箱授权码：")  # 手动输入授权码更安全.授权码的获取:打开qq邮箱->设置->账户->开启IMAP/SMTP服务->发送短信->授权码
         recipientAddrs = 'liuzhibo@qiandaodao.com'  # 接收方可以是多个账户, 用分号分开,send_email()函数中手动设置
-        subject = '近七天贷前贷中数据'  # 主题
+        subject = '最近14天的贷前贷中数据_{d}'.format(d=time_now)  # 主题
         content = '''
-        你好， 
+        你好，
             附件中包括数据和相应的图片，请查收。
         ''' # 正文内容
-        send_email(smtpHost, port, sendAddr, password, recipientAddrs, subject, content)  # 调用函数
+        send_email(smtpHost, port, sendAddr, password, recipientAddrs, subject, content)
     except Exception as err:
         print(err)
