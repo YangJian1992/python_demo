@@ -276,7 +276,7 @@ where r.create_time>'{time_1}' and r.create_time<='{time_2}' group by d;
             sheet.add_image(img, 'A1')
     work_book.save(wb_path)
     #图片插入到excel后，再删除文件夹中的所有png图片
-    image_list = list(filter(lambda x:'png' in x, os.listdir(PATH_2)))#需要用list转换一下
+    image_list = list(filter(lambda x : 'png' in x, os.listdir(PATH_2)))#需要用list转换一下
     [os.remove(PATH_2+'\\'+x) for x in image_list]#列表推导式中的元素可以为空，只执行删除操作。
 
 if __name__ == "__main__":
