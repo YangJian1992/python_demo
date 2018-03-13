@@ -254,4 +254,10 @@ def age_list(data):
 
 
 if __name__ == "__main__":
-    fun_3()
+    data = pd.read_table('D:\\work\\15.txt', header=0, encoding='utf-8', sep='\t', names=['借款id',	'姓名','身份证',
+                        '手机号','放款时间','应还日期',	'借款金额','应还款金额','逾期天数','实还日期','实还金额'])
+    data_1 = pd.read_excel('D:\\work\\数据测试公司.xlsx',sheetname= 'Sheet1', header=[0])
+    data['id'] = data['姓名'] + data['身份证'].str[-3:]
+    data_2 = data[['借款id', '逾期天数', '实还金额', 'id']]
+
+    data_3 = pd.merge(data_1, data_2, on=['id'], how='left')
