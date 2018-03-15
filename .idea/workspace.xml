@@ -55,8 +55,8 @@
       <file leaf-file-name="ml_test_01.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ml_book_weiwei/ml_test_01.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="185" column="60" lean-forward="false" selection-start-line="185" selection-start-column="60" selection-end-line="185" selection-end-column="60" />
+            <state relative-caret-position="412">
+              <caret line="197" column="26" lean-forward="false" selection-start-line="197" selection-start-column="26" selection-end-line="197" selection-end-column="26" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#1026#1539#0" expanded="false" />
@@ -71,89 +71,63 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="taobao_user_info.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/taobao_orders/taobao_user_info.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3080">
-              <caret line="173" column="23" lean-forward="false" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#2954#4283#0" expanded="false" />
-                <element signature="e#4724#5219#0" expanded="false" />
-                <marker date="1517995786621" expanded="false" signature="5437:6146" ph="SELECT tui.m... credit_id" />
-                <marker date="1517995786621" expanded="true" signature="5475:5726" ph="SELECT credi... t_user_credit_model_record" />
-                <marker date="1517995786621" expanded="true" signature="5761:5969" ph="SELECT credi... t_user_credit_model_record" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taobao_orders/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="51" selection-end-column="50" />
+            <state relative-caret-position="252">
+              <caret line="261" column="0" lean-forward="false" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
               <folding>
+                <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#1274#1787#0" expanded="false" />
                 <element signature="e#1806#5856#0" expanded="false" />
                 <element signature="e#6069#6754#0" expanded="false" />
-                <marker date="1520938139985" expanded="true" signature="1996:2555" ph="SELECT id, e... ecshop_user_bill" />
-                <marker date="1520938139985" expanded="true" signature="6077:6745" ph="SELECT eub.i... ecshop_user_bill" />
+                <marker date="1521080468137" expanded="true" signature="1996:2555" ph="SELECT id, e... ecshop_user_bill" />
+                <marker date="1521080468137" expanded="true" signature="6077:6745" ph="SELECT eub.i... ecshop_user_bill" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="URLManager.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simple_test/URLManager.py">
+      <file leaf-file-name="cnblogs_spider.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/spiders/cnblogs_spider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="82" column="33" lean-forward="true" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HtmlDownloader.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simple_test/HtmlDownloader.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataOutput.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simple_test/DataOutput.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpiderMan.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/simple_test/SpiderMan.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+            <state relative-caret-position="224">
+              <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
               <folding>
-                <element signature="e#0#45#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HtmlParser.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simple_test/HtmlParser.py">
+      <file leaf-file-name="pipelines.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-572">
-              <caret line="18" column="52" lean-forward="false" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
+            <state relative-caret-position="197">
+              <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#24#35#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="23" column="89" lean-forward="false" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="items.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/items.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -185,7 +159,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>7</find>
       <find>num_list</find>
       <find>count_num</find>
       <find>max(count_list)</find>
@@ -215,6 +188,7 @@
       <find>data_over</find>
       <find>online_days</find>
       <find>read</find>
+      <find>select_string</find>
     </findStrings>
     <replaceStrings>
       <replace>ulo</replace>
@@ -259,10 +233,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/address_book.py" />
-        <option value="$PROJECT_DIR$/spider/__init__.py" />
-        <option value="$PROJECT_DIR$/address_book_test.py" />
-        <option value="$PROJECT_DIR$/nltk/nltk_test.py" />
         <option value="$PROJECT_DIR$/call_history_addr_alter/call_addr_alter.py" />
         <option value="$PROJECT_DIR$/tutorial/tutorial/spiders/quotes_spider.py" />
         <option value="$PROJECT_DIR$/call_history_addr_alter/credit_profile_county_null.py" />
@@ -299,7 +269,6 @@
         <option value="$PROJECT_DIR$/call_history_addr_alter/address_book.py" />
         <option value="$PROJECT_DIR$/ml_book_weiwei/ml_test_01.py" />
         <option value="$PROJECT_DIR$/rules/loan rules.py" />
-        <option value="$PROJECT_DIR$/taobao_orders/test.py" />
         <option value="$PROJECT_DIR$/spider/simple test/URLManager.py" />
         <option value="$PROJECT_DIR$/spider/simple test/HtmlDownloader.py" />
         <option value="$PROJECT_DIR$/spider/simple test/HtmlParser.py" />
@@ -310,6 +279,11 @@
         <option value="$PROJECT_DIR$/simple_test/HtmlParser.py" />
         <option value="$PROJECT_DIR$/simple_test/HtmlDownloader.py" />
         <option value="$PROJECT_DIR$/simple_test/SpiderMan.py" />
+        <option value="$PROJECT_DIR$/taobao_orders/test.py" />
+        <option value="$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/pipelines.py" />
+        <option value="$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/items.py" />
+        <option value="$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/spiders/cnblogs_spider.py" />
+        <option value="$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/settings.py" />
       </list>
     </option>
   </component>
@@ -367,12 +341,13 @@
             <path>
               <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="python_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="simple_test" type="462c0819:PsiDirectoryNode" />
+              <item name="scrapy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="python_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="white_knight_auth_times" type="462c0819:PsiDirectoryNode" />
+              <item name="scrapy" type="462c0819:PsiDirectoryNode" />
+              <item name="cnblogSpider" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -552,17 +527,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19635193" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19635193" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50339365" sideWeight="0.5252146" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2183258" sideWeight="0.47478542" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36764705" sideWeight="0.47478542" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35067874" sideWeight="0.472103" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25339368" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42533937" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39932126" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.094420604" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -609,22 +583,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tutorial/quotes-1.html" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/scrapy/spiders/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="22" column="4" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/tutorial/spiders/quote.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/1.txt" />
     <entry file="file://$PROJECT_DIR$/tutorial/a.html" />
     <entry file="file://$PROJECT_DIR$/tutorial/tutorial/spiders/yangjian.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -801,23 +759,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ml_book_weiwei/ml_test_01.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="185" column="60" lean-forward="false" selection-start-line="185" selection-start-column="60" selection-end-line="185" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#1026#1539#0" expanded="false" />
-            <element signature="e#1574#2548#0" expanded="false" />
-            <element signature="e#5107#6209#0" expanded="false" />
-            <marker date="1519900509782" expanded="true" signature="1586:2535" ph="SELECT ucp.i... ecshop_user_bill" />
-            <marker date="1519900509782" expanded="true" signature="1997:2254" ph="SELECT user_... user_loan_orders" />
-            <marker date="1519900509782" expanded="true" signature="5123:6192" ph="SELECT ucp.i... ecshop_user_bill" />
-            <marker date="1519900509782" expanded="true" signature="5590:5883" ph="SELECT user_... user_loan_orders" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/IPython/core/interactiveshell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -846,21 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taobao_orders/taobao_user_info.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3080">
-          <caret line="173" column="23" lean-forward="false" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#2954#4283#0" expanded="false" />
-            <element signature="e#4724#5219#0" expanded="false" />
-            <marker date="1517995786621" expanded="false" signature="5437:6146" ph="SELECT tui.m... credit_id" />
-            <marker date="1517995786621" expanded="true" signature="5475:5726" ph="SELECT credi... t_user_credit_model_record" />
-            <marker date="1517995786621" expanded="true" signature="5761:5969" ph="SELECT credi... t_user_credit_model_record" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simple_test/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -882,24 +808,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taobao_orders/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="51" selection-end-column="50" />
-          <folding>
-            <element signature="e#1274#1787#0" expanded="false" />
-            <element signature="e#1806#5856#0" expanded="false" />
-            <element signature="e#6069#6754#0" expanded="false" />
-            <marker date="1520938139985" expanded="true" signature="1996:2555" ph="SELECT id, e... ecshop_user_bill" />
-            <marker date="1520938139985" expanded="true" signature="6077:6745" ph="SELECT eub.i... ecshop_user_bill" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/requests/sessions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1206">
           <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simple_test/SpiderMan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simple_test/DataOutput.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -912,38 +841,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simple_test/DataOutput.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simple_test/URLManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="82" column="33" lean-forward="true" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+        <state relative-caret-position="344">
+          <caret line="82" column="33" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/simple_test/HtmlParser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-572">
+        <state relative-caret-position="28">
           <caret line="18" column="52" lean-forward="false" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simple_test/SpiderMan.py">
+    <entry file="file://$PROJECT_DIR$/taobao_orders/taobao_user_info.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        <state relative-caret-position="-986">
+          <caret line="130" column="29" lean-forward="false" selection-start-line="130" selection-start-column="16" selection-end-line="130" selection-end-column="29" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1517995786621" expanded="false" signature="5437:6146" ph="SELECT tui.m... credit_id" />
+            <marker date="1517995786621" expanded="true" signature="5475:5726" ph="SELECT credi... t_user_credit_model_record" />
+            <marker date="1517995786621" expanded="true" signature="5761:5969" ph="SELECT credi... t_user_credit_model_record" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ml_book_weiwei/ml_test_01.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="197" column="26" lean-forward="false" selection-start-line="197" selection-start-column="26" selection-end-line="197" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#1026#1539#0" expanded="false" />
+            <element signature="e#1574#2548#0" expanded="false" />
+            <element signature="e#5107#6209#0" expanded="false" />
+            <marker date="1519900509782" expanded="true" signature="1586:2535" ph="SELECT ucp.i... ecshop_user_bill" />
+            <marker date="1519900509782" expanded="true" signature="1997:2254" ph="SELECT user_... user_loan_orders" />
+            <marker date="1519900509782" expanded="true" signature="5123:6192" ph="SELECT ucp.i... ecshop_user_bill" />
+            <marker date="1519900509782" expanded="true" signature="5590:5883" ph="SELECT user_... user_loan_orders" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taobao_orders/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="261" column="0" lean-forward="false" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#1274#1787#0" expanded="false" />
+            <element signature="e#1806#5856#0" expanded="false" />
+            <element signature="e#6069#6754#0" expanded="false" />
+            <marker date="1521080468137" expanded="true" signature="1996:2555" ph="SELECT id, e... ecshop_user_bill" />
+            <marker date="1521080468137" expanded="true" signature="6077:6745" ph="SELECT eub.i... ecshop_user_bill" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/pipelines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <element signature="e#24#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="23" column="89" lean-forward="false" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapy/cnblogSpider/cnblogSpider/spiders/cnblogs_spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
