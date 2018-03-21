@@ -1,0 +1,40 @@
+2018-03-21 18:23:29 [scrapy.utils.log] INFO: Scrapy 1.4.0 started (bot: sun)
+2018-03-21 18:23:29 [scrapy.utils.log] INFO: Overridden settings: {'BOT_NAME': 'sun', 'LOG_FILE': 'dg.log', 'NEWSPIDER_MODULE': 'sun.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['sun.spiders']}
+2018-03-21 18:23:29 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2018-03-21 18:23:29 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-03-21 18:23:29 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-03-21 18:23:29 [scrapy.middleware] INFO: Enabled item pipelines:
+['sun.pipelines.SunPipeline']
+2018-03-21 18:23:29 [scrapy.core.engine] INFO: Spider opened
+2018-03-21 18:23:29 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-03-21 18:23:29 [scrapy.extensions.telnet] DEBUG: Telnet console listening on 127.0.0.1:6023
+2018-03-21 18:23:45 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://www.sun0769.com/error/404.htm> from <GET http://wz.sun0769.com/robots.txt>
+2018-03-21 18:23:45 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://www.sun0769.com/error/404.htm> (referer: None)
+2018-03-21 18:24:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://wz.sun0769.com/index.php/question/questionType?type=4> (referer: None)
+2018-03-21 18:24:58 [scrapy.extensions.logstats] INFO: Crawled 2 pages (at 2 pages/min), scraped 0 items (at 0 items/min)
+2018-03-21 18:25:45 [scrapy.extensions.logstats] INFO: Crawled 2 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-03-21 18:25:45 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET http://wz.sun0769.com/html/question/201803/363945.shtml> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion.>]
+2018-03-21 18:25:45 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET http://wz.sun0769.com/html/question/201803/363944.shtml> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion.>]
+2018-03-21 18:25:45 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET http://wz.sun0769.com/html/question/201803/363949.shtml> (failed 1 times): [<twisted.python.failure.Failure twisted.internet.error.ConnectionLost: Connection to the other side was lost in a non-clean fashion.>]
+2018-03-21 18:25:45 [scrapy.downloadermiddlewares.retry] DEBUG: Retrying <GET http://wz.sun0769.com/html/question/201803/363950.shtml> (failed 1 times): 408 Request Time-out
+2018-03-21 18:27:18 [scrapy.crawler] INFO: Received SIGINT, shutting down gracefully. Send again to force 

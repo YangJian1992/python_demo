@@ -24,7 +24,8 @@ class CnblogsSpider(scrapy.Spider):
             content = paper.xpath(".//*[@class='postCon']/div/text()").extract()[0]
             #下面参数中，等号左边的url成为键key，等号右边的变量url中的内容成为value
             item = CnblogspiderItem(url=url, title=title, time=time, content=content)
-            request = scrapy.Request(url=url, callback=self.parse_body)#Request返回response传给callback函数parse_body
+            # Request返回response传给callback函数parse_body，这是文章详细内容的链接，用yield返回。
+            request = scrapy.Request(url=url, callback=self.parse_body)
             request.meta['item'] = item#将item暂存
             #request: <class 'scrapy.http.request.Request'>
             #response: <class 'scrapy.http.response.html.HtmlResponse'>
@@ -32,6 +33,7 @@ class CnblogsSpider(scrapy.Spider):
 
         next_page = Selector(response).re('<a href="(\S*)">下一页</a>')
         if next_page:
+            #这是第二页文章列表的request，调用的是parse函数
             yield scrapy.Request(url=next_page[0], callback=self.parse)
 
 #这里是每一篇文章的内部文档，用新的函数解析。

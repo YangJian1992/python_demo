@@ -213,7 +213,7 @@ def data_cut_counts(data, rule_name, group):
     count_2.name = '未逾期'
     print('未逾期：\n', count_2)
     #逾期
-    data_3 = data[data['overdue_days'] >0]
+    data_3 = data[data['overdue_days'] >5]
     data_3_cut_days = pd.cut(data_3[rule_name], group)
     count_3 = data_3_cut_days.value_counts()
     count_3.name = '逾期'
