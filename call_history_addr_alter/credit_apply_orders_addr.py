@@ -29,17 +29,27 @@ def get_local_file(data):
     data.to_csv(path+file+'.csv', sep='\t', encoding='utf-8', index=False)
 
 
-def read_local_file():
+#读取本地文件， 并返回最终结果
+def get_result():
+    i = 1
+    data_list = []
     path = 'D:\\work\\database\\province-city\\'
     file = 'credit_apply_orders_addr'
-    data = pd.read_table(path+file+'.csv', encoding='utf-8', sep='\t', chunksize=100000)
-    print('已经读取数据，正在进行处理，请稍候...')
+    data = pd.read_table(path+file+'.csv', encoding='utf-8', sep='\t', chunksize=30000)
     for item in data:
+        print('********************************\n正在处理第{row1}行至第{row2}行数据，请稍候...'.format(row1=(i-1)*30000+1, row2=i*30000))
         data_old = addr_analysis(item)
         data_string = read_local_data(data_old[0])
+        data_json = data_old[1]
+        data_list.append(data_string)
+        data_list.append(data_json)
+        i = i+1
+    data_result = pd.concat(data_list, axis=0)
+    return data_result
 
 
 
+#把数据分为data_json和data_string两部分，并返回一个列表。
 def addr_analysis(data):
     start = time.time()
     #把数据根据地址分为两部分,一种是地址为json的data_json，一种地址为字符串data_string
@@ -47,29 +57,33 @@ def addr_analysis(data):
     data['province'] = 'null'
     data['city'] = 'null'
     data_json = data[data['location'].str.contains('location')]
+
     print(data_json.dtypes)
     data_string = data[~data['location'].str.contains('location')]
     data_string['location_1'] = data_string['location']
     # print(data_string)
     print('__________________')
     print(len(data), len(data_string), len(data_json))
-
     # 处理data_json数据，从字典中提取location_1， 省， 市
+    data_json_dict = data_json['location'].apply(json.loads)
+    # print(data_json_dict, '______________________data_json_dict\n')
     for index in data_json.index:
-        addr_dict = json.loads(data_json.ix[index, 'location'])
-        data_json.ix[index, ['province']] = addr_dict['province']
-        data_json.ix[index, ['city']] = addr_dict['city']
-        data_json.ix[index, ['location_1']] = addr_dict['location']
+        data_json.loc[index, ['province']] = data_json_dict[index]['province']
+        data_json.loc[index, ['city']] = data_json_dict[index]['city']
+        data_json.loc[index, ['location_1']] = data_json_dict[index]['location']
     data_json['location_new'] = data_json['province'] + ',' +data_json['city']
     # print(data_json)
-    print('addr_analysis(data)运行结束，共花费时间为{time}s。'.format(time=time.time()-start))
+    data_json['flag_province'] = 0
+    data_json['flag_city'] = 0
+    data_json['flag_county'] = 0
+    print('addr_analysis(data)运行结束，共花费时间为{time} s。\n'.format(time=time.time()-start))
     return [data_string, data_json]
 
 
 def read_local_data(data_old):
+    print('正在执行read_local_data()函数，请稍候...\n')
     #既有一级行政区又有二级行政区的数据
     #其他
-
     path = "D:\\work\\database\\province-city\\"
     file_name = "province_city_rule.json"
     # file_name_2 = 'idcard_district_old.csv'
@@ -93,14 +107,14 @@ def read_local_data(data_old):
     print('找出原数据中的省名和市名，请稍候.............................................................................')
     index_item = province[(province['addr'].str.contains('省'))| (province['addr'].str.contains('市')) ].index
     for item_1 in index_item:
-        province.ix[item_1, 'addr_new'] = province.ix[item_1,'addr'][:-1]
-    province.ix['150000', 'addr_new'] = '内蒙'
-    province.ix['450000', 'addr_new'] = '广西'
-    province.ix['540000', 'addr_new'] = '西藏'
-    province.ix['640000', 'addr_new'] = '宁夏'
-    province.ix['650000', 'addr_new'] = '新疆'
-    province.ix['810000', 'addr_new'] = '香港'
-    province.ix['820000', 'addr_new'] = '澳门'
+        province.loc[item_1, 'addr_new'] = province.loc[item_1,'addr'][:-1]
+    province.loc['150000', 'addr_new'] = '内蒙'
+    province.loc['450000', 'addr_new'] = '广西'
+    province.loc['540000', 'addr_new'] = '西藏'
+    province.loc['640000', 'addr_new'] = '宁夏'
+    province.loc['650000', 'addr_new'] = '新疆'
+    province.loc['810000', 'addr_new'] = '香港'
+    province.loc['820000', 'addr_new'] = '澳门'
     # city = data[(data['id']%100==0) & (data['id']%10000!=0)]
     # 建立一个数据表province，只存放省名，含有addr，id ，addr_new----------------------------------------------------
 
@@ -110,40 +124,37 @@ def read_local_data(data_old):
     data_old['flag_province'] = 0
     data_old['flag_city'] = 0
     data_old['flag_county'] = 0
-
     #找出既有省名又有市名的数据------------------------------------------------------------------------------------------------------------
     #遍历每一个省名
     for index_province in province.index:
-        province_word = province.ix[index_province, 'addr_new']
+        province_word = province.loc[index_province, 'addr_new']
         if province_word not in ['北京', '天津', '上海', '重庆', '香港', '澳门']:
             # print(province_word, '***********************************************************')
             #找到含有该省名的地址，比如 海南
             data_province_index = data_old[data_old["location_1"].str.contains(province_word)].index
-            data_old.ix[data_province_index, 'flag_province'] = data_old.ix[data_province_index, 'flag_province'] + 1
+            data_old.loc[data_province_index, 'flag_province'] = data_old.loc[data_province_index, 'flag_province'] + 1
             # print(data_old)
             #遍历该省下的每一个市名，考虑直辖县，第三位为9的是直辖县，如429004，仙桃市。"469024":"临高县"。市的编码需要大于本省的编码，小于下一省的编码。普通城市编码小于
             #9000，且被100整除，或者大于9000的直辖县。
             for city_index in data[(data['id'] > int(index_province)) & (((data['id'] < int(index_province) + 9000) & (data['id'] % 100 == 0)
                                                                         |(data['id']>int(index_province)+8999)&(data['id']<int(index_province)+10000)))].index:
-                city_word = data.ix[city_index, 'addr'][:-1]
+                city_word = data.loc[city_index, 'addr'][:-1]
                 # print(city_word, '_______________')
                 #找到地址字符中含有该城市数据索引
                 #该省的data_old数据记录中，寻找对应市的记录
-                data_old_province = data_old.ix[data_province_index]
+                data_old_province = data_old.loc[data_province_index]
                 if city_word != '吉林':
                     #data_city_index为data_old中含有特定省名和市名的数据索引，
                     data_city_index = data_old_province[data_old_province['location_1'].str.contains(city_word)].index
-                    data_old.ix[data_city_index, 'flag_city'] = data_old.ix[data_city_index, 'flag_city'] + 1
-                    # print(data_old.ix[data_city_index, 'location_1'], '____________________________________')
-
+                    data_old.loc[data_city_index, 'flag_city'] = data_old.loc[data_city_index, 'flag_city'] + 1
+                    # print(data_old.loc[data_city_index, 'location_1'], '____________________________________')
                     #遍历每一个包含该城市名的原数据
-
                     for data_item in data_city_index:
-                        if data_old.ix[data_item, 'flag_city'] == 1:
+                        if data_old.loc[data_item, 'flag_city'] == 1:
                             #让标准文件中的城市名作为新的地址
-                            data_old.ix[data_item, 'location_new'] = province.ix[index_province, 'addr'] +','+ data.ix[city_index, 'addr']
-                        elif data_old.ix[data_item, 'flag_city'] > 1:
-                            data_old.ix[data_item, 'location_new'] = "多个城市"
+                            data_old.loc[data_item, 'location_new'] = province.loc[index_province, 'addr'] +','+ data.loc[city_index, 'addr']
+                        elif data_old.loc[data_item, 'flag_city'] > 1:
+                            data_old.loc[data_item, 'location_new'] = "多个城市"
                         else:
                             pass
                 else:
@@ -152,14 +163,15 @@ def read_local_data(data_old):
         elif province_word in ['北京', '天津', '上海', '重庆']:
             #如果是这四个直辖市
             data_province_index = data_old[data_old["location_1"].str.contains(province_word)].index
-            data_old.ix[data_province_index, 'location_new'] = province_word + '市,' + province_word + '市'
-            data_old.ix[data_province_index, 'flag_province'] = data_old.ix[data_province_index, 'flag_province'] + 1
+            data_old.loc[data_province_index, 'location_new'] = province_word + '市,' + province_word + '市'
+            data_old.loc[data_province_index, 'flag_province'] = data_old.loc[data_province_index, 'flag_province'] + 1
         #香港、澳门
         else:
             data_province_index = data_old[data_old["location_1"].str.contains(province_word)].index
-            data_old.ix[data_province_index, 'location_new'] = province_word + '特别行政区'
-            data_old.ix[data_province_index, 'flag_province'] = data_old.ix[data_province_index, 'flag_province'] + 1
+            data_old.loc[data_province_index, 'location_new'] = province_word + '特别行政区'
+            data_old.loc[data_province_index, 'flag_province'] = data_old.loc[data_province_index, 'flag_province'] + 1
 
+    data_old.loc[data_old[data_old['location_1'].str.contains('吉林省吉林市')].index, 'location_new'] = '吉林省,吉林市'
     # writer = pd.ExcelWriter(path + file_name_2[:-4] + '_analysis.xlsx')
     # data_old.to_excel(writer, 'sheet1')
     # writer.save()
@@ -176,5 +188,18 @@ if __name__ == '__main__':
 #     cloumns = ['id', 'user_id', 'location']
 #     data = mysql_connection(select_string, cloumns)
 #     get_local_file(data)
-    data = read_local_file()
+    start = time.time()
+    data = get_result()
+    data.sort_index()
+    path = 'D:\\work\\database\\province-city\\'
+    file = 'credit_apply_orders_addr'
+    data.to_csv(path+file+'_alter.csv', sep='\t', encoding='utf-8', index=False)
+
+    writer = pd.ExcelWriter(path + file + '_alter.xlsx')
+    data.to_excel(writer, 'sheet1')
+    writer.save()
+    print('共花费时间为：{time}s'.format(time=time.time()-start))
+    print(data)
+
+
 
