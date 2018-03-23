@@ -2,6 +2,7 @@
 import scrapy
 from sun.items import SunItem
 #爬取投诉帖子的编号、帖子的url、帖子的标题，和帖子里的内容
+#但是提取的内容会有乱码的现象
 class SunWzSpider(scrapy.Spider):
     name = 'sun_wz'
     allowed_domains = ['wz.sun0769.com']

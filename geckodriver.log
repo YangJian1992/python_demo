@@ -1,0 +1,476 @@
+1521775889784	geckodriver	INFO	geckodriver 0.20.0
+1521775889804	geckodriver	INFO	Listening on 127.0.0.1:64159
+1521775890294	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.D8gqc8PTiQzl"
+1521775891244	Marionette	INFO	Enabled via --marionette
+1521775893016	Marionette	INFO	Listening on port 64165
+1521775893104	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Parent 10492, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 10492, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8148, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1521776030393	geckodriver	INFO	geckodriver 0.20.0
+1521776030404	geckodriver	INFO	Listening on 127.0.0.1:64246
+1521776030971	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "headless" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.xJPePTj6nqlb"
+1521776031580	Marionette	INFO	Enabled via --marionette
+1521776033226	Marionette	INFO	Listening on port 64251
+1521776033600	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Parent 8868, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9004, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1521776263247	geckodriver	INFO	geckodriver 0.20.0
+1521776263259	geckodriver	INFO	Listening on 127.0.0.1:64328
+1521776263803	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "headless" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.aemtOYAv9FLZ"
+1521776264506	Marionette	INFO	Enabled via --marionette
+1521776266260	Marionette	INFO	Listening on port 64333
+1521776266444	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 15700, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 15700, Chrome_ChildThread] WARNING: pipe err[Child 8028, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1521776363026	geckodriver	INFO	geckodriver 0.20.0
+1521776363046	geckodriver	INFO	Listening on 127.0.0.1:64415
+1521776363576	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "headless" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.dPxFVqWS89YP"
+1521776364150	Marionette	INFO	Enabled via --marionette
+1521776365960	Marionette	INFO	Listening on port 64420
+1521776366304	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 9844, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1521776368066	geckodriver::marionette	ERROR	Failed to stop browser process
+1521776693380	geckodriver	INFO	geckodriver 0.20.0
+1521776693389	geckodriver	INFO	Listening on 127.0.0.1:64512
+1521776693917	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.wmQcf9CITBKw"
+*** You are running in headless mode.
+1521776694482	Marionette	INFO	Enabled via --marionette
+1521776696014	Marionette	INFO	Listening on port 64517
+1521776696044	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 13972, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child[Child 5720, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521776697552	geckodriver::marionette	ERROR	Failed to stop browser process
+1521776739968	geckodriver	INFO	geckodriver 0.20.0
+1521776739980	geckodriver	INFO	Listening on 127.0.0.1:64551
+1521776740548	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.mIA8fjB2mdrl"
+*** You are running in headless mode.
+1521776741386	Marionette	INFO	Enabled via --marionette
+1521776742776	Marionette	INFO	Listening on port 64556
+1521776743196	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 6176, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6[Parent 10392, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 5864, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521776744425	geckodriver::marionette	ERROR	Failed to stop browser process
+1521776768135	geckodriver	INFO	geckodriver 0.20.0
+1521776768147	geckodriver	INFO	Listening on 127.0.0.1:64587
+1521776768660	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.mxCkLtMp7hvK"
+*** You are running in headless mode.
+1521776769320	Marionette	INFO	Enabled via --marionette
+1521776770650	Marionette	INFO	Listening on port 64592
+1521776770808	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 10256, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child[Parent 7908, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 2124, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child [Child 9284, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Chil*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521776772163	geckodriver::marionette	ERROR	Failed to stop browser process
+1521776796902	geckodriver	INFO	geckodriver 0.20.0
+1521776796912	geckodriver	INFO	Listening on 127.0.0.1:64623
+1521776797462	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.fJmaO1Gtln3i"
+*** You are running in headless mode.
+1521776798130	Marionette	INFO	Enabled via --marionette
+1521776799464	Marionette	INFO	Listening on port 64628
+1521776799604	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 5804, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Chil[Child 15088, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child [Parent 8588, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 12128, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 1212*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521776801096	geckodriver::marionette	ERROR	Failed to stop browser process
+1521776820339	geckodriver	INFO	geckodriver 0.20.0
+1521776820348	geckodriver	INFO	Listening on 127.0.0.1:64659
+1521776820875	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.OeL3kNuOFwNy"
+*** You are running in headless mode.
+1521776821588	Marionette	INFO	Enabled via --marionette
+1521776822998	Marionette	INFO	Listening on port 64664
+1521776823488	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 12360, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521776824618	geckodriver::marionette	ERROR	Failed to stop browser process
+1521776839993	geckodriver	INFO	geckodriver 0.20.0
+1521776840003	geckodriver	INFO	Listening on 127.0.0.1:64697
+1521776840533	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.VyDe1UgPWCGM"
+*** You are running in headless mode.
+1521776841220	Marionette	INFO	Enabled via --marionette
+1521776842706	Marionette	INFO	Listening on port 64702
+1521776843222	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 11716, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Chi[Child 2920, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521776845043	geckodriver::marionette	ERROR	Failed to stop browser process
+1521776859474	geckodriver	INFO	geckodriver 0.20.0
+1521776859483	geckodriver	INFO	Listening on 127.0.0.1:64734
+1521776860000	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.35wUVkaruFd8"
+*** You are running in headless mode.
+1521776860882	Marionette	INFO	Enabled via --marionette
+1521776862326	Marionette	INFO	Listening on port 64739
+1521776862628	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://intoli.com/blog/running-selenium-with-headless-firefox/, line 634: ReferenceError: iFrameResize is not defined
+1521780048027	geckodriver	INFO	geckodriver 0.20.0
+1521780048041	geckodriver	INFO	Listening on 127.0.0.1:50024
+1521780048553	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.Jdnlwdmlm8cb"
+*** You are running in headless mode.
+1521780049424	Marionette	INFO	Enabled via --marionette
+1521780050830	Marionette	INFO	Listening on port 50029
+1521780051254	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521780056149	geckodriver	INFO	geckodriver 0.20.0
+1521780056159	geckodriver	INFO	Listening on 127.0.0.1:50091
+1521780056678	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.2vkqLS65sgR4"
+*** You are running in headless mode.
+1521780057290	Marionette	INFO	Enabled via --marionette
+1521780058832	Marionette	INFO	Listening on port 50096
+1521780059294	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+1521780574306	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+127.0.0.1:50133
+1521780115394	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.qjkSjLff32IB"
+*** You are running in headless mode.
+1521780115900	Marionette	INFO	Enabled via --marionette
+1521780117488	Marionette	INFO	Listening on port 50138
+1521780117522	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+1521780575142	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+127.0.0.1:50181
+1521780126708	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.qCQyMFLNW4fO"
+*** You are running in headless mode.
+1521780127220	Marionette	INFO	Enabled via --marionette
+1521780128860	Marionette	INFO	Listening on port 50186
+1521780129328	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 5980, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child[Child 6160, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521780130570	geckodriver::marionette	ERROR	Failed to stop browser process
+1521780194760	geckodriver	INFO	geckodriver 0.20.0
+1521780194770	geckodriver	INFO	Listening on 127.0.0.1:50224
+1521780195290	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.2jmvj2wSPdK2"
+*** You are running in headless mode.
+1521780195996	Marionette	INFO	Enabled via --marionette
+1521780197320	Marionette	INFO	Listening on port 50229
+1521780197452	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 11540, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[[Child 7504, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child[Parent 7160, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521780198970	geckodriver::marionette	ERROR	Failed to stop browser process
+1521780235390	geckodriver	INFO	geckodriver 0.20.0
+1521780235407	geckodriver	INFO	Listening on 127.0.0.1:50266
+1521780235913	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.DmtYbQsW2cOv"
+*** You are running in headless mode.
+1521780236578	Marionette	INFO	Enabled via --marionette
+1521780237942	Marionette	INFO	Listening on port 50275
+1521780238052	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 6040, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child [Child 11080, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child[Child 9984, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child *** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521780239380	geckodriver::marionette	ERROR	Failed to stop browser process
+1521780339074	geckodriver	INFO	geckodriver 0.20.0
+1521780339084	geckodriver	INFO	Listening on 127.0.0.1:50319
+1521780339649	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.9ZYIbwUNDrlD"
+*** You are running in headless mode.
+1521780340354	Marionette	INFO	Enabled via --marionette
+1521780341786	Marionette	INFO	Listening on port 50324
+1521780342282	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+1521780574516	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+127.0.0.1:50364
+1521780354371	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.d4flMqnnlO8W"
+*** You are running in headless mode.
+1521780354922	Marionette	INFO	Enabled via --marionette
+1521780356398	Marionette	INFO	Listening on port 50369
+1521780356524	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+1521780574438	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+127.0.0.1:50410
+1521780381124	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.xT1RcyBrOie1"
+*** You are running in headless mode.
+1521780382044	Marionette	INFO	Enabled via --marionette
+1521780383624	Marionette	INFO	Listening on port 50415
+1521780383780	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+1521780574036	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1521780645570	geckodriver	INFO	geckodriver 0.20.0
+1521780645580	geckodriver	INFO	Listening on 127.0.0.1:50844
+1521780646101	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.xINwczqR5rAX"
+*** You are running in headless mode.
+1521780646830	Marionette	INFO	Enabled via --marionette
+1521780648562	Marionette	INFO	Listening on port 50849
+1521780648764	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521780682216	geckodriver	INFO	geckodriver 0.20.0
+1521780682226	geckodriver	INFO	Listening on 127.0.0.1:50906
+1521780682755	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.ZH6qmGuleEIU"
+*** You are running in headless mode.
+1521780683446	Marionette	INFO	Enabled via --marionette
+[GFX1-]: ClientLayerManager::BeginTransaction with IPC channel down. GPU process may have died.
+1521780684922	Marionette	INFO	Listening on port 50911
+1521780685414	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 15852, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child *** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521780686876	geckodriver::marionette	ERROR	Failed to stop browser process
+1521780700282	geckodriver	INFO	geckodriver 0.20.0
+1521780700292	geckodriver	INFO	Listening on 127.0.0.1:50980
+1521780700811	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.ydt7OFA1R5aY"
+*** You are running in headless mode.
+1521780701498	Marionette	INFO	Enabled via --marionette
+1521780703168	Marionette	INFO	Listening on port 50985
+1521780703438	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 11768, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child *** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521780704815	geckodriver::marionette	ERROR	Failed to stop browser process
+1521780711824	geckodriver	INFO	geckodriver 0.20.0
+1521780711834	geckodriver	INFO	Listening on 127.0.0.1:51048
+1521780712356	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.tMczxtlxhQmf"
+*** You are running in headless mode.
+1521780713128	Marionette	INFO	Enabled via --marionette
+1521780714526	Marionette	INFO	Listening on port 51053
+1521780714986	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 17676, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child *** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521780716333	geckodriver::marionette	ERROR	Failed to stop browser process
+1521780724973	geckodriver	INFO	geckodriver 0.20.0
+1521780724982	geckodriver	INFO	Listening on 127.0.0.1:51134
+1521780725535	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.UDSKaqDxt6u7"
+*** You are running in headless mode.
+1521780726238	Marionette	INFO	Enabled via --marionette
+1521780727670	Marionette	INFO	Listening on port 51139
+1521780728168	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 16924, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1521780729764	geckodriver::marionette	ERROR	Failed to stop browser process
+1521780809283	geckodriver	INFO	geckodriver 0.20.0
+1521780809299	geckodriver	INFO	Listening on 127.0.0.1:51246
+1521780809814	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.YaE5PZEh0Ezi"
+*** You are running in headless mode.
+1521780810358	Marionette	INFO	Enabled via --marionette
+1521780811742	Marionette	INFO	Listening on port 51251
+1521780811940	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 9604, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child[Child 9988, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521780813473	geckodriver::marionette	ERROR	Failed to stop browser process
+1521781187933	geckodriver	INFO	geckodriver 0.20.0
+1521781187943	geckodriver	INFO	Listening on 127.0.0.1:51544
+1521781188473	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.1uTrhruRjKbW"
+*** You are running in headless mode.
+1521781189172	Marionette	INFO	Enabled via --marionette
+1521781190872	Marionette	INFO	Listening on port 51549
+1521781191134	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521781192824	geckodriver::marionette	ERROR	Failed to stop browser process
+1521781210472	geckodriver	INFO	geckodriver 0.20.0
+1521781210482	geckodriver	INFO	Listening on 127.0.0.1:51633
+1521781211033	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.GumlTNnIdIAZ"
+*** You are running in headless mode.
+1521781211778	Marionette	INFO	Enabled via --marionette
+1521781213190	Marionette	INFO	Listening on port 51638
+1521781213692	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 18720, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 17884, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child [Parent 12164, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6164, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6164, Chrome_Ch*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521781215077	geckodriver::marionette	ERROR	Failed to stop browser process
+1521781787733	geckodriver	INFO	geckodriver 0.20.0
+1521781787743	geckodriver	INFO	Listening on 127.0.0.1:52239
+1521781788256	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.PIuFCrnyBMdS"
+*** You are running in headless mode.
+1521781789108	Marionette	INFO	Enabled via --marionette
+1521781791074	Marionette	INFO	Listening on port 52246
+1521781791410	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 19024, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child[Parent 12248, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 19376, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521781793385	geckodriver::marionette	ERROR	Failed to stop browser process
+1521783412943	geckodriver	INFO	geckodriver 0.20.0
+1521783412953	geckodriver	INFO	Listening on 127.0.0.1:53362
+1521783413512	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.nj1qhlTAELzv"
+*** You are running in headless mode.
+1521783414230	Marionette	INFO	Enabled via --marionette
+1521783415594	Marionette	INFO	Listening on port 53367
+1521783415704	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=seleni&json=1&p=3&sid=1463_18195_21092_17001_20719&req=2&csor=6&pwd=selen&cb=jQuery110205455875546120217_1521783416198&_=1521783416205, line 1: TypeError: jQuery110205455875546120217_1521783416198 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=seleniu&json=1&p=3&sid=1463_18195_21092_17001_20719&req=2&csor=7&pwd=seleni&cb=jQuery110205455875546120217_1521783416198&_=1521783416206, line 1: TypeError: jQuery110205455875546120217_1521783416198 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=selenium&json=1&p=3&sid=1463_18195_21092_17001_20719&req=2&csor=8&pwd=seleniu&cb=jQuery110205455875546120217_1521783416198&_=1521783416207, line 1: TypeError: jQuery110205455875546120217_1521783416198 is not a function
+[Child 15296, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child *** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521783417715	geckodriver::marionette	ERROR	Failed to stop browser process
+1521784957762	geckodriver	INFO	geckodriver 0.20.0
+1521784957782	geckodriver	INFO	Listening on 127.0.0.1:55242
+1521784958263	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.mG8Nfoy0RlJs"
+*** You are running in headless mode.
+1521784958928	Marionette	INFO	Enabled via --marionette
+1521784960444	Marionette	INFO	Listening on port 55247
+1521784960488	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+1521784964197	geckodriver	INFO	geckodriver 0.20.0
+1521784964208	geckodriver	INFO	Listening on 127.0.0.1:55356
+1521784964732	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.GSeeEazPlI0Y"
+*** You are running in headless mode.
+1521784965366	Marionette	INFO	Enabled via --marionette
+1521784966978	Marionette	INFO	Listening on port 55363
+1521784967380	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=selen&json=1&p=3&sid=1437_21092_22157&req=2&csor=5&pwd=sele&cb=jQuery110207285657698101873_1521784967966&_=1521784967972, line 1: TypeError: jQuery110207285657698101873_1521784967966 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=seleni&json=1&p=3&sid=1437_21092_22157&req=2&csor=6&pwd=selen&cb=jQuery110207285657698101873_1521784967966&_=1521784967973, line 1: TypeError: jQuery110207285657698101873_1521784967966 is not a function
+[Child 18648, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 1JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=seleniu&json=1&p=3&sid=1437_21092_22157&req=2&csor=7&pwd=seleni&cb=jQuery110207285657698101873_1521784967966&_=1521784967974, line 1: TypeError: jQuery110207285657698101873_1521784967966 is not a function
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521784970060	geckodriver::marionette	ERROR	Failed to stop browser process
+1521784970956	geckodriver	INFO	geckodriver 0.20.0
+1521784970974	geckodriver	INFO	Listening on 127.0.0.1:55475
+1521784971483	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.adplg3ji12rv"
+*** You are running in headless mode.
+1521784972072	Marionette	INFO	Enabled via --marionette
+1521784973694	Marionette	INFO	Listening on port 55483
+1521784974116	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=selen&json=1&p=3&sid=1431_18195_21081_17001_20718&req=2&csor=5&pwd=sele&cb=jQuery1102013066189954386298_1521784974792&_=1521784974798, line 1: TypeError: jQuery1102013066189954386298_1521784974792 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=se&json=1&p=3&sid=1431_18195_21081_17001_20718&req=2&csor=2&pwd=s&cb=jQuery1102013066189954386298_1521784974792&_=1521784974795, line 1: TypeError: jQuery1102013066189954386298_1521784974792 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=sel&json=1&p=3&sid=1431_18195_21081_17001_20718&req=2&csor=3&pwd=se&cb=jQuery1102013066189954386298_1521784974792&_=1521784974796, line 1: TypeError: jQuery1102013066189954386298_1521784974792 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=sele&json=1&p=3&sid=1431_18195_21081_17001_20718&req=2&csor=4&pwd=sel&cb=jQuery1102013066189954386298_1521784974792&_=1521784974797, line 1: TypeError: jQuery1102013066189954386298_1521784974792 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=seleniu&json=1&p=3&sid=1431_18195_21081_17001_20718&req=2&csor=7&pwd=seleni&cb=jQuery1102013066189954386298_1521784974792&_=1521784974800, line 1: TypeError: jQuery1102013066189954386298_1521784974792 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=seleni&json=1&p=3&sid=1431_18195_21081_17001_20718&req=2&csor=6&pwd=selen&cb=jQuery1102013066189954386298_1521784974792&_=1521784974799, line 1: TypeError: jQuery1102013066189954386298_1521784974792 is not a function
+[Child 20312, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521784976601	geckodriver::marionette	ERROR	Failed to stop browser process
+1521785018754	geckodriver	INFO	geckodriver 0.20.0
+1521785018766	geckodriver	INFO	Listening on 127.0.0.1:55656
+1521785019286	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.lA1AbCd3Keg6"
+*** You are running in headless mode.
+1521785019904	Marionette	INFO	Enabled via --marionette
+1521785021422	Marionette	INFO	Listening on port 55661
+1521785021922	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=sel&json=1&p=3&sid=1432_21083_17001_26029&req=2&csor=3&pwd=se&cb=jQuery110205656784386228766_1521785022600&_=1521785022604, line 1: TypeError: jQuery110205656784386228766_1521785022600 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=sele&json=1&p=3&sid=1432_21083_17001_26029&req=2&csor=4&pwd=sel&cb=jQuery110205656784386228766_1521785022600&_=1521785022605, line 1: TypeError: jQuery110205656784386228766_1521785022600 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=seleni&json=1&p=3&sid=1432_21083_17001_26029&req=2&csor=6&pwd=selen&cb=jQuery110205656784386228766_1521785022600&_=1521785022607, line 1: TypeError: jQuery110205656784386228766_1521785022600 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=seleniu&json=1&p=3&sid=1432_21083_17001_26029&req=2&csor=7&pwd=seleni&cb=jQuery110205656784386228766_1521785022600&_=1521785022608, line 1: TypeError: jQuery110205656784386228766_1521785022600 is not a function
+[Child 17576, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[ChJavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=selenium&json=1&p=3&sid=1432_21083_17001_26029&req=2&csor=8&pwd=seleniu&cb=jQuery110205656784386228766_1521785022600&_=1521785022609, line 1: TypeError: jQuery110205656784386228766_1521785022600 is not a function
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521785024283	geckodriver::marionette	ERROR	Failed to stop browser process
+1521785107870	geckodriver	INFO	geckodriver 0.20.0
+1521785107880	geckodriver	INFO	Listening on 127.0.0.1:55885
+1521785108423	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.OeilrkZuaIdq"
+*** You are running in headless mode.
+1521785108994	Marionette	INFO	Enabled via --marionette
+1521785110738	Marionette	INFO	Listening on port 55890
+1521785111086	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 20168, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 201
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521785113536	geckodriver::marionette	ERROR	Failed to stop browser process
+1521786118678	geckodriver	INFO	geckodriver 0.20.0
+1521786118689	geckodriver	INFO	Listening on 127.0.0.1:57458
+1521786119212	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.zWBV0gOhyDy9"
+*** You are running in headless mode.
+1521786119772	Marionette	INFO	Enabled via --marionette
+1521786121274	Marionette	INFO	Listening on port 57465
+1521786121388	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 18200, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child[Child 19784, Chrome_ChildThread] WARNING: pipe error: 232: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 513
+[Child 19784, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521786124086	geckodriver::marionette	ERROR	Failed to stop browser process
+1521786179993	geckodriver	INFO	geckodriver 0.20.0
+1521786180005	geckodriver	INFO	Listening on 127.0.0.1:57690
+1521786180523	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.cJP8A0w0qpdv"
+*** You are running in headless mode.
+1521786181090	Marionette	INFO	Enabled via --marionette
+1521786183164	Marionette	INFO	Listening on port 57695
+1521786183638	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/plugins/every_cookie_4644b13.js, line 4: ReferenceError: c is not defined
+[Child 20108, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 201[Child 19056, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521786185723	geckodriver::marionette	ERROR	Failed to stop browser process
+1521786713776	geckodriver	INFO	geckodriver 0.20.0
+1521786713786	geckodriver	INFO	Listening on 127.0.0.1:58781
+1521786714308	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.jnxgnoLIrCJA"
+*** You are running in headless mode.
+1521786715128	Marionette	INFO	Enabled via --marionette
+1521786716526	Marionette	INFO	Listening on port 58788
+1521786716962	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521786830387	geckodriver	INFO	geckodriver 0.20.0
+1521786830391	geckodriver	INFO	Listening on 127.0.0.1:59096
+1521786830914	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.dXNLMHLycwOB"
+*** You are running in headless mode.
+1521786831632	Marionette	INFO	Enabled via --marionette
+1521786833248	Marionette	INFO	Listening on port 59101
+1521786833574	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521786856746	geckodriver	INFO	geckodriver 0.20.0
+1521786856756	geckodriver	INFO	Listening on 127.0.0.1:59213
+1521786857277	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.Zt5RI6OL9rrX"
+*** You are running in headless mode.
+1521786857812	Marionette	INFO	Enabled via --marionette
+1521786859178	Marionette	INFO	Listening on port 59218
+1521786859434	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521786883847	geckodriver	INFO	geckodriver 0.20.0
+1521786883856	geckodriver	INFO	Listening on 127.0.0.1:59335
+1521786884375	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.0SqLMemTiu1t"
+*** You are running in headless mode.
+1521786884920	Marionette	INFO	Enabled via --marionette
+1521786886322	Marionette	INFO	Listening on port 59340
+1521786886540	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521786977367	geckodriver	INFO	geckodriver 0.20.0
+1521786977377	geckodriver	INFO	Listening on 127.0.0.1:59667
+1521786977930	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.Kqtav8uglG7v"
+*** You are running in headless mode.
+1521786978736	Marionette	INFO	Enabled via --marionette
+1521786980210	Marionette	INFO	Listening on port 59674
+1521786980584	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521787013565	geckodriver	INFO	geckodriver 0.20.0
+1521787013575	geckodriver	INFO	Listening on 127.0.0.1:59802
+1521787014103	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\QDD\\AppData\\Local\\Temp\\rust_mozprofile.eL4a7ReKNh04"
+*** You are running in headless mode.
+1521787014716	Marionette	INFO	Enabled via --marionette
+1521787016332	Marionette	INFO	Listening on port 59809
+1521787016782	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Child 14556, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child [Child 8960, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521787072591	geckodriver::marionette	ERROR	Failed to stop browser process

@@ -62,6 +62,9 @@ import time
 # import scrapy
 # from bs4 import BeautifulSoup
 # import math
+import pytesseract
+from PIL import Image
+
 
 
 #这是一个测试
@@ -73,10 +76,7 @@ if __name__ == '__main__':
     #
     # print(data)
     # print(data.set_index('b',  drop=False))
-    start = time.time()
-    for i in range(1000):
-        for j in range(100):
-            for k in range(100):
-                i**j
-    print('时间为{time}'.format(time=(time.time()-start)))
-
+    # image = Image.open('1.jpg')
+    # pytesseract.tesseract_cmd = 'C:/Program Files (x86)/Tesseract-OCR/tesseract.exe'
+    # code = pytesseract.image_to_string(image,  lang='chi_sim')
+    print('a')
