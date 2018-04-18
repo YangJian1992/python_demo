@@ -1,48 +1,61 @@
-import pytesseract
-from PIL import Image
-import PIL
-from selenium import webdriver
+import re
 import os
+import sys
 import time
+import numpy as np
+from pandas import DataFrame, Series
+import pandas as pd
+from datetime import datetime
+from datetime import timedelta
+import pymysql
+import json
 
-#这是一个测试
-if __name__ == '__main__':
-    # data = DataFrame([[3, 4, 5], [5, 6, 7], [5, 5, 5]], columns=['a', 'b', 'c'])
-    # a = [('john', 'A', 15), ('jane', 'C', 12), ('dave', 'B', 10)]
-    # b = ['a', '2', 2, 4, 5, '2', 'b', 4, 7, 'a', 5, 'd', 'a', 'z']
-    # f = DataFrame(np.array(data), index=data['a'].values, columns=['a', 'b', 'c'])
-    #
-    # print(data)
-    # print(data.set_index('b',  drop=False))
-    os.environ['MOZ_HEADLESS'] = '1'
-    options = webdriver.FirefoxOptions()
-    driver = webdriver.Firefox(firefox_options=options)
-    print('已经登陆豆瓣')
-    driver.get('https://www.douban.com/')
-    print('已经登陆豆瓣')
-    driver.find_element_by_name('form_email').send_keys('邮箱')
-    driver.find_element_by_name('form_password').send_keys('密码')
-    print("已经输入用户名和密码")
-    driver.find_element_by_xpath('//input[@class="bn-submit"]').click()
-    print("已点击，请稍候")
-    time.sleep(2)
-    driver.save_screenshot("douban.png")
-    driver.quit()
-    # content = driver.find_elements_by_xpath('//a')
-    # print(content)
-    # a = [item.text for item in content]
-    # b = [item.get_property('href') for item in content]
-    # c = zip(a,b)
-    # [print(item) for item in c]
-    # title = driver.find_element_by_id('wrapper').text
-    # search_text = driver.find_element_by_id('kw')
+#连接到数据库，输入参数为查询语句字符串，用'''表示，第二个参数为列名，返回查询到的DataFrame格式的数据
+def mysql_connection(select_string, columns_add):
+    start = time.time()
+    conn = pymysql.connect(host='rr-bp1jnr76z49y5k9mno.mysql.rds.aliyuncs.com', port=3306, user='qiandaodao',
+                           passwd='qdddba@2017*', db='qiandaodao', charset='utf8')
+    print('已经连接到数据库，请稍候...')
+    cur = conn.cursor()
+    cur.execute(select_string)
 
-    # search_text.send_keys('selenium')
-    #print(driver.page_source)
+    temp = DataFrame(list(cur.fetchall()), columns=columns_add)
+    print('已经查询到数据，正在处理，请稍候...查询花费时间为%ds。' % (time.time() - start))
+    # 提交
+    conn.commit()
+    # 关闭指针对象
+    cur.close()
+    # 关闭连接对象
+    conn.close()
+    return (temp)
 
 
+def addr_analysis():
+    select_string = '''
+    select lo.id,e.user_id,d.county,lo.location,ao.location,lo.amount,lo.overdue_days,lo.repay_status from user_loan_orders lo 
+    left join ecshop_orders e on e.id=lo.id
+    left join (select user_id,location from credit_apply_orders where auth_status=2 and auth_time<'2018-01'   group by user_id) ao on ao.user_id=e.user_id
+    inner join user_credit_grant cg on cg.user_id=e.user_id 
+    left join user_credit_profile cp on cp.user_id=e.user_id
+    left join idcard_district d on d.id=left(cp.idcard,6) 
+    where lo.create_time>'2018-01-23' and cg.apply_type=1 and lo.due_repay_date<'2018-04-06';
+    '''
+    columns = ['id', 'user_id', 'county', 'location_1', 'location_2', 'amount', 'overdue_days', 'repay_status']
+    data = mysql_connection(select_string, columns)
+    pattern_1 = r'.*?"province":"(.+?)"|(.*?(?:省|自治区|市|特别行政区))'
+    pattern_2 = r'.*?"city":"(.+?)"|.*?(?:省|自治区|市|特别行政区)(.*?(?:市|自治州|地区|盟|区))'
+    temp_1_1 = data.location_1.str.extract(pattern_1)
+    temp_1_2 = data.location_1.str.extract(pattern_2)
+    temp_2_1 = data.location_2.str.extract(pattern_1)
+    temp_2_2 = data.location_2.str.extract(pattern_2)
+    def com(data):
+        for i in data[data[0].isnull()].index:
+            data.loc[i, 0] = data.loc[i, 1]
+        return data[0]
+    data.insert(4, 'location_1_result',  com(temp_1_1) + com(temp_1_2))
+    data.insert(6, 'location_2_result',  com(temp_2_1) + com(temp_2_2))
+    writer = pd.ExcelWriter('D:\\work\\Desktop\\addr.xlsx')
+    data.to_excel(writer, 'sheet1', encoding='utf-8')
+    writer.save()
 
-    # image = Image.open('1.jpg')
-    # #pytesseract.tesseract_cmd = r'C:/Program Files (x86)/Tesseract-OCR/tesseract.exe'
-    # code = pytesseract.image_to_string(image)
-    # print(code, type(code))
+addr_analysis()
