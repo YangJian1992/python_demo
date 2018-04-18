@@ -1,14 +1,14 @@
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 
-INPUT_NODE = 784#输入变量的个数
-OUTPUT_NODE = 10#输出节点数量
-LAYER1_NODE = 500#一个隐藏层，节点数量为500
-BATCH_SIZE = 100#batch的大小
+INPUT_NODE = 784 # 输入变量的个数
+OUTPUT_NODE = 10 # 输出节点数量
+LAYER1_NODE = 500 # 一个隐藏层，节点数量为500
+BATCH_SIZE = 100 # batch的大小
 LEARNING_RATE_BASE = 0.8 # 基础的学习率
-LEARNING_RATE_DECAY = 0.99 #学习率的衰减率
-REGULARIZATION_RATE = 0.0001 #描述模型复杂度的正则化项在损失函数中的系数
-TRAINING_STEPS = 30000 #训练轮数
+LEARNING_RATE_DECAY = 0.99 # 学习率的衰减率
+REGULARIZATION_RATE = 0.0001 # 描述模型复杂度的正则化项在损失函数中的系数
+TRAINING_STEPS = 30000 # 训练轮数
 MOVING_AVERAGE_DECAY = 0.99 #滑动平均衰减率
 
 def inference(input_tensor, avg_class, weights1, biases1, weights2, biases2):
@@ -28,10 +28,10 @@ def inference(input_tensor, avg_class, weights1, biases1, weights2, biases2):
         #计算输出层的前向传播结果。由于在计算损失函数时会一并计算softmax函数，所以这里不需要激活函数。
         return(tf.matmul(layer1, weights2) + biases2)
     else:
-        #首先使用avg_class.average函数来计算得出变量的滑动平均值
-        #然后计算相应的神经网络前各传播结果
-        layer1 = tf.nn.relu(tf.matmul(input_tensor, avg_class.average(weights1))) + avg_class.average(biases1)
-        return tf.matmul(layer1, avg_class.average(weights2)) + avg_class.average(biases2)
+        # 首先使用avg_class.average函数来计算得出变量的滑动平均值
+        # 然后计算相应的神经网络前各传播结果
+        layer1 = tf.nn.relu(tf.matmul(input_tensor, avg_class.average(weights1)) + avg_class.average(biases1))
+        return (tf.matmul(layer1, avg_class.average(weights2)) + avg_class.average(biases2))
 
 def train(mnist):
     x = tf.placeholder(tf.float32, [None, INPUT_NODE], name='x-input')
@@ -51,8 +51,8 @@ def train(mnist):
     #给定滑动平均衰减率和训练轮数的变量，初始化滑动平均类。定训练轮数的变量可以加快训练早期变量的更新速度。
     variable_averages = tf.train.ExponentialMovingAverage(MOVING_AVERAGE_DECAY, global_step)
 
-    #在所有代表神经网络参数的变量上使用滑动平均。其他辅助变量（global_step）就不需要了。tf.trainable_variables返回的就是图上集合GraphKeys.TRAINABLE_VARIABLES
-    #中的元素。这个集合中元素就是所有没有指定trainable=False的参数。
+    # 在所有代表神经网络参数的变量上使用滑动平均。其他辅助变量（global_step）就不需要了。tf.trainable_variables返回的就是图上集合GraphKeys.TRAINABLE_VARIABLES
+    # 中的元素。这个集合中元素就是所有没有指定trainable=False的参数。
     variable_averages_op = variable_averages.apply(tf.trainable_variables())
 
     # 计算使用了滑动平均之后的前向传播结果。滑动平均不会改变变量本身的取值， 而是会维护一个影子变量来记录其滑动平均值。所以当需要使用这个滑动平均值时，需要明确调用average函数
@@ -60,7 +60,7 @@ def train(mnist):
 
     # 计算交叉熵作为刻画预测值和真实值之间差距的损失函数。当分类问题只有一个正确答案时，可以使用sparse_softmax_cross_entropy_with_logits函数，这个函数
     # 的第一个参数是不包括softmax层的前向传播结果， 第二个是训练数据的正确答案，所以要使用tf.argmax函数来得到对应的类别编号。
-    cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=y, labels=tf.argmax(y, 1))
+    cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(logits=y, labels=tf.argmax(y_, 1))
 
     #计算在当前batch中所有样例的交叉熵平均值
     cross_entropy_mean = tf.reduce_mean(cross_entropy)
@@ -83,7 +83,7 @@ def train(mnist):
     #使用tf.train.GradientDescentOptimizer优化算法来优化损失函数。这里的损失函数包括了交叉熵和L2正则化损失
     train_step = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss, global_step=global_step)
 
-    # 在训练神经网络模型时， 每过一遍数据既需要通过反向传播来更新神经网络中的参数， 又要更新第一个参数的滑动平均值。为了一次完成多个操作， tensorflow
+    # 在训练神经网络模型时， 每过一遍数据既需要通过反向传播来更新神经网络中的参数， 又要更新第一个参数的滑动平均值。为了一次完成多个操作，tensorflow
     # 提供了tf.control_dependencies和tf.group两种机制。下面的程序都是可以的。
     # train_op = tf.group(train_step, variable_averages_op)
     with tf.control_dependencies([train_step, variable_averages_op]):
@@ -93,7 +93,7 @@ def train(mnist):
     # 的二维数组，每一行表示一个样例的前向传播结果。tf.argmax()的第二个参数“1”表示选取最大值的操作仅在第一个维度中进行， 也就是说， 只在每一行选取最大值
     # 对应的下标。于是得到的结果是一个长度为batch的一维数组， 这个一维数组中值就表示了每一个样例对应的数字识别结果。tf.equal判断两个张量的每一维是
     # 否相等，若相等则返回True
-    correct_prediction = tf.equal(tf.argmax(average_y, 1), tf.argmax(average_y, 1))
+    correct_prediction = tf.equal(tf.argmax(average_y, 1), tf.argmax(y_, 1))
 
     # 布尔型的数值转换为实数型，再计算平均值。tf.cast可以转换类型的。
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
