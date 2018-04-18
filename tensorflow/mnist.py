@@ -7,7 +7,7 @@ LAYER1_NODE = 500 # 一个隐藏层，节点数量为500
 BATCH_SIZE = 100 # batch的大小
 LEARNING_RATE_BASE = 0.8 # 基础的学习率
 LEARNING_RATE_DECAY = 0.99 # 学习率的衰减率
-REGULARIZATION_RATE = 0.0001 # 描述模型复杂度的正则化项在损失函数中的系数
+REGULARIZATION_RATE = 0.0001 # 描述模型复杂度的正则化项在损失函数中的系数，lambda
 TRAINING_STEPS = 30000 # 训练轮数
 MOVING_AVERAGE_DECAY = 0.99 #滑动平均衰减率
 
@@ -36,9 +36,11 @@ def inference(input_tensor, avg_class, weights1, biases1, weights2, biases2):
 def train(mnist):
     x = tf.placeholder(tf.float32, [None, INPUT_NODE], name='x-input')
     y_ = tf.placeholder(tf.float32, [None, OUTPUT_NODE], name='y-input')
+
     #生成隐藏层的参数
     weights1 = tf.Variable( tf.truncated_normal([INPUT_NODE, LAYER1_NODE], stddev=0.1))
     biases1 = tf.Variable(tf.constant(.1, shape=[LAYER1_NODE]))
+
     #生成输出层的参数
     weights2 = tf.Variable(tf.truncated_normal([LAYER1_NODE, OUTPUT_NODE], stddev=.1))
     biases2 = tf.Variable(tf.constant(.1, shape=[OUTPUT_NODE]))
@@ -65,7 +67,7 @@ def train(mnist):
     #计算在当前batch中所有样例的交叉熵平均值
     cross_entropy_mean = tf.reduce_mean(cross_entropy)
 
-    # 计算L2正则化损失函数
+    # 计算L2正则化损失函数.REGULARIZATION_RATE 就是正则化项的权重lambda
     regularizer = tf.contrib.layers.l2_regularizer(REGULARIZATION_RATE)
     # 计算模型的正则化损失。一般只计算神经网络边上权重的正则化损失，而不使用偏置项。
     regularization = regularizer(weights1) + regularizer(weights2)
@@ -89,10 +91,11 @@ def train(mnist):
     with tf.control_dependencies([train_step, variable_averages_op]):
         train_op = tf.no_op(name='train')
 
-    # 检验使用了滑动平均模型的神经网络前向传播结果是否正确。tf.argmax(average_y, 1)计算每一个样例的预测答案。其中average_y是一个batch_size*10
-    # 的二维数组，每一行表示一个样例的前向传播结果。tf.argmax()的第二个参数“1”表示选取最大值的操作仅在第一个维度中进行， 也就是说， 只在每一行选取最大值
-    # 对应的下标。于是得到的结果是一个长度为batch的一维数组， 这个一维数组中值就表示了每一个样例对应的数字识别结果。tf.equal判断两个张量的每一维是
-    # 否相等，若相等则返回True
+    '''检验使用了滑动平均模型的神经网络前向传播结果是否正确。tf.argmax(average_y, 1)计算每一个样例的预测答案。其中average_y是一个batch_size*10
+    的二维数组，每一行表示一个样例的前向传播结果。tf.argmax()的第二个参数“1”表示选取最大值的操作仅在第一个维度中进行， 也就是说， 只在每一行选取最大值
+    对应的下标。于是得到的结果是一个长度为batch的一维数组， 这个一维数组中值就表示了每一个样例对应的数字识别结果。tf.equal判断两个张量的每一维是
+    否相等，若相等则返回True. 这里的参数“1” 是指行， ”0“是指列。每一行中概率最大值就是预测结果，相对应的序号就是对应的数字。
+    如：[0.8, 0.1,0.1, 0,....]， 最大值0.8对应的序号 ”0“ 就是识别的数字类别0.'''
     correct_prediction = tf.equal(tf.argmax(average_y, 1), tf.argmax(y_, 1))
 
     # 布尔型的数值转换为实数型，再计算平均值。tf.cast可以转换类型的。
