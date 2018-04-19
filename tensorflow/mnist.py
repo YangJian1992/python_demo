@@ -116,14 +116,17 @@ def train(mnist):
             if i % 1000 ==0:
             # 计算滑动平均模型在验证数据上的结果。当模型复杂时，或验证数据上比较大时，太大的batch会导致计算时间过长甚至发生内在溢出的错误。
                 validate_acc = sess.run(accuracy, feed_dict=validate_feed)
+                print(sess.run(average_y, feed_dict={x: mnist.validation.images}))
                 print('在 %d 次训练后， 使用average_model 验证正确率是 %g'%(i, validate_acc))# %g:指数(e)或浮点数 (根据显示长度)
 
             #产生这一轮使用的一个batch的训练数据，并运行训练过程。
             xs, ys = mnist.train.next_batch(BATCH_SIZE)
             sess.run(train_op, feed_dict={x:xs, y_:ys})
 
+
         #在训练结束之后， 在测试数据上检测神经网络模型的最终正确率
         test_acc = sess.run(accuracy, feed_dict=test_feed)
+        print(sess.run(average_y, feed_dict={x:mnist.test.images}))
         print('在 %d 次训练之后， 使用average model的测试正确率是 %g' %(TRAINING_STEPS, test_acc))
 
 #主程序入口

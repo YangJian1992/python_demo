@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import time
 import pymysql
+from datetime import datetime
 
 
 def read_data(user_data):
@@ -168,49 +169,64 @@ where task_id  in {task_list}
     pd.Series(task_id_list).to_csv('D:\\work\\dian_hua_bang\\2018-4-10\\task_id_null.csv',encoding='gbk', sep=',')
     print(null_call)
 
+def one_user_call(json_name):
+    json_name = '15926079790_2018-03-31.json'
+    data_list = []
+    path = 'D:\\work\\dian_hua_bang\\2018-4-10\\test_1\\'
+    with open(path+json_name, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    last_time = data['last_modify_time']
+    for item in data['calls']:
+        data_list.extend(item['items'])
+    result=DataFrame(data_list)
+    t1 = datetime.strptime(last_time, '%Y-%m-%d %H:%M:%S')
+    print(last_time, result['time'].min())
+    t2 = datetime.strptime(result['time'].min(), '%Y-%m-%d %H:%M:%S')
+    print('天数：', (t1-t2).days)
+
 #这是一个测试
 if __name__ == '__main__':
-    select_string = '''
-    SELECT
-    i.file_name,
-    e.user_id
-FROM
-    ecshop_orders e
-        INNER JOIN
-    xh_loan_orders x ON x.loan_id = e.id
-        LEFT JOIN
-    user_loan_orders lo ON lo.id = e.id
-        LEFT JOIN
-    users u ON u.id = e.user_id
-        LEFT JOIN
-    user_credit_profile cp ON cp.user_id = e.user_id
-        LEFT JOIN
-    (SELECT
-        e.user_id, MAX(o.create_time) new_time
-    FROM
-        user_loan_orders lo
-    INNER JOIN xh_loan_orders x ON x.loan_id = lo.id
-    LEFT JOIN ecshop_orders e ON e.id = lo.id
-    LEFT JOIN operator_task_info o ON o.user_id = e.user_id
-        AND o.create_time < lo.create_time
-    WHERE
-        lo.first_loan = 1
-            AND e.create_time < '2018-04-11 10:30:00'
-            AND e.user_id NOT IN (401005 , 934925, 986522, 1285790)
-    GROUP BY e.user_id) h ON h.user_id = e.user_id
-        LEFT JOIN
-    operator_task_info i ON i.user_id = e.user_id
-        AND i.create_time = h.new_time
-WHERE
-    (x.loan_status = 2 OR e.loan_status = 2)
-        AND lo.first_loan = 1
-        AND e.create_time < '2018-04-11 10:30:00'
-        AND e.user_id NOT IN (401005 , 934925, 986522, 1285790, 915645, 311798);
-    '''
-    columns_add = ['file_name', 'user_id']
-    user_data = mysql_connection(select_string, columns_add)
-    print('user_data的数量', len(user_data))
-    user_data['file_name'] = user_data['file_name'][user_data['file_name'].notnull()]#找出非空值
-    user_data['file_name'] = user_data['file_name'].map(lambda x : x.split('/')[-1])
-    read_data(user_data)
-#     null_list()
+#     select_string = '''
+#     SELECT
+#     i.file_name,
+#     e.user_id
+# FROM
+#     ecshop_orders e
+#         INNER JOIN
+#     xh_loan_orders x ON x.loan_id = e.id
+#         LEFT JOIN
+#     user_loan_orders lo ON lo.id = e.id
+#         LEFT JOIN
+#     users u ON u.id = e.user_id
+#         LEFT JOIN
+#     user_credit_profile cp ON cp.user_id = e.user_id
+#         LEFT JOIN
+#     (SELECT
+#         e.user_id, MAX(o.create_time) new_time
+#     FROM
+#         user_loan_orders lo
+#     INNER JOIN xh_loan_orders x ON x.loan_id = lo.id
+#     LEFT JOIN ecshop_orders e ON e.id = lo.id
+#     LEFT JOIN operator_task_info o ON o.user_id = e.user_id
+#         AND o.create_time < lo.create_time
+#     WHERE
+#         lo.first_loan = 1
+#             AND e.create_time < '2018-04-11 10:30:00'
+#             AND e.user_id NOT IN (401005 , 934925, 986522, 1285790)
+#     GROUP BY e.user_id) h ON h.user_id = e.user_id
+#         LEFT JOIN
+#     operator_task_info i ON i.user_id = e.user_id
+#         AND i.create_time = h.new_time
+# WHERE
+#     (x.loan_status = 2 OR e.loan_status = 2)
+#         AND lo.first_loan = 1
+#         AND e.create_time < '2018-04-11 10:30:00'
+#         AND e.user_id NOT IN (401005 , 934925, 986522, 1285790, 915645, 311798);
+#     '''
+#     columns_add = ['file_name', 'user_id']
+#     user_data = mysql_connection(select_string, columns_add)
+#     print('user_data的数量', len(user_data))
+#     user_data['file_name'] = user_data['file_name'][user_data['file_name'].notnull()]#找出非空值
+#     user_data['file_name'] = user_data['file_name'].map(lambda x : x.split('/')[-1])
+#     read_data(user_data)
+    one_user_call('15926079790_2018-03-31.json')
