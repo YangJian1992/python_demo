@@ -8,9 +8,9 @@ import random
 
 INPUT_NODE = 24 # 输入变量的个数
 OUTPUT_NODE = 3 # 输出节点数量
-LAYER1_NODE = 50 # 第一个隐藏层，节点数量为50
+LAYER1_NODE = 30 # 第一个隐藏层，节点数量为50
 LAYER2_NODE = 10 #第二个隐藏层，节点数量
-BATCH_SIZE = 50 # batch的大小
+BATCH_SIZE = 100 # batch的大小
 LEARNING_RATE_BASE = 0.8 # 基础的学习率
 LEARNING_RATE_DECAY = 0.99 # 学习率的衰减率
 REGULARIZATION_RATE = 0.0001 # 描述模型复杂度的正则化项在损失函数中的系数，lambda
@@ -123,7 +123,7 @@ def train(data):
 
     # 布尔型的数值转换为实数型，再计算平均值。tf.cast可以转换类型的。
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-
+    # saver = tf.train.Saver()#持久化模型
     #初始化会话并开始训练过程
     with tf.Session() as sess:
         tf.global_variables_initializer().run()
@@ -150,6 +150,7 @@ def train(data):
 
         #在训练结束之后， 在测试数据上检测神经网络模型的最终正确率
         test_acc = sess.run(accuracy, feed_dict=test_feed)
+        saver.save(sess, './model.ckpt')
         print('在 %d 次训练之后， 使用average model的测试正确率是 %g' %(TRAINING_STEPS, test_acc))
         result = sess.run(tf.argmax(average_y, 1), feed_dict={x : test_data})
         # Series(result).to_csv('D:\\work\\华道征信-测试数据\\信贷详情\\test_result.csv',sep=',', encoding='gbk')
@@ -172,14 +173,13 @@ def read_data():
     return test
 
 
-
-
 #主程序入口
 def main(argv=None):
     #声明处理MNIST数据集的类， 这个类在初始化时会自动下载数据。
     data = read_data()
-
     train(data)
+
+
 
 # tf.app.run 会调用上面定义的main函数
 if __name__ == '__main__':
