@@ -23,12 +23,13 @@
     <SUITE FILE_PATH="coverage/python_demo$address_book.coverage" NAME="address_book Coverage Results" MODIFIED="1512577474313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/call_history_addr_alter" />
     <SUITE FILE_PATH="coverage/python_demo$nltk_test.coverage" NAME="nltk_test Coverage Results" MODIFIED="1512526776910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/nltk" />
     <SUITE FILE_PATH="coverage/python_demo$call_history.coverage" NAME="call_history Coverage Results" MODIFIED="1524444158992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dian_hua_bang" />
-    <SUITE FILE_PATH="coverage/python_demo$xindai__1_.coverage" NAME="xindai (1) Coverage Results" MODIFIED="1524467654674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/huadao" />
+    <SUITE FILE_PATH="coverage/python_demo$xindai__1_.coverage" NAME="xindai (1) Coverage Results" MODIFIED="1524799583892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/huadao" />
     <SUITE FILE_PATH="coverage/python_demo$call_addr_alter__1_.coverage" NAME="call_addr_alter (1) Coverage Results" MODIFIED="1511430673774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/call_history_addr_alter" />
     <SUITE FILE_PATH="coverage/python_demo$call_addr_alter.coverage" NAME="call_addr_alter Coverage Results" MODIFIED="1511321503238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python_demo$appstore_data_statistics.coverage" NAME="appstore_data_statistics Coverage Results" MODIFIED="1522718861668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python_demo$test_yj.coverage" NAME="test_yj Coverage Results" MODIFIED="1512539122185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python_demo$crawler_test__1_.coverage" NAME="crawler.test (1) Coverage Results" MODIFIED="1512469351013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/spider" />
+    <SUITE FILE_PATH="coverage/python_demo$result_rule.coverage" NAME="result_rule Coverage Results" MODIFIED="1524636442979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dian_hua_bang" />
     <SUITE FILE_PATH="coverage/python_demo$test_2.coverage" NAME="test_2 Coverage Results" MODIFIED="1523343232401" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/python_demo$xindai.coverage" NAME="xindai Coverage Results" MODIFIED="1524026839295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/user_loan_order" />
   </component>
@@ -48,7 +49,7 @@
       <file leaf-file-name="test_2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="924">
+            <state relative-caret-position="0">
               <caret line="49" column="53" lean-forward="false" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -60,14 +61,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="xindai.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user_loan_order/xindai.py">
+      <file leaf-file-name="result_rule.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dian_hua_bang/result_rule.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="80" column="22" lean-forward="true" selection-start-line="80" selection-start-column="22" selection-end-line="80" selection-end-column="22" />
+            <state relative-caret-position="539">
+              <caret line="91" column="58" lean-forward="false" selection-start-line="91" selection-start-column="58" selection-end-line="91" selection-end-column="58" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <element signature="e#290#823#0" expanded="false" />
+                <element signature="e#287#815#0" expanded="false" />
+                <marker date="1524637455900" expanded="true" signature="2202:2835" ph="select sum(i... user_loan_orders" />
+                <marker date="1524637455900" expanded="true" signature="2955:4835" ph="select count... " />
               </folding>
             </state>
           </provider>
@@ -76,11 +79,9 @@
       <file leaf-file-name="xindai.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/huadao/xindai.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="63" column="63" lean-forward="true" selection-start-line="63" selection-start-column="63" selection-end-line="63" selection-end-column="63" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="152">
+              <caret line="63" column="46" lean-forward="true" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,31 +89,18 @@
       <file leaf-file-name="dian_hua_bang.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dian_hua_bang.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-370">
-              <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+            <state relative-caret-position="2968">
+              <caret line="188" column="0" lean-forward="false" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#3773#4306#0" expanded="false" />
                 <element signature="e#4330#6848#0" expanded="false" />
-                <element signature="e#7473#7498#0" expanded="false" />
-                <marker date="1524128326695" expanded="true" signature="4354:5545" ph="SELECT i.fil... ecshop_orders" />
-                <marker date="1524128326695" expanded="true" signature="4714:5199" ph="SELECT e.use... user_loan_orders" />
-                <marker date="1524128326695" expanded="true" signature="6282:6393" ph="SELECT user_... operator_address_book_rule" />
-                <marker date="1524128326695" expanded="true" signature="6282:6411" ph="SELECT user_... operator_address_book_rule" />
-                <marker date="1524128326695" expanded="true" signature="7505:8717" ph="SELECT i.fil... ecshop_orders" />
-                <marker date="1524128326695" expanded="true" signature="7858:8355" ph="SELECT e.use... user_loan_orders" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mnist.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tensorflow/mnist.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3640">
-              <caret line="131" column="6" lean-forward="false" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
+                <marker date="1524638461823" expanded="true" signature="4354:5545" ph="SELECT i.fil... ecshop_orders" />
+                <marker date="1524638461823" expanded="true" signature="4714:5199" ph="SELECT e.use... user_loan_orders" />
+                <marker date="1524638461823" expanded="true" signature="6282:6393" ph="SELECT user_... operator_address_book_rule" />
+                <marker date="1524638461823" expanded="true" signature="6282:6411" ph="SELECT user_... operator_address_book_rule" />
+                <marker date="1524638461823" expanded="true" signature="7506:8718" ph="SELECT i.fil... ecshop_orders" />
+                <marker date="1524638461823" expanded="true" signature="7859:8356" ph="SELECT e.use... user_loan_orders" />
               </folding>
             </state>
           </provider>
@@ -121,7 +109,7 @@
       <file leaf-file-name="call_history.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dian_hua_bang/call_history.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-382">
+            <state relative-caret-position="532">
               <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -133,8 +121,8 @@
       <file leaf-file-name="huadao_012.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tensorflow/huadao_012.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3752">
-              <caret line="139" column="67" lean-forward="false" selection-start-line="139" selection-start-column="67" selection-end-line="139" selection-end-column="67" />
+            <state relative-caret-position="539">
+              <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -153,7 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>astype</find>
       <find>date_1</find>
       <find>call_addr</find>
       <find>data_old</find>
@@ -183,9 +170,9 @@
       <find>data_dict</find>
       <find>data_1</find>
       <find>data_2</find>
+      <find>^</find>
     </findStrings>
     <replaceStrings>
-      <replace>data_old</replace>
       <replace>item_3_province</replace>
       <replace>flag_province</replace>
       <replace>data_province</replace>
@@ -215,6 +202,7 @@
       <replace>日</replace>
       <replace>data</replace>
       <replace>user_dict</replace>
+      <replace>|</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -249,11 +237,12 @@
         <option value="$PROJECT_DIR$/call_history_addr_alter/call_history_json.py" />
         <option value="$PROJECT_DIR$/test_yj.py" />
         <option value="$PROJECT_DIR$/test_2.py" />
-        <option value="$PROJECT_DIR$/user_loan_order/xindai.py" />
         <option value="$PROJECT_DIR$/tensorflow/mnist.py" />
-        <option value="$PROJECT_DIR$/dian_hua_bang.py" />
         <option value="$PROJECT_DIR$/tensorflow/huadao_012.py" />
         <option value="$PROJECT_DIR$/dian_hua_bang/call_history.py" />
+        <option value="$PROJECT_DIR$/dian_hua_bang/result_rule.py" />
+        <option value="$PROJECT_DIR$/dian_hua_bang.py" />
+        <option value="$PROJECT_DIR$/user_loan_order/xindai.py" />
         <option value="$PROJECT_DIR$/huadao/xindai.py" />
       </list>
     </option>
@@ -354,7 +343,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -367,11 +355,32 @@
               <item name="python_demo" type="462c0819:PsiDirectoryNode" />
               <item name="huadao" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_demo" type="462c0819:PsiDirectoryNode" />
+              <item name="simple_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_demo" type="462c0819:PsiDirectoryNode" />
+              <item name="spark" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_demo" type="462c0819:PsiDirectoryNode" />
+              <item name="taobao_orders" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_demo" type="462c0819:PsiDirectoryNode" />
+              <item name="white_knight_auth_times" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -473,20 +482,20 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="mnist" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="result_rule" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dian_hua_bang" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="python_demo" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow/mnist.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dian_hua_bang/result_rule.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -511,18 +520,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.dian_hua_bang" />
-      <item index="1" class="java.lang.String" itemvalue="Python.mnist" />
-      <item index="2" class="java.lang.String" itemvalue="Python.huadao_012" />
-      <item index="3" class="java.lang.String" itemvalue="Python.call_history" />
-      <item index="4" class="java.lang.String" itemvalue="Python.xindai (1)" />
+      <item index="1" class="java.lang.String" itemvalue="Python.huadao_012" />
+      <item index="2" class="java.lang.String" itemvalue="Python.call_history" />
+      <item index="3" class="java.lang.String" itemvalue="Python.xindai (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.result_rule" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.xindai (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.call_history" />
-        <item index="2" class="java.lang.String" itemvalue="Python.huadao_012" />
-        <item index="3" class="java.lang.String" itemvalue="Python.dian_hua_bang" />
-        <item index="4" class="java.lang.String" itemvalue="Python.mnist" />
+        <item index="1" class="java.lang.String" itemvalue="Python.result_rule" />
+        <item index="2" class="java.lang.String" itemvalue="Python.call_history" />
+        <item index="3" class="java.lang.String" itemvalue="Python.huadao_012" />
+        <item index="4" class="java.lang.String" itemvalue="Python.dian_hua_bang" />
       </list>
     </recent_temporary>
   </component>
@@ -553,15 +562,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22103004" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22395833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.50858366" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2258772" sideWeight="0.5104167" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.49785408" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34049773" sideWeight="0.4914163" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30542988" sideWeight="0.48828697" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28289473" sideWeight="0.48958334" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41118422" sideWeight="0.48828697" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2341629" sideWeight="0.49356222" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -591,27 +599,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/excelPythonDemo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spider/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/call_history_addr_alter/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -699,13 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spark/spark_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -821,7 +801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="5495" column="0" lean-forward="false" selection-start-line="5495" selection-start-column="0" selection-end-line="5495" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,19 +839,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow/mnist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3640">
-          <caret line="131" column="6" lean-forward="false" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
+        <state relative-caret-position="0">
           <caret line="49" column="53" lean-forward="false" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -883,19 +852,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tensorflow/huadao_012.py">
+    <entry file="file://$PROJECT_DIR$/ml_book_weiwei/ml_test_01.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3752">
-          <caret line="139" column="67" lean-forward="false" selection-start-line="139" selection-start-column="67" selection-end-line="139" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-3190">
+          <caret line="67" column="19" lean-forward="true" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spark/spark_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dian_hua_bang/call_history.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-382">
+        <state relative-caret-position="532">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -903,43 +876,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow/mnist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="131" column="6" lean-forward="false" selection-start-line="131" selection-start-column="6" selection-end-line="131" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ml_book_weiwei/Boston_house_price.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-168">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dian_hua_bang.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-370">
-          <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+        <state relative-caret-position="2968">
+          <caret line="188" column="0" lean-forward="false" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#3773#4306#0" expanded="false" />
             <element signature="e#4330#6848#0" expanded="false" />
-            <element signature="e#7473#7498#0" expanded="false" />
-            <marker date="1524128326695" expanded="true" signature="4354:5545" ph="SELECT i.fil... ecshop_orders" />
-            <marker date="1524128326695" expanded="true" signature="4714:5199" ph="SELECT e.use... user_loan_orders" />
-            <marker date="1524128326695" expanded="true" signature="6282:6393" ph="SELECT user_... operator_address_book_rule" />
-            <marker date="1524128326695" expanded="true" signature="6282:6411" ph="SELECT user_... operator_address_book_rule" />
-            <marker date="1524128326695" expanded="true" signature="7505:8717" ph="SELECT i.fil... ecshop_orders" />
-            <marker date="1524128326695" expanded="true" signature="7858:8355" ph="SELECT e.use... user_loan_orders" />
+            <marker date="1524638461823" expanded="true" signature="4354:5545" ph="SELECT i.fil... ecshop_orders" />
+            <marker date="1524638461823" expanded="true" signature="4714:5199" ph="SELECT e.use... user_loan_orders" />
+            <marker date="1524638461823" expanded="true" signature="6282:6393" ph="SELECT user_... operator_address_book_rule" />
+            <marker date="1524638461823" expanded="true" signature="6282:6411" ph="SELECT user_... operator_address_book_rule" />
+            <marker date="1524638461823" expanded="true" signature="7506:8718" ph="SELECT i.fil... ecshop_orders" />
+            <marker date="1524638461823" expanded="true" signature="7859:8356" ph="SELECT e.use... user_loan_orders" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tensorflow/huadao_012.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user_loan_order/xindai.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="80" column="22" lean-forward="true" selection-start-line="80" selection-start-column="22" selection-end-line="80" selection-end-column="22" />
+        <state relative-caret-position="392">
+          <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#19#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dian_hua_bang/result_rule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="91" column="58" lean-forward="false" selection-start-line="91" selection-start-column="58" selection-end-line="91" selection-end-column="58" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#290#823#0" expanded="false" />
+            <element signature="e#287#815#0" expanded="false" />
+            <marker date="1524637455900" expanded="true" signature="2202:2835" ph="select sum(i... user_loan_orders" />
+            <marker date="1524637455900" expanded="true" signature="2955:4835" ph="select count... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/huadao/xindai.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="63" column="63" lean-forward="true" selection-start-line="63" selection-start-column="63" selection-end-line="63" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="152">
+          <caret line="63" column="46" lean-forward="true" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>

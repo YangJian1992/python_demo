@@ -26,7 +26,6 @@ def mysql_connection(select_string, columns_add):
     conn.close()
     return (temp)
 
-
 def read_data():
     path = 'D:\\work\\华道征信-测试数据\\信贷详情\\qiandaodao_new_data20180412-信贷详情(完成)2018.4.13.xlsx'
     data = pd.read_excel(path, sheetname='Sheet1', header=0)
@@ -53,7 +52,6 @@ def analysis_data(k, data):
     '''
     :param k: data_dict中的key，如'注册', '申请'..
     :param data: data_dict中的值，为DataFrame
-
     :return: result: 每个用户的统计结果，为DataFrame
     '''
     data_dict = {}
