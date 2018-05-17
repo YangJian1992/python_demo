@@ -6,6 +6,8 @@ import pymysql
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn import svm
+from sklearn import tree
+import graphviz
 from datetime import datetime
 
 #连接到数据库，输入参数为查询语句字符串，用'''表示，第二个参数为列名，返回查询到的DataFrame格式的数据
@@ -34,7 +36,7 @@ def read_data():
     select_string_1 = '''
     SELECT 
     cao.user_id as '用户ID',
-    if(ucp.sex='男',1,if(ucp.sex='女', 0 , -1)) as '性别',
+    if(ucp.sex='女', 0, 1) as '性别',
 	users.create_time AS '注册时间',
     max(users.logon_time) as '最近登陆时间',
     MIN(cao.create_time) AS '最早额度时间',
@@ -131,8 +133,9 @@ GROUP BY cao.user_id
     data_1['最早额度时间与注册时间间隔'][data_1['最早额度时间与注册时间间隔'].isnull()] = 0
     #data_2 = mysql_connection(select_string_2, columns_add)
     data_1_x = data_1[['性别','最大逾期天数', '收款银行卡的数量', '最早额度时间与注册时间间隔', '最早借款时间与最早额度时间间隔', '最近借款时间与最早借款时间间隔', '最近借款时间与最近登陆时间间隔', '平均借款间隔']]
+    data_1_x = data_1[['最大逾期天数','收款银行卡的数量',  '最近借款时间与最早借款时间间隔', '最近借款时间与最近登陆时间间隔', '平均借款间隔']]
     #对字段值进行分类，全部转化成离散型变量
-    data_1_y = pd.cut(data_1['借款订单数量'], [1,2, 6, 11, 1000], right=False, labels=[1, 2, 3, 4])
+    data_1_y = pd.cut(data_1['借款订单数量'], [1, 2, 3, 10000000], right=False, labels=['1', '2', '3'])
     data_1_x['最大逾期天数'] = pd.cut(data_1_x['最大逾期天数'], [0, 1, 30, 1000000], right=False, labels=[0, 1, 2])
     data_1_x['收款银行卡的数量'] = pd.cut(data_1_x['收款银行卡的数量'], [1, 2, 1000], right=False, labels=[1,2])
     data_1_x['最早额度时间与注册时间间隔'] = pd.cut(data_1_x['最早额度时间与注册时间间隔'], [0, 1, 4, 15, 1000000], right=False, labels=[0, 1, 2, 3])
@@ -140,8 +143,14 @@ GROUP BY cao.user_id
     data_1_x['最近借款时间与最早借款时间间隔'] = pd.cut(data_1_x['最近借款时间与最早借款时间间隔'], [0, 1, 32, 180, 1000000], right=False, labels=[0, 1, 2, 3])
     data_1_x['最近借款时间与最近登陆时间间隔'] = pd.cut(data_1_x['最近借款时间与最近登陆时间间隔'], [-100, 1, 32, 180, 1000000], right=False,labels=[0, 1, 2, 3])
     data_1_x['平均借款间隔'] = pd.cut(data_1_x['平均借款间隔'], [0, 1, 32, 1000000], right=False,labels=[0, 1, 2])
-    x_train, x_test, y_train, y_test = train_test_split(data_1_x, data_1_y, test_size=0.3)
+    x_train, x_test, y_train, y_test = train_test_split(data_1_x, data_1_y, test_size=0.4)
     clf = svm.SVC(kernel='rbf')
     scores = cross_val_score(clf, data_1_x, data_1_y, cv=5)
     clf.fit(x_train, y_train)
     y = clf.predict(x_test)
+
+    clf_tree = tree.DecisionTreeClassifier()
+    clf_tree.fit(x_train, y_train)
+    y_tree = clf_tree.predict(x_test)
+    dot_data = tree.export_graphviz(clf_tree, out_file='tree.dot')
+    graph = graphviz.Source(dot_data)
