@@ -70,7 +70,7 @@
       <file leaf-file-name="test_05_22.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test_05_22.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="784">
+            <state relative-caret-position="504">
               <caret line="28" column="58" lean-forward="false" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -82,7 +82,7 @@
       <file leaf-file-name="result_rule.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dian_hua_bang/result_rule.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1204">
+            <state relative-caret-position="1344">
               <caret line="63" column="23" lean-forward="false" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -97,8 +97,8 @@
       <file leaf-file-name="dian_hua_bang.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dian_hua_bang.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+            <state relative-caret-position="2380">
+              <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#3773#4306#0" expanded="false" />
@@ -117,7 +117,7 @@
       <file leaf-file-name="appstore_data_statistics.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appstore_data_statistics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
+            <state relative-caret-position="2156">
               <caret line="85" column="35" lean-forward="false" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="35" />
               <folding>
                 <marker date="1522718852758" expanded="true" signature="1678:1856" ph="select i.mob... ecshop_orders" />
@@ -128,11 +128,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_0_0.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_0_0.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test_0_0.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+            <state relative-caret-position="1120">
+              <caret line="50" column="29" lean-forward="false" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <marker date="1526282158759" expanded="true" signature="2586:2667" ph="select id, l... user_loan_orders" />
@@ -142,14 +142,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_data_set.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="users_data_set.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/loan_demand_model/users_data_set.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="182" column="0" lean-forward="true" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+            <state relative-caret-position="295">
+              <caret line="48" column="20" lean-forward="false" selection-start-line="48" selection-start-column="20" selection-end-line="154" selection-end-column="7" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#1523#5828#0" expanded="false" />
+                <element signature="e#448#981#0" expanded="false" />
+                <element signature="e#1533#5826#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -272,8 +273,8 @@
         <option value="$PROJECT_DIR$/test/test_1.py" />
         <option value="$PROJECT_DIR$/test/test_0_0.py" />
         <option value="$PROJECT_DIR$/loan_demand_model/decision_tree_0.py" />
-        <option value="$PROJECT_DIR$/loan_demand_model/users_data_set.py" />
         <option value="$PROJECT_DIR$/test/test_05_22.py" />
+        <option value="$PROJECT_DIR$/loan_demand_model/users_data_set.py" />
       </list>
     </option>
   </component>
@@ -373,6 +374,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -389,7 +391,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -587,13 +588,13 @@
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20439914" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20708154" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2258772" sideWeight="0.5104167" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.49785408" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40950227" sideWeight="0.48958334" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41063347" sideWeight="0.48828697" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40950227" sideWeight="0.48958334" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41063347" sideWeight="0.48828697" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31900454" sideWeight="0.49356222" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -897,17 +898,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/loan_demand_model/users_data_set.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="182" column="0" lean-forward="true" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#1523#5828#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -925,7 +915,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dian_hua_bang/result_rule.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1204">
+        <state relative-caret-position="1344">
           <caret line="63" column="23" lean-forward="false" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -938,8 +928,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dian_hua_bang.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+        <state relative-caret-position="2380">
+          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#3773#4306#0" expanded="false" />
@@ -956,7 +946,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/appstore_data_statistics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
+        <state relative-caret-position="2156">
           <caret line="85" column="35" lean-forward="false" selection-start-line="85" selection-start-column="35" selection-end-line="85" selection-end-column="35" />
           <folding>
             <marker date="1522718852758" expanded="true" signature="1678:1856" ph="select i.mob... ecshop_orders" />
@@ -968,7 +958,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test_05_22.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
+        <state relative-caret-position="504">
           <caret line="28" column="58" lean-forward="false" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -978,12 +968,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test_0_0.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+        <state relative-caret-position="1120">
+          <caret line="50" column="29" lean-forward="false" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <marker date="1526282158759" expanded="true" signature="2586:2667" ph="select id, l... user_loan_orders" />
             <marker date="1526282158759" expanded="true" signature="2778:2912" ph="select e.tot... ecshop_orders" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan_demand_model/users_data_set.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="48" column="20" lean-forward="false" selection-start-line="48" selection-start-column="20" selection-end-line="154" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#448#981#0" expanded="false" />
+            <element signature="e#1533#5826#0" expanded="false" />
           </folding>
         </state>
       </provider>
